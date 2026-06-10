@@ -12,8 +12,8 @@
   --light:#EBEBDF;
   --muted:rgba(235,235,223,0.45);
   --bodymid:#5a5a6a;
-  --butter:#F5C842;
-  --butter-dim:rgba(245,200,66,0.12);
+  --butter:#F2E6B1;
+  --butter-dim:rgba(242,230,177,0.12);
 }
 html{scroll-behavior:smooth;scroll-snap-type:y mandatory}
 body{font-family:"Inter",sans-serif;background:var(--ink);color:var(--light);overflow-x:hidden}
@@ -371,7 +371,7 @@ footer{
 }
 .landing-insider{
   font-family:"Cormorant Garamond",serif;
-  font-size:.9rem;font-weight:400;font-style:italic;
+  font-size:1.4rem;font-weight:400;font-style:normal;
   color:var(--butter);
   letter-spacing:.12em;text-transform:uppercase;
   padding-bottom:4px;
