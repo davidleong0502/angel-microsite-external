@@ -574,8 +574,8 @@ footer{
   position:relative;z-index:2;
 }
 .landing-tile{
-  display:flex;flex-direction:column;justify-content:space-between;
-  padding:100px 48px 48px;
+  display:flex;flex-direction:column;justify-content:center;
+  padding:48px;
   text-decoration:none;
   position:relative;overflow:hidden;
   border-right:1px solid rgba(255,255,255,0.06);
@@ -668,8 +668,9 @@ footer{
 .tile-enter{
   color:rgba(235,235,223,.2);
   transition:color .3s,transform .3s;
-  align-self:flex-end;
   line-height:0;
+  position:absolute;
+  bottom:32px;right:32px;
 }
 .landing-tile:hover .tile-enter{color:var(--teal);transform:translateY(-3px)}
 
@@ -732,7 +733,7 @@ footer{
 .tile-4 .tile-mid{flex-direction:row;align-items:center;gap:24px;flex:1}
 .tile-4 .tile-title{font-size:clamp(1.4rem,2vw,2rem);line-height:1;white-space:nowrap}
 .tile-4 .tile-sub{font-size:.88rem;max-width:400px;line-height:1.5;margin:0}
-.tile-4 .tile-enter{margin-left:auto;flex-shrink:0;align-self:center}
+.tile-4 .tile-enter{position:static;margin-left:auto;flex-shrink:0;align-self:center}
 
 @media(max-width:768px){
   /* LANDING — fills viewport, tiles share space equally */
