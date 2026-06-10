@@ -330,6 +330,25 @@ const ISSUES = {
     ],
     signoff: { line: 'Record, review, replay.', name: 'A&GEL Development Team' },
   },
+  'feature-prompt-library': {
+    issue: null, title: 'Prompt Library',
+    subtitle: 'Find, clone and adapt community-built prompts — and sharpen them with built-in tools.',
+    date: 'Issue 2', readMins: 2, cover: 'assets/covers/issue-2.png',
+    glance: [
+      'Browse, clone and adapt community-built prompts from the Prompt Library for your specific matter.',
+      '<strong>Test your prompt</strong> — compare A&GEL\'s output against a model answer you have already prepared.',
+      'Use <strong>Improve My Prompt v1.0</strong> in the prompt library to further refine any prompt that isn\'t performing as expected.',
+    ],
+    sections: [
+      { kicker: 'Issue 2 — Craft', heading: 'Tips for prompting: test and improve', blocks: [
+        { p: '<strong>Test your prompt.</strong> An effective way to gauge a prompt\'s effectiveness is to compare A&GEL\'s output against a "model answer" or reference output you have already prepared.' },
+        { p: 'For instance, if you are developing a prompt to summarise a case, refer to a case summary you have previously prepared and are familiar with as your benchmark. Run your summary prompt and assess A&GEL\'s output against your prior work. If the output aligns closely with your benchmark, your prompt is likely well-developed. If it does not, identify the specific gaps and refine your prompt accordingly — for example, by adding further context.' },
+        { p: '<strong>Improve your prompt.</strong> Consider using the <em>Improve My Prompt v1.0</em> tool available in your prompt library to further refine your prompt.' },
+        { figure: { src: 'assets/i2/17_image018.png', caption: 'Improve My Prompt v1.0 — refine an existing prompt in the library.', wide: false } },
+      ]},
+    ],
+    signoff: { line: 'Clone, adapt, and share what works.', name: 'A&GEL Development Team' },
+  },
   'feature-guided-summary': {
     issue: null, title: 'Quick Info & Guided Summary',
     subtitle: 'A fast, sourced read of any single document — snapshot or steered.',
