@@ -59,6 +59,7 @@ nav{
 .panel-1{background:linear-gradient(135deg,var(--ink) 0%,#1a2f42 100%)}
 .panel-2{background:var(--sand)}
 .panel-3{background:linear-gradient(135deg,#111827 0%,var(--ink) 100%)}
+.panel-4{background:var(--ink);min-height:60vh;border-top:1px solid rgba(255,255,255,.06)}
 
 .panel-bg-word{
   position:absolute;
@@ -120,7 +121,7 @@ nav{
   border:1px solid rgba(255,255,255,.08);
   border-radius:10px;padding:22px 24px;
   transition:background .25s,border-color .25s,transform .25s;
-  cursor:pointer;
+  cursor:pointer;text-decoration:none;display:block;
 }
 .card-dark:hover{
   background:rgba(0,154,197,.08);
@@ -462,6 +463,15 @@ nav{
   font-size:.85rem;color:rgba(235,235,223,.4);line-height:1.8;
 }
 .reader-signoff-line{font-style:italic;color:rgba(235,235,223,.55);margin-bottom:4px;}
+.reader-angel-cta{
+  display:inline-block;margin-top:28px;
+  background:var(--teal);color:#fff;
+  padding:13px 30px;border-radius:6px;
+  font-size:.82rem;font-weight:600;letter-spacing:.04em;
+  text-decoration:none;
+  transition:background .2s,transform .15s,box-shadow .2s;
+}
+.reader-angel-cta:hover{background:#0082a8;transform:translateY(-2px);box-shadow:0 10px 28px rgba(0,154,197,.35)}
 
 /* FOOTER */
 footer{
@@ -608,6 +618,14 @@ footer{
 }
 .landing-tile:hover .tile-arrow{color:var(--light);transform:translateX(6px)}
 
+/* tile-4: half-size — sits in its own row at 1/3 of the grid width */
+.tile-4{
+  background:linear-gradient(160deg,#0c1824 0%,#111827 100%);
+  border-top:1px solid rgba(255,255,255,.06);
+}
+.tile-4:hover{background:linear-gradient(160deg,#0a1e2e 0%,#0f3045 100%)}
+.tile-4 .tile-title{font-size:clamp(1.6rem,2.8vw,2.6rem)}
+
 @media(max-width:768px){
   /* LANDING — compact menu, no full-height tiles */
   #landing{justify-content:flex-start;overflow-y:auto}
@@ -629,6 +647,7 @@ footer{
     border-bottom:1px solid rgba(255,255,255,.06);
   }
   .landing-tile:last-child{border-bottom:none}
+  .tile-4 .tile-title{font-size:1.3rem}
   .tile-num{font-size:.6rem;letter-spacing:.2em;margin-bottom:0;flex-shrink:0;width:22px}
   .tile-mid{gap:4px;flex:1}
   .tile-title{font-size:1.5rem;line-height:1.05}

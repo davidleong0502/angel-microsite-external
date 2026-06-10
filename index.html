@@ -20,7 +20,6 @@
   </div>
   <div class="landing-tiles">
     <a class="landing-tile tile-1" href="#panel1" onclick="document.getElementById('landing').style.display='none'">
-      <div class="tile-num">01</div>
       <div class="tile-mid">
         <div class="tile-title">Basics</div>
         <div class="tile-sub">Start here. Everything you need from day one.</div>
@@ -28,7 +27,6 @@
       <div class="tile-arrow">→</div>
     </a>
     <a class="landing-tile tile-2" href="#panel2" onclick="document.getElementById('landing').style.display='none'">
-      <div class="tile-num">02</div>
       <div class="tile-mid">
         <div class="tile-title">If You Want to Know More…</div>
         <div class="tile-sub">Power features for those who want to go further.</div>
@@ -36,9 +34,15 @@
       <div class="tile-arrow">→</div>
     </a>
     <a class="landing-tile tile-3" href="#panel3" onclick="document.getElementById('landing').style.display='none'">
-      <div class="tile-num">03</div>
       <div class="tile-mid">
-        <div class="tile-title">Works in Progress</div>
+        <div class="tile-title">What's New</div>
+        <div class="tile-sub">Recently launched features and updates.</div>
+      </div>
+      <div class="tile-arrow">→</div>
+    </a>
+    <a class="landing-tile tile-4" href="#panel4" onclick="document.getElementById('landing').style.display='none'">
+      <div class="tile-mid">
+        <div class="tile-title">Future Stuff</div>
         <div class="tile-sub">What the team is building next.</div>
       </div>
       <div class="tile-arrow">→</div>
@@ -53,12 +57,14 @@
     <div class="nav-labels">
       <a href="#panel1" class="nav-label" data-panel="0">Basics</a>
       <a href="#panel2" class="nav-label" data-panel="1">If You Want to Know More</a>
-      <a href="#panel3" class="nav-label" data-panel="2">Works in Progress</a>
+      <a href="#panel3" class="nav-label" data-panel="2">What's New</a>
+      <a href="#panel4" class="nav-label" data-panel="3">Future Stuff</a>
     </div>
     <div class="nav-dots">
       <button class="nav-dot on" data-panel="0" aria-label="Basics"></button>
       <button class="nav-dot" data-panel="1" aria-label="If You Want to Know More"></button>
-      <button class="nav-dot" data-panel="2" aria-label="Works in Progress"></button>
+      <button class="nav-dot" data-panel="2" aria-label="What's New"></button>
+      <button class="nav-dot" data-panel="3" aria-label="Future Stuff"></button>
     </div>
   </div>
 </nav>
@@ -76,13 +82,13 @@
       <a href="#panel2" class="btn-ghost-dark">Go further &rarr;</a>
     </div>
     <div class="panel-cards rv d4">
-      <div class="card-dark">
+      <a class="card-dark" href="#" onclick="openIssue('issue-1');return false;">
         <div class="card-dark-title">Chat with context</div>
         <p class="card-dark-body">Ask, draft and summarise — grounded in your own files.</p>
         <hr class="card-dark-rule"/>
         <p class="card-dark-eg"><span class="card-eg-label">E.G.</span> The Context bar sets your scope: 0% works with A&amp;GEL directly; higher pulls your files in.</p>
-        <a href="#" class="card-dark-link" onclick="openIssue('issue-1');return false;">See it in the Insider &rarr;</a>
-      </div>
+        <span class="card-dark-link">See More &rarr;</span>
+      </a>
       <div class="card-dark">
         <div class="card-dark-title">Files &amp; folders</div>
         <p class="card-dark-body">Your library — Personal, Group, Firmwide and Public.</p>
@@ -97,27 +103,27 @@
         <p class="card-dark-eg"><span class="card-eg-label">E.G.</span> Matches surface highlighted, most semantically similar passages first.</p>
         <span class="card-dark-soon">&#9675; Guide coming soon</span>
       </div>
-      <div class="card-dark">
+      <a class="card-dark" href="#" onclick="openIssue('feature-prompt-library');return false;">
         <div class="card-dark-title">Prompt Library</div>
         <p class="card-dark-body">Find, clone and adapt community-built prompts.</p>
         <hr class="card-dark-rule"/>
         <p class="card-dark-eg"><span class="card-eg-label">E.G.</span> Not getting what you want? Run &ldquo;Improve My Prompt&rdquo; to sharpen it first.</p>
-        <a href="#" class="card-dark-link" onclick="openIssue('feature-prompt-library');return false;">See it in the Insider &rarr;</a>
-      </div>
-      <div class="card-dark">
+        <span class="card-dark-link">See More &rarr;</span>
+      </a>
+      <a class="card-dark" href="#" onclick="openIssue('feature-guided-summary');return false;">
         <div class="card-dark-title">Quick Info / Guided Summary</div>
         <p class="card-dark-body">A fast, sourced read of any single document.</p>
         <hr class="card-dark-rule"/>
         <p class="card-dark-eg"><span class="card-eg-label">E.G.</span> Quick Info for a snapshot; Guided Summary when you want to steer the focus.</p>
-        <a href="#" class="card-dark-link" onclick="openIssue('feature-guided-summary');return false;">See it in the Insider &rarr;</a>
-      </div>
-      <div class="card-dark">
+        <span class="card-dark-link">See More &rarr;</span>
+      </a>
+      <a class="card-dark" href="#" onclick="openIssue('feature-scribe');return false;">
         <div class="card-dark-title">Scribe</div>
         <p class="card-dark-body">Record and transcribe meetings, with live translated subtitles.</p>
         <hr class="card-dark-rule"/>
         <p class="card-dark-eg"><span class="card-eg-label">E.G.</span> Edit the transcript live, then click any line to replay its audio.</p>
-        <a href="#" class="card-dark-link" onclick="openIssue('feature-scribe');return false;">See it in the Insider &rarr;</a>
-      </div>
+        <span class="card-dark-link">See More &rarr;</span>
+      </a>
     </div>
   </div>
 </section>
@@ -163,14 +169,15 @@
 
 </section>
 
-<!-- PANEL 3: WORKS IN PROGRESS -->
+<!-- PANEL 3: WHAT'S NEW -->
 <section class="panel panel-3" id="panel3">
-  <div class="panel-bg-word">Soon</div>
+  <div class="panel-bg-word">New</div>
   <div class="panel-inner">
-    <div class="panel-num rv">03 &mdash; Works in Progress</div>
-    <h2 class="panel-h rv d1">Watch this<br><em>space.</em></h2>
-    <p class="panel-sub rv d2">New capabilities are being engineered. Check back as the platform continues to grow.</p>
+    <div class="panel-num rv">03 &mdash; What's New</div>
+    <h2 class="panel-h rv d1">What's<br><em>new.</em></h2>
+    <p class="panel-sub rv d2">Recently launched features and updates from the A&amp;GEL team.</p>
     <div class="panel-cta rv d3">
+      <a href="https://app.angellaw.ai" class="btn-fill" target="_blank">Open A&amp;GEL</a>
       <a href="#misc" class="btn-ghost-dark">See newsletters &rarr;</a>
     </div>
     <div class="wip-cards rv d4">
@@ -182,6 +189,34 @@
         <div class="wip-sub">Translate transcriptions in real time into Chinese (Simplified), Bahasa, Thai, and more.</div>
         <span class="wip-badge"><span class="wip-dot"></span>Now Live</span>
       </div>
+      <div class="wip-card">
+        <div class="wip-anim">
+          <div class="sonar"><div class="sonar-c"></div><div class="sonar-r"></div><div class="sonar-r"></div><div class="sonar-r"></div></div>
+        </div>
+        <div class="wip-title">Playbook</div>
+        <div class="wip-sub">Automate contract review using your team's house position. Returns a Word document in tracked changes.</div>
+        <span class="wip-badge"><span class="wip-dot"></span>Now Live</span>
+      </div>
+      <div class="wip-card">
+        <div class="wip-anim">
+          <div class="bars"><div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div></div>
+        </div>
+        <div class="wip-title">Timeline Revamp</div>
+        <div class="wip-sub">Faster extraction, better tagging, and expanded export options. See Issue 3 for the full breakdown.</div>
+        <span class="wip-badge"><span class="wip-dot"></span>Now Live</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PANEL 4: FUTURE STUFF -->
+<section class="panel panel-4" id="panel4">
+  <div class="panel-bg-word">Soon</div>
+  <div class="panel-inner">
+    <div class="panel-num rv">04 &mdash; Future Stuff</div>
+    <h2 class="panel-h rv d1">Coming<br><em>up.</em></h2>
+    <p class="panel-sub rv d2">What the A&amp;GEL team is building next. Check back as the platform grows.</p>
+    <div class="wip-cards rv d3">
       <div class="wip-card">
         <div class="wip-anim">
           <div class="sonar"><div class="sonar-c"></div><div class="sonar-r"></div><div class="sonar-r"></div><div class="sonar-r"></div></div>

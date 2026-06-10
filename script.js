@@ -1,7 +1,7 @@
 
 (function(){
   const nav=document.getElementById("nav");
-  const panels=["panel1","panel2","panel3"];
+  const panels=["panel1","panel2","panel3","panel4"];
   const dots=document.querySelectorAll(".nav-dot");
   const labels=document.querySelectorAll(".nav-label");
 
@@ -464,7 +464,8 @@ function openIssue(id) {
     </div>`
   ).join('');
   document.getElementById('reader-signoff').innerHTML =
-    `<div class="reader-signoff-line">${issue.signoff.line}</div><div>${issue.signoff.name}</div>`;
+    `<div class="reader-signoff-line">${issue.signoff.line}</div><div>${issue.signoff.name}</div>
+     <a href="https://app.angellaw.ai" class="reader-angel-cta" target="_blank">Open A&amp;GEL &rarr;</a>`;
   reader.classList.remove('reader-hidden');
   reader.classList.add('reader-visible');
   reader.scrollTop = 0;
