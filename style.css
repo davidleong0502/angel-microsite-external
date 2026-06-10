@@ -559,17 +559,39 @@ footer{
 }
 .landing-tile:last-child{border-right:none}
 
-/* default dark for all */
-.tile-1{background:linear-gradient(160deg,var(--ink) 0%,#152233 100%)}
-.tile-2{background:linear-gradient(160deg,#0f1d2e 0%,#1a2f42 100%)}
-.tile-3{background:linear-gradient(160deg,#111827 0%,var(--ink) 100%)}
+/* default dark for all — with background images */
+.tile-1{
+  background:
+    linear-gradient(to bottom, rgba(10,18,28,0.82) 0%, rgba(10,18,28,0.45) 45%, rgba(10,18,28,0.85) 100%),
+    url('assets/tile-bg-1.jpg') center/cover no-repeat;
+}
+.tile-2{
+  background:
+    linear-gradient(to bottom, rgba(10,18,28,0.82) 0%, rgba(10,18,28,0.45) 45%, rgba(10,18,28,0.85) 100%),
+    url('assets/tile-bg-2.jpg') center/cover no-repeat;
+}
+.tile-3{
+  background:
+    linear-gradient(to bottom, rgba(10,18,28,0.82) 0%, rgba(10,18,28,0.45) 45%, rgba(10,18,28,0.85) 100%),
+    url('assets/tile-bg-3.jpg') center/cover no-repeat;
+}
 
-/* hover: teal wash for 2 and 3 */
-.tile-2:hover{background:linear-gradient(160deg,#0a1e2e 0%,#0f3045 100%)}
-.tile-3:hover{background:linear-gradient(160deg,#0a1e2e 0%,#0f3045 100%)}
-
-/* tile 1 hover background */
-.tile-1:hover{background:linear-gradient(160deg,#0a1e2e 0%,#0f3045 100%)}
+/* hover: lift the overlay slightly to let more image through */
+.tile-1:hover{
+  background:
+    linear-gradient(to bottom, rgba(10,18,28,0.72) 0%, rgba(10,18,28,0.3) 45%, rgba(10,18,28,0.78) 100%),
+    url('assets/tile-bg-1.jpg') center/cover no-repeat;
+}
+.tile-2:hover{
+  background:
+    linear-gradient(to bottom, rgba(10,18,28,0.72) 0%, rgba(10,18,28,0.3) 45%, rgba(10,18,28,0.78) 100%),
+    url('assets/tile-bg-2.jpg') center/cover no-repeat;
+}
+.tile-3:hover{
+  background:
+    linear-gradient(to bottom, rgba(10,18,28,0.72) 0%, rgba(10,18,28,0.3) 45%, rgba(10,18,28,0.78) 100%),
+    url('assets/tile-bg-3.jpg') center/cover no-repeat;
+}
 
 /* vertical divider glow on hover */
 .tile-2::after,.tile-3::after{
