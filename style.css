@@ -15,7 +15,7 @@
   --butter:#F2E6B1;
   --butter-dim:rgba(242,230,177,0.12);
 }
-html{scroll-behavior:smooth;scroll-snap-type:y proximity}
+html{scroll-behavior:smooth;scroll-snap-type:y proximity;scrollbar-gutter:stable}
 body{font-family:"Inter",sans-serif;background:var(--ink);color:var(--light);overflow-x:hidden}
 
 /* NAV */
@@ -479,8 +479,11 @@ footer{
 
 /* RESPONSIVE */
 @media(max-width:900px){
+  html{scroll-snap-type:none}
   nav{padding:0 20px}
   .nav-labels{display:none}
+  .panel{overflow:visible;justify-content:flex-start;padding-top:80px;padding-bottom:60px}
+  .panel-1 .panel-inner{padding-top:0}
   .panel-inner{padding:0 6vw}
   .panel-h{font-size:clamp(2.6rem,9vw,4.5rem)}
   .panel-bg-word{font-size:clamp(8rem,28vw,16rem)}
@@ -489,6 +492,13 @@ footer{
   #misc{padding:60px 6vw}
   .misc-inner{grid-template-columns:1fr;gap:48px}
   footer{padding:20px 24px;flex-direction:column;text-align:center}
+}
+@media(max-height:750px){
+  .panel-1 .panel-inner{padding-top:36px}
+  .panel-h{font-size:clamp(2rem,5.5vw,3.5rem)!important}
+  .panel-sub{font-size:.9rem;line-height:1.6;margin-bottom:24px}
+  .panel-cta{margin-bottom:24px}
+  .landing-tile{padding:56px 48px 28px}
 }
 @media(prefers-reduced-motion:reduce){
   html{scroll-snap-type:none}
