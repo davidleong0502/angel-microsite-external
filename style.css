@@ -362,9 +362,9 @@ nav{
   font-family:"JetBrains Mono",monospace;font-size:.65rem;
   letter-spacing:.2em;text-transform:uppercase;color:rgba(235,235,223,.25);
 }
-.reader-body{max-width:720px;margin:0 auto;padding:60px 40px 100px;}
+.reader-body{max-width:1100px;margin:0 auto;padding:60px 60px 100px;}
 .reader-cover-wrap{margin-bottom:48px;border-radius:10px;overflow:hidden;}
-.reader-cover{width:100%;display:block;max-height:320px;object-fit:cover;}
+.reader-cover{width:100%;display:block;max-height:420px;object-fit:cover;}
 .reader-issue-tag{
   display:inline-block;margin-bottom:16px;
   font-family:"JetBrains Mono",monospace;font-size:.65rem;
