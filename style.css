@@ -133,7 +133,19 @@ nav{
   font-family:"Cormorant Garamond",serif;
   font-size:1rem;font-weight:600;color:var(--light);margin-bottom:5px;
 }
-.card-dark-body{font-size:.78rem;color:rgba(235,235,223,.4);line-height:1.6}
+.card-dark-body{font-size:.78rem;color:rgba(235,235,223,.55);line-height:1.6}
+.card-dark-rule{border:none;border-top:1px solid rgba(255,255,255,.08);margin:12px 0}
+.card-dark-eg{font-size:.75rem;color:rgba(235,235,223,.4);line-height:1.55}
+.card-eg-label{
+  font-family:"JetBrains Mono",monospace;font-size:.62rem;
+  letter-spacing:.12em;color:var(--teal);margin-right:4px;
+}
+.card-dark-soon{
+  display:inline-block;margin-top:12px;
+  font-family:"JetBrains Mono",monospace;font-size:.62rem;
+  letter-spacing:.1em;text-transform:uppercase;
+  color:rgba(235,235,223,.25);
+}
 .card-dark-link{
   display:inline-block;margin-top:12px;
   font-size:.7rem;font-weight:600;letter-spacing:.06em;
