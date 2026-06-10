@@ -650,13 +650,12 @@ footer{
   max-width:280px;
 }
 .tile-enter{
-  font-family:"JetBrains Mono",monospace;
-  font-size:.58rem;font-weight:400;letter-spacing:.22em;text-transform:uppercase;
   color:rgba(235,235,223,.2);
-  transition:color .3s,letter-spacing .3s;
+  transition:color .3s,transform .3s;
   align-self:flex-end;
+  line-height:0;
 }
-.landing-tile:hover .tile-enter{color:var(--teal);letter-spacing:.32em}
+.landing-tile:hover .tile-enter{color:var(--teal);transform:translateY(-3px)}
 
 /* LANDING PILL STRIP */
 .landing-strip{
