@@ -75,6 +75,7 @@ nav{
 }
 .panel-1 .panel-bg-word,.panel-3 .panel-bg-word{color:rgba(0,154,197,.04)}
 .panel-2 .panel-bg-word{color:rgba(13,49,110,.04)}
+.panel-4 .panel-bg-word{color:rgba(235,235,223,.025);right:15%}
 
 .panel-inner{
   position:relative;z-index:10;
