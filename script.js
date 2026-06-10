@@ -486,3 +486,33 @@ function closeReader() {
 }
 
 document.addEventListener('keydown', e => { if (e.key === 'Escape') closeReader(); });
+
+/* ── PILL STRIP ── */
+(function(){
+  const pills = document.querySelectorAll('.strip-pill');
+  pills.forEach(pill => {
+    pill.addEventListener('click', function(e) {
+      const cardId = this.dataset.card;
+
+      // update active pill
+      pills.forEach(p => p.classList.remove('strip-pill-active'));
+      this.classList.add('strip-pill-active');
+
+      if (!cardId) return; // no card target — let href scroll to panel normally
+
+      e.preventDefault();
+      const card = document.getElementById(cardId);
+      if (!card) return;
+
+      card.scrollIntoView({ behavior: 'smooth', block: 'center' });
+
+      // wait for scroll to settle, then pulse the card
+      setTimeout(() => {
+        card.classList.remove('card-highlighted');
+        void card.offsetWidth; // force reflow so animation restarts
+        card.classList.add('card-highlighted');
+        card.addEventListener('animationend', () => card.classList.remove('card-highlighted'), { once: true });
+      }, 650);
+    });
+  });
+})();

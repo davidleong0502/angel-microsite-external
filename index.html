@@ -20,15 +20,15 @@
   </div>
   <div class="landing-strip">
     <a class="strip-pill strip-pill-active" href="#panel1">All</a>
-    <a class="strip-pill" href="#panel1">Chat &amp; Context</a>
-    <a class="strip-pill" href="#panel1">Files &amp; Vault</a>
-    <a class="strip-pill" href="#panel1">Prompt Library</a>
-    <a class="strip-pill" href="#panel1">Quick Info</a>
-    <a class="strip-pill" href="#panel1">Scribe</a>
-    <a class="strip-pill" href="#panel2">Dispute Resolution</a>
-    <a class="strip-pill" href="#panel2">Multi-Step Prompt</a>
-    <a class="strip-pill" href="#panel2">Timeline</a>
-    <a class="strip-pill" href="#panel2">Playbook</a>
+    <a class="strip-pill" href="#panel1" data-card="card-chat">Chat &amp; Context</a>
+    <a class="strip-pill" href="#panel1" data-card="card-files">Files &amp; Vault</a>
+    <a class="strip-pill" href="#panel1" data-card="card-prompts">Prompt Library</a>
+    <a class="strip-pill" href="#panel1" data-card="card-quickinfo">Quick Info</a>
+    <a class="strip-pill" href="#panel1" data-card="card-scribe">Scribe</a>
+    <a class="strip-pill" href="#panel2" data-card="card-dispute">Dispute Resolution</a>
+    <a class="strip-pill" href="#panel2" data-card="card-multistep">Multi-Step Prompt</a>
+    <a class="strip-pill" href="#panel2" data-card="card-timeline">Timeline</a>
+    <a class="strip-pill" href="#panel2" data-card="card-playbook">Playbook</a>
     <a class="strip-pill" href="#panel3">What's New</a>
     <a class="strip-pill" href="#panel4">Future Stuff</a>
   </div>
@@ -96,14 +96,14 @@
       <a href="#panel2" class="btn-ghost-dark">Go further &rarr;</a>
     </div>
     <div class="panel-cards rv d4">
-      <a class="card-dark" href="#" onclick="openIssue('issue-1');return false;">
+      <a class="card-dark" id="card-chat" href="#" onclick="openIssue('issue-1');return false;">
         <div class="card-dark-title">Chat with context</div>
         <p class="card-dark-body">Ask, draft and summarise — grounded in your own files.</p>
         <hr class="card-dark-rule"/>
         <p class="card-dark-eg"><span class="card-eg-label">E.G.</span> The Context bar sets your scope: 0% works with A&amp;GEL directly; higher pulls your files in.</p>
         <span class="card-dark-link">See More &rarr;</span>
       </a>
-      <div class="card-dark">
+      <div class="card-dark" id="card-files">
         <div class="card-dark-title">Files &amp; folders</div>
         <p class="card-dark-body">Your library — Personal, Group, Firmwide and Public.</p>
         <hr class="card-dark-rule"/>
@@ -117,21 +117,21 @@
         <p class="card-dark-eg"><span class="card-eg-label">E.G.</span> Matches surface highlighted, most semantically similar passages first.</p>
         <span class="card-dark-soon">&#9675; Guide coming soon</span>
       </div>
-      <a class="card-dark" href="#" onclick="openIssue('feature-prompt-library');return false;">
+      <a class="card-dark" id="card-prompts" href="#" onclick="openIssue('feature-prompt-library');return false;">
         <div class="card-dark-title">Prompt Library</div>
         <p class="card-dark-body">Find, clone and adapt community-built prompts.</p>
         <hr class="card-dark-rule"/>
         <p class="card-dark-eg"><span class="card-eg-label">E.G.</span> Not getting what you want? Run &ldquo;Improve My Prompt&rdquo; to sharpen it first.</p>
         <span class="card-dark-link">See More &rarr;</span>
       </a>
-      <a class="card-dark" href="#" onclick="openIssue('feature-guided-summary');return false;">
+      <a class="card-dark" id="card-quickinfo" href="#" onclick="openIssue('feature-guided-summary');return false;">
         <div class="card-dark-title">Quick Info / Guided Summary</div>
         <p class="card-dark-body">A fast, sourced read of any single document.</p>
         <hr class="card-dark-rule"/>
         <p class="card-dark-eg"><span class="card-eg-label">E.G.</span> Quick Info for a snapshot; Guided Summary when you want to steer the focus.</p>
         <span class="card-dark-link">See More &rarr;</span>
       </a>
-      <a class="card-dark" href="#" onclick="openIssue('feature-scribe');return false;">
+      <a class="card-dark" id="card-scribe" href="#" onclick="openIssue('feature-scribe');return false;">
         <div class="card-dark-title">Scribe</div>
         <p class="card-dark-body">Record and transcribe meetings, with live translated subtitles.</p>
         <hr class="card-dark-rule"/>
@@ -154,25 +154,25 @@
       <a href="#panel3" class="btn-ghost-light">What&rsquo;s coming &rarr;</a>
     </div>
     <div class="panel-cards rv d4">
-      <div class="card-light">
+      <div class="card-light" id="card-dispute">
         <span class="card-light-icon"></span>
         <div class="card-light-title">Dispute Resolution</div>
         <p class="card-light-body">Generate case summaries, draft initial defences, analyse pleadings, and use Review Mode as a pleadings tracker across documents.</p>
         <a href="https://app.angellaw.ai" class="card-light-link" target="_blank">Open Apps &rarr;</a>
       </div>
-      <div class="card-light">
+      <div class="card-light" id="card-multistep">
         <span class="card-light-icon"></span>
         <div class="card-light-title">Multi-Step Prompt</div>
         <p class="card-light-body">Break complex legal workflows into sequential steps. Each step builds on the last &mdash; ideal for contract review, analysis, and redlining.</p>
         <a href="https://app.angellaw.ai" class="card-light-link" target="_blank">Open Apps &rarr;</a>
       </div>
-      <div class="card-light">
+      <div class="card-light" id="card-timeline">
         <span class="card-light-icon"></span>
         <div class="card-light-title">Timeline</div>
         <p class="card-light-body">Extract and merge chronologies across up to 100 documents. Tag issues, view source passages inline, and export the timeline.</p>
         <a href="https://app.angellaw.ai" class="card-light-link" target="_blank">Open Timeline &rarr;</a>
       </div>
-      <div class="card-light">
+      <div class="card-light" id="card-playbook">
         <span class="card-light-icon"></span>
         <div class="card-light-title">Playbook</div>
         <p class="card-light-body">Automate contract review using your team&rsquo;s house position. A&amp;GEL applies the playbook and returns a Word document in tracked changes.</p>
