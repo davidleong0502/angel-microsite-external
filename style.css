@@ -724,7 +724,7 @@ footer{
   min-height:110px;
   background:rgba(11,22,34,0.55);
   backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);
-  border-top:1px solid rgba(0,154,197,.18);
+  border-top:none;
   border-right:none;
   gap:32px;
   justify-content:flex-start;
@@ -774,7 +774,7 @@ footer{
     flex:0 0 auto;
     flex-direction:row;align-items:center;
     padding:22px 24px;gap:16px;
-    border-top:1px solid rgba(0,154,197,.18);
+    border-top:none;
     border-bottom:none;
   }
   .tile-4 .tile-mid{flex-direction:row;align-items:center;gap:12px;justify-content:flex-start}
