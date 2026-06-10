@@ -439,6 +439,7 @@ footer{
   letter-spacing:-0.02em;
   transition:color .25s;
 }
+.tile-1 .tile-title{color:var(--teal)}
 .tile-1:hover .tile-title{color:var(--butter)}
 .tile-2:hover .tile-title{color:var(--teal)}
 .tile-3:hover .tile-title{color:var(--teal)}
