@@ -608,9 +608,39 @@ footer{
 }
 .landing-tile:hover .tile-arrow{color:var(--light);transform:translateX(6px)}
 
-@media(max-width:760px){
-  .landing-tiles{grid-template-columns:1fr;height:auto;min-height:100vh}
-  .landing-tile{border-right:none;border-bottom:1px solid rgba(255,255,255,.06);padding:40px 28px}
+@media(max-width:768px){
+  /* LANDING — compact menu, no full-height tiles */
+  #landing{justify-content:flex-start;overflow-y:auto}
+  .landing-logo{
+    position:relative;top:auto;left:auto;
+    padding:44px 24px 28px;
+    border-bottom:1px solid rgba(255,255,255,.06);
+  }
+  .landing-tiles{
+    display:flex;flex-direction:column;
+    width:100%;height:auto;min-height:0;
+    grid-template-columns:unset;
+  }
+  .landing-tile{
+    flex-direction:row;align-items:center;
+    justify-content:flex-start;gap:16px;
+    padding:22px 24px;
+    border-right:none;
+    border-bottom:1px solid rgba(255,255,255,.06);
+  }
   .landing-tile:last-child{border-bottom:none}
-  .landing-logo{left:24px}
+  .tile-num{font-size:.6rem;letter-spacing:.2em;margin-bottom:0;flex-shrink:0;width:22px}
+  .tile-mid{gap:4px;flex:1}
+  .tile-title{font-size:1.5rem;line-height:1.05}
+  .tile-sub{font-size:.8rem;max-width:none;line-height:1.5;margin-top:4px}
+  .tile-arrow{margin-left:auto;flex-shrink:0;font-size:1.1rem}
+
+  /* NAV */
+  nav{padding:0 16px}
+  .nav-dots{gap:4px}
+
+  /* READER */
+  .reader-header{padding:0 16px;height:60px}
+  .reader-body{padding:32px 20px 80px}
+  .reader-gallery{grid-template-columns:1fr}
 }
