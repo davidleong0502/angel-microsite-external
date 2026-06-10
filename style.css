@@ -27,8 +27,9 @@ nav{
   background:rgba(14,21,32,0.92);
   backdrop-filter:blur(20px);
   border-bottom:1px solid rgba(255,255,255,0.06);
-  transition:border-color .4s;
+  transition:border-color .4s,opacity .4s;
 }
+nav.nav-hidden{opacity:0;pointer-events:none}
 .nav-logo{cursor:pointer;text-decoration:none}
 .nav-logo img{height:28px;display:block;}
 .nav-labels{display:flex;gap:4px}
@@ -519,11 +520,13 @@ footer{
 }
 /* LANDING SCREEN */
 #landing{
-  position:fixed;inset:0;z-index:1000;
+  position:relative;
+  height:100vh;min-height:640px;
+  scroll-snap-align:start;
   background:var(--ink);
   display:flex;flex-direction:column;
   align-items:center;justify-content:center;
-  gap:0;
+  gap:0;overflow:hidden;
 }
 .landing-logo{
   position:absolute;top:36px;left:48px;z-index:10;
@@ -662,7 +665,7 @@ footer{
 
 @media(max-width:768px){
   /* LANDING — fills viewport, tiles share space equally */
-  #landing{justify-content:flex-start;overflow:hidden;flex-direction:column}
+  #landing{justify-content:flex-start;flex-direction:column;height:100svh}
   .landing-logo{
     position:relative;top:auto;left:auto;
     padding:28px 24px 20px;

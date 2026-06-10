@@ -1,18 +1,4 @@
 
-/* ── LANDING HISTORY ── */
-history.replaceState({landing:true},'');
-
-function enterSite(){
-  document.getElementById('landing').style.display='none';
-  history.pushState({landing:false},'');
-}
-
-window.addEventListener('popstate',function(e){
-  if(e.state&&e.state.landing){
-    document.getElementById('landing').style.display='';
-    window.scrollTo({top:0,behavior:'smooth'});
-  }
-});
 
 (function(){
   const nav=document.getElementById("nav");
@@ -32,7 +18,10 @@ window.addEventListener('popstate',function(e){
   });
 
   window.addEventListener("scroll",()=>{
-    nav.classList.toggle("solid",scrollY>30);
+    const landing=document.getElementById("landing");
+    const pastLanding=scrollY>=(landing?landing.offsetHeight*0.8:0);
+    nav.classList.toggle("solid",pastLanding);
+    nav.classList.toggle("nav-hidden",!pastLanding);
     let cur=0;
     panels.forEach((id,i)=>{
       const el=document.getElementById(id);
@@ -40,6 +29,8 @@ window.addEventListener('popstate',function(e){
     });
     setActive(cur);
   });
+  // set initial nav state
+  nav.classList.add("nav-hidden");
 })();
 
 (function(){
