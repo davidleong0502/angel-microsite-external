@@ -81,14 +81,14 @@
         <p class="card-dark-body">Ask, draft and summarise — grounded in your own files.</p>
         <hr class="card-dark-rule"/>
         <p class="card-dark-eg"><span class="card-eg-label">E.G.</span> The Context bar sets your scope: 0% works with A&amp;GEL directly; higher pulls your files in.</p>
-        <a href="assets/newsletter-1.pdf" class="card-dark-link" target="_blank">See it in the Insider &rarr;</a>
+        <a href="#" class="card-dark-link" onclick="openIssue('issue-1');return false;">See it in the Insider &rarr;</a>
       </div>
       <div class="card-dark">
         <div class="card-dark-title">Files &amp; folders</div>
         <p class="card-dark-body">Your library — Personal, Group, Firmwide and Public.</p>
         <hr class="card-dark-rule"/>
         <p class="card-dark-eg"><span class="card-eg-label">E.G.</span> Press the Chat icon on any file or folder to chat in exactly that context.</p>
-        <a href="assets/newsletter-3.pdf" class="card-dark-link" target="_blank">See it in the Insider &rarr;</a>
+        <a href="#" class="card-dark-link" onclick="openIssue('issue-3');return false;">See it in the Insider &rarr;</a>
       </div>
       <div class="card-dark">
         <div class="card-dark-title">Search</div>
@@ -102,21 +102,21 @@
         <p class="card-dark-body">Find, clone and adapt community-built prompts.</p>
         <hr class="card-dark-rule"/>
         <p class="card-dark-eg"><span class="card-eg-label">E.G.</span> Not getting what you want? Run &ldquo;Improve My Prompt&rdquo; to sharpen it first.</p>
-        <a href="assets/newsletter-2.pdf" class="card-dark-link" target="_blank">See it in the Insider &rarr;</a>
+        <a href="#" class="card-dark-link" onclick="openIssue('issue-2');return false;">See it in the Insider &rarr;</a>
       </div>
       <div class="card-dark">
         <div class="card-dark-title">Quick Info / Guided Summary</div>
         <p class="card-dark-body">A fast, sourced read of any single document.</p>
         <hr class="card-dark-rule"/>
         <p class="card-dark-eg"><span class="card-eg-label">E.G.</span> Quick Info for a snapshot; Guided Summary when you want to steer the focus.</p>
-        <a href="assets/newsletter-2.pdf" class="card-dark-link" target="_blank">See it in the Insider &rarr;</a>
+        <a href="#" class="card-dark-link" onclick="openIssue('issue-2');return false;">See it in the Insider &rarr;</a>
       </div>
       <div class="card-dark">
         <div class="card-dark-title">Scribe</div>
         <p class="card-dark-body">Record and transcribe meetings, with live translated subtitles.</p>
         <hr class="card-dark-rule"/>
         <p class="card-dark-eg"><span class="card-eg-label">E.G.</span> Edit the transcript live, then click any line to replay its audio.</p>
-        <a href="assets/newsletter-3.pdf" class="card-dark-link" target="_blank">See it in the Insider &rarr;</a>
+        <a href="#" class="card-dark-link" onclick="openIssue('issue-3');return false;">See it in the Insider &rarr;</a>
       </div>
     </div>
   </div>
@@ -266,6 +266,32 @@
   <div class="footer-logo"><img src="assets/image-1.png" alt="A&GEL"/></div>
   <div class="footer-note">Allen &amp; Gledhill LLP &mdash; Internal Use Only</div>
 </footer>
+
+<!-- READER OVERLAY -->
+<div id="reader" class="reader-hidden">
+  <div class="reader-header">
+    <button class="reader-back" onclick="closeReader()">&#8592; Back</button>
+    <span class="reader-label">A&amp;GEL INSIDER</span>
+  </div>
+  <div class="reader-body">
+    <div class="reader-cover-wrap">
+      <img id="reader-cover" class="reader-cover" src="" alt=""/>
+    </div>
+    <div class="reader-meta">
+      <span id="reader-issue-label" class="reader-issue-tag"></span>
+      <h1 id="reader-title" class="reader-title"></h1>
+      <p id="reader-subtitle" class="reader-subtitle"></p>
+      <div class="reader-byline">
+        <span id="reader-date"></span>
+        <span class="reader-dot">·</span>
+        <span id="reader-mins"></span> min read
+      </div>
+    </div>
+    <div id="reader-glance" class="reader-glance"></div>
+    <div id="reader-content" class="reader-content"></div>
+    <div id="reader-signoff" class="reader-signoff"></div>
+  </div>
+</div>
 
 <script src="script.js"></script>
 </body>

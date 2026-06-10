@@ -199,3 +199,208 @@
   });
 })();
 
+
+/* ── INSIDER READER ───────────────────────────────────────────── */
+const ISSUES = {
+  'issue-1': {
+    issue: 1, title: 'Context is (almost) Everything',
+    subtitle: 'Prompting essentials — how context selection shapes everything A&GEL returns.',
+    date: '15 Jan 2026', readMins: 5, cover: 'assets/covers/issue-1.png',
+    glance: [
+      'Chat now has a dedicated <strong>Context</strong> button and a <strong>"% Context"</strong> indicator.',
+      'The default search parameter is now <strong>zero context</strong> — faster, ideal for proofreading and light edits.',
+      'Build a <strong>default context preset</strong> from your Vault for everyday work.',
+      'A prompt without context is just a guess — always supply the background only you hold.',
+    ],
+    sections: [
+      { kicker: '01 — Chat', heading: 'Context in Chat: a dedicated button and a "% Context" indicator', blocks: [
+        { p: 'A&GEL\'s Chat function uses a customised <strong>Retrieval-Augmented Generation (RAG)</strong> pipeline. It draws on the know-how and reference materials in your Vault and passes that to the model to generate output. The single most important factor in RAG quality is <em>context selection</em> — how much of your Vault the answer is drawn from.' },
+        { p: 'To make that visible, we have added a <strong>"% Context"</strong> indicator — a rough but useful at-a-glance signifier of how much of your Vault is in scope for the current chat session. Click the Context button to choose exactly which folders or files to chat with.' },
+        { callout: { kind: 'note', title: 'New default: zero context', body: 'The default search parameter is now zero context (top-right of the Chat window). Chat is faster this way, generating from pre-trained public knowledge alone — ideal for simple queries like proofreading or editorial amendments. In the zero-context setting, A&GEL should respond within seconds.' } },
+        { h: 'Set a default context for daily use' },
+        { p: 'So A&GEL answers from <em>your</em> know-how, create a default context preset: click the Context button, select your folders, then the plus (+) button. Name the preset, optionally check <strong>"Set as default"</strong>, and click OK.' },
+        { p: 'Selecting <strong>every</strong> folder (100% context) makes A&GEL slower, as it searches every document — a broad parameter is not always optimal. Tailor the context to the specific query. Responses can take up to a minute depending on how many files you can access and the complexity of the query.' },
+      ]},
+      { kicker: '02 — Prompts', heading: 'Always add your context when prompting', blocks: [
+        { quote: 'A prompt without context is just a guess — "prompt roulette".' },
+        { p: 'To be effective, prompts must be fed the right information — especially in fields of deep specialisation. Think of A&GEL as a capable assistant that needs the full picture: provide the background only you know — your key goals, success metrics, even examples of what a "good" or "bad" answer looks like.' },
+        { h: 'A simple framework for richer prompts' },
+        { p: 'Keep asking yourself whether you have given enough context. This is where you exercise your subject-matter mastery — and where the quality of results can be night-and-day versus basic prompting.' },
+        { callout: { kind: 'tip', title: 'Litigation example', body: 'Litigators get far sharper output by cloning a prompt and editing the square-bracketed parts to suit their matter. The more legal context (a short summary of the applicable law) and commercial context (the surrounding facts) you supply, the better the prompt performs as an analyser.' } },
+        { p: 'You know your context best — so always add the particular type of context that brings out the effectiveness of your prompts, question lists and custom instructions.' },
+      ]},
+      { kicker: '03 — Get started', heading: 'FAQs & example use cases', blocks: [
+        { p: 'If you are just starting to explore A&GEL, our Technology and Corporate IP lawyers — who led its development — have put together a set of resources:' },
+        { list: ['A set of FAQs', 'A demo of use cases for A&GEL\'s features', 'A video walkthrough'] },
+        { callout: { kind: 'report', title: 'Hit an issue? Tell us three things', body: 'Message or e-mail the A&GEL Developer. It is enough to include:', list: ['<strong>Timestamp</strong> — e.g. "a chat I started at 4:31pm today"', '<strong>Feature in issue</strong> — e.g. "tried uploading a file in Analysis → Deep Research, it did not load"', '<strong>Brief description</strong> or screenshots'] } },
+      ]},
+    ],
+    signoff: { line: 'Cheers, and remember — context first.', name: 'A&GEL Development Team' },
+  },
+  'issue-2': {
+    issue: 2, title: 'Dispute Resolution Use Cases',
+    subtitle: 'Generate summaries and first drafts, analyse and track pleadings — plus tips for prompting.',
+    date: '12 Feb 2026', readMins: 9, cover: 'assets/covers/issue-2.png',
+    glance: [
+      'Two <strong>Case Summariser</strong> prompts (Concise & Detailed) — the Detailed version shines on complex judgments.',
+      'Prompts to draft a <strong>Defence</strong> and client-facing <strong>legal updates</strong>.',
+      'A suite of prompts to <strong>analyse pleadings</strong> — Statement of Claim, Defence, and sufficiency.',
+      'Use <strong>Review mode</strong> as a pleadings tracker across multiple documents.',
+    ],
+    sections: [
+      { kicker: '01 — Summaries', heading: 'Generate case summaries', blocks: [
+        { p: 'We have developed two prompts for summarising cases — one for a concise overview, one for a more detailed analysis. They were adapted from SAL\'s published prompts and refined with generative AI (including by asking A&GEL to critique its own output).' },
+        { figure: { src: 'assets/i2/04_image005.png', caption: 'Case Summariser (Concise) v1.1 and Case Summariser (Detailed) v1.1 in the prompt library.', wide: false } },
+        { p: 'In our experience the <strong>Detailed</strong> Case Summariser is generally superior, especially on more complex judgments. A&GEL is instructed to rely <em>exclusively</em> on the source decision — though note it can struggle to distinguish <em>ratio decidendi</em> from <em>obiter dicta</em>.' },
+        { callout: { kind: 'note', title: 'Not a silver bullet', body: 'Outputs must still be reviewed and verified in the usual manner — checked thoroughly for accuracy and completeness. These prompts give you an efficient starting point, not a finished work product.' } },
+        { p: 'Pair these with the <strong>Guided Summary</strong> function (under Apps), which summarises a single document guided by a prompt. Upload a Singapore court decision, pick the Case Summariser (Detailed) prompt, and add any specific points you are concerned with.' },
+        { figure: { src: 'assets/i2/05_image006.png', caption: 'A detailed case summary generated by A&GEL via the Guided Summary function.', wide: true } },
+      ]},
+      { kicker: '02 — Drafting', heading: 'Generate initial drafts', blocks: [
+        { p: 'A prompt (based on SAL\'s published prompts) generates a first-draft <strong>Defence</strong> in response to a Statement of Claim. Clone and adapt it, and be sure to incorporate sufficient context.' },
+        { p: 'A second prompt produces client-facing <strong>legal updates</strong> from a case summary, with a short Knowledge Management sample article guiding style, structure and tone.' },
+        { gallery: [
+          { src: 'assets/i2/07_image008.png', caption: 'Draft a Defence to a Statement of Claim.' },
+          { src: 'assets/i2/08_image009.png', caption: 'Draft to the style and tone of a reference article v1.2.' },
+        ]},
+      ]},
+      { kicker: '03 — Pleadings', heading: 'Analyse pleadings', blocks: [
+        { p: 'We have prepared a number of pleadings-analysis prompts. These are lightly tested — try them, clone and improve them, and share with other users.' },
+        { list: [
+          '<strong>Analyse a Statement of Claim</strong> — executive summary, chronology, sufficiency against the Rules of Court 2021, key issues and preliminary objections, immediate action items and next steps.',
+          '<strong>Analyse a Defence</strong> — extract the defence strategy and any gaps where allegations in the Statement of Claim are not specifically addressed.',
+          '<strong>Sufficiency of pleadings</strong> — originally built to assess a Defence; clone and adapt for the pleading you are reviewing.',
+        ]},
+        { gallery: [
+          { src: 'assets/i2/09_image010.png', caption: 'Statement of Claim Analysis & Chronology v1.5.' },
+          { src: 'assets/i2/10_image011.png', caption: 'Analyse a Defence to a SOC v1.0.' },
+          { src: 'assets/i2/11_image012.png', caption: 'Sufficiency of Pleadings for Defence v1.0.' },
+        ]},
+      ]},
+      { kicker: '04 — Review mode', heading: 'Using Review as a pleadings tracker', blocks: [
+        { p: 'See each party\'s position across the dispute\'s lifetime at a glance. In <strong>Review mode</strong>, treat every cause of action in the Statement of Claim as a guiding question to systematically examine and challenge the positions advanced in the pleadings and affidavits.' },
+        { h: 'Step 1 — Generate the question list in Chat' },
+        { p: 'Upload the Statement of Claim to your files or directly into Chat, then run a prompt to extract the causes of action:' },
+        { prompt: { label: 'Question-list generator', text: 'You are a litigation lawyer with 20 years of experience. Take a deep breath and focus.\n\nThe document uploaded is a Statement of Claim. Your task is to produce a point-form summary. Each bullet should cover (a) one cause of action, (b) the defendant it is against, (c) the factual assertions relied upon, and (d) the remedies sought. Present every sub-point within the same bullet — avoid sub-level bullets. Extract all content from the document. If there are multiple defendants, cover all causes of action against the 1st defendant before the 2nd, and so on.\n\nBe comprehensive but concise: summarise and reference all content directly relevant to each cause of action. Be precise: avoid vague wording and use the phrasing of the document.' } },
+        { h: 'Step 2 — Run the list against the pleadings in Review' },
+        { p: 'Copy the generated list, switch to <strong>Review</strong>, and click <strong>Quick Questions</strong>. Paste the list into <em>Add Questions</em>, click <em>Add +</em>, attach your Statement of Claim, and press submit.' },
+        { gallery: [
+          { src: 'assets/i2/13_image014.png', caption: 'Review mode — add a question list as a quick-questions matrix.' },
+        ]},
+        { callout: { kind: 'tip', title: 'Beyond pleadings', body: 'Review\'s ability to pose many questions to many documents suits other document-intensive work too — discovery, document review, and reviewing voluminous affidavits.' } },
+      ]},
+      { kicker: '05 — Craft', heading: 'Tips for prompting: test and improve', blocks: [
+        { p: '<strong>Test your prompt.</strong> Gauge a prompt by comparing A&GEL\'s output against a model answer you have already prepared. If it aligns closely, your prompt is likely well-developed; if not, identify the gaps and add context.' },
+        { p: '<strong>Improve your prompt.</strong> Use the <em>Improve My Prompt v1.0</em> tool in your prompt library to refine it further.' },
+      ]},
+    ],
+    signoff: { line: 'Clone, adapt, and share what works.', name: 'A&GEL Development Team' },
+  },
+  'issue-3': {
+    issue: 3, title: 'New Timeline & Multi-Step Prompt Apps',
+    subtitle: '.msg uploads, a smarter Scribe, structured multi-step prompting, and a substantially revamped Timeline.',
+    date: '18 Mar 2026', readMins: 8, cover: 'assets/covers/issue-3.jpg',
+    glance: [
+      '<strong>Email files (.msg)</strong> can now be uploaded and read in full — including attachments.',
+      '<strong>Scribe</strong> now supports live editing, audio playback, and one-minute autosave.',
+      'New <strong>Multi-Step Prompt</strong> mode breaks complex legal workflows into targeted steps.',
+      '<strong>Timeline</strong> revamped to combine chronologies across multiple documents.',
+    ],
+    sections: [
+      { kicker: '01 — Files', heading: 'Upload email files (.msg)', blocks: [
+        { p: 'A&GEL users can now upload entire <strong>.msg</strong> email files into Files, for use with Chat or any specialised mode. A&GEL reads all contents — including attachments — except attachments carrying <em>Internal Only</em> sensitivity labels or that are password-protected.' },
+        { p: 'Once uploaded, ask A&GEL to summarise the email, summarise the attached documents, or run any prompt from the library against it.' },
+      ]},
+      { kicker: '02 — Scribe', heading: 'Scribe: live editing & audio playback', blocks: [
+        { p: '<strong>Live editing</strong> — the improved Scribe lets you edit the transcript; edited portions are underlined for ease of reference. <strong>Audio playback</strong> — after transcription is saved, open the raw transcript and click any segment to play the recording from that point.' },
+        { gallery: [
+          { src: 'assets/i3/05_image006.png', caption: 'Scribe recording in progress, with live transcription.' },
+          { src: 'assets/i3/06_image007.png', caption: 'The raw transcript — click a segment to play back its audio.' },
+        ]},
+      ]},
+      { kicker: '03 — New mode', heading: 'Multi-Step Prompt', blocks: [
+        { p: 'Found under <strong>Specialised Apps</strong>. While single-shot prompts are efficient for simple queries, complex legal tasks benefit from a structured, iterative approach. Multi-Step Prompt lets you deconstruct a problem into a sequence of targeted interactions — our favourite mode for moderate-to-complex work on documents.' },
+        { h: 'Break workflows into logical phases' },
+        { steps: [
+          { n: 'Corporate · Step 1', text: 'Summarise what each party is obligated to do.' },
+          { n: 'Step 2', text: 'With that summary in mind, flag any one-sided or unusual clauses.' },
+          { n: 'Step 3', text: 'For the flagged clauses, redline the top five changes I should push for if I represent [party].' },
+        ]},
+        { steps: [
+          { n: 'Litigation · Step 1', text: 'Based on the Statement of Claim [attached], draft a first set of interrogatories.' },
+          { n: 'Step 2', text: 'Having completed Step 1, draft corresponding document requests.' },
+          { n: 'Step 3', text: 'As a final step, identify the top five custodians likely to have responsive documents, and explain why.' },
+        ]},
+        { callout: { kind: 'tip', title: 'Only one prompt? Still use it', body: 'Even with a single step, this app is excellent for complex single prompts you need carried out on a document — often better than Chat mode.' } },
+        { figure: { src: 'assets/i3/08_image009.jpg', caption: 'Multi-Step Prompt output — references open an inline document viewer with highlights.', wide: false } },
+      ]},
+      { kicker: '04 — Timeline', heading: 'A substantially revamped Timeline', blocks: [
+        { p: '<strong>Combine timelines across documents.</strong> The updated Timeline extracts a chronology from each selected document and merges them into one — invaluable when you have multiple large affidavits, pleadings or submissions, each with its own timeline.' },
+        { gallery: [
+          { src: 'assets/i3/09_image010.png', caption: 'A combined Statement of Claim & Defence timeline across five files.' },
+          { src: 'assets/i3/12_image013.png', caption: 'Drill into a single document\'s timeline with source references.' },
+        ]},
+        { p: '<strong>View the source.</strong> Click the reference at the end of any event to open the source document, with the originating line highlighted.' },
+        { h: 'Smart timelines, tuned to your matter' },
+        { p: 'After choosing documents, click <strong>Extend Prompt</strong> to focus extraction on topics of interest. The <em>Basic Litigation (shared)</em> configuration extracts Event Description, Source Document, Entities / Individuals and Supporting Paragraph — add your own fields too.' },
+        { callout: { kind: 'note', title: 'Works on messages too', body: 'Point Timeline at chat logs or screenshots of messages (WhatsApp, WeChat) to build a chronology.' } },
+      ]},
+    ],
+    signoff: { line: 'Smaller steps, sharper chronologies.', name: 'A&GEL Development Team' },
+  },
+};
+
+function renderBlock(b) {
+  if (b.p !== undefined) return `<p class="reader-p">${b.p}</p>`;
+  if (b.h !== undefined) return `<h4 class="reader-h">${b.h}</h4>`;
+  if (b.quote !== undefined) return `<blockquote class="reader-quote">${b.quote}</blockquote>`;
+  if (b.list) return `<ul class="reader-list">${b.list.map(i=>`<li>${i}</li>`).join('')}</ul>`;
+  if (b.callout) {
+    const c = b.callout;
+    const bodyHtml = c.body ? `<div class="reader-callout-body">${c.body}</div>` : '';
+    const listHtml = c.list ? `<ul class="reader-callout-list">${c.list.map(i=>`<li>${i}</li>`).join('')}</ul>` : '';
+    return `<div class="reader-callout ${c.kind}"><div class="reader-callout-title">${c.title}</div>${bodyHtml}${listHtml}</div>`;
+  }
+  if (b.prompt) return `<div class="reader-prompt"><div class="reader-prompt-label">${b.prompt.label}</div><pre class="reader-prompt-text">${b.prompt.text}</pre></div>`;
+  if (b.steps) return `<div class="reader-steps">${b.steps.map(s=>`<div class="reader-step"><span class="reader-step-n">${s.n}</span><span class="reader-step-text">${s.text}</span></div>`).join('')}</div>`;
+  if (b.figure) return `<figure class="reader-figure"><img src="${b.figure.src}" alt="${b.figure.caption}" loading="lazy"/><figcaption>${b.figure.caption}</figcaption></figure>`;
+  if (b.gallery) return `<div class="reader-gallery">${b.gallery.map(g=>`<figure><img src="${g.src}" alt="${g.caption}" loading="lazy"/><figcaption>${g.caption}</figcaption></figure>`).join('')}</div>`;
+  return '';
+}
+
+function openIssue(id) {
+  const issue = ISSUES[id];
+  if (!issue) return;
+  const reader = document.getElementById('reader');
+  document.getElementById('reader-cover').src = issue.cover;
+  document.getElementById('reader-issue-label').textContent = 'Issue ' + issue.issue;
+  document.getElementById('reader-title').textContent = issue.title;
+  document.getElementById('reader-subtitle').textContent = issue.subtitle;
+  document.getElementById('reader-date').textContent = issue.date;
+  document.getElementById('reader-mins').textContent = issue.readMins;
+  const glanceEl = document.getElementById('reader-glance');
+  glanceEl.innerHTML = `<div class="reader-glance-title">At a glance</div><ul>${issue.glance.map(g=>`<li>${g}</li>`).join('')}</ul>`;
+  const contentEl = document.getElementById('reader-content');
+  contentEl.innerHTML = issue.sections.map(s =>
+    `<div class="reader-section">
+      <div class="reader-section-kicker">${s.kicker}</div>
+      <h3 class="reader-section-heading">${s.heading}</h3>
+      ${s.blocks.map(renderBlock).join('')}
+    </div>`
+  ).join('');
+  document.getElementById('reader-signoff').innerHTML =
+    `<div class="reader-signoff-line">${issue.signoff.line}</div><div>${issue.signoff.name}</div>`;
+  reader.classList.remove('reader-hidden');
+  reader.classList.add('reader-visible');
+  reader.scrollTop = 0;
+  document.body.style.overflow = 'hidden';
+}
+
+function closeReader() {
+  const reader = document.getElementById('reader');
+  reader.classList.remove('reader-visible');
+  reader.classList.add('reader-hidden');
+  document.body.style.overflow = '';
+}
+
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeReader(); });
