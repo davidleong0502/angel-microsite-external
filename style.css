@@ -646,6 +646,38 @@ footer{
 }
 .landing-tile:hover .tile-arrow{color:var(--light);transform:translateX(6px)}
 
+/* LANDING PILL STRIP */
+.landing-strip{
+  position:absolute;
+  bottom:72px; /* sits just above the Future Stuff strip */
+  left:0;right:0;
+  z-index:20;
+  display:flex;gap:8px;
+  padding:0 48px;
+  overflow-x:auto;
+  -webkit-overflow-scrolling:touch;
+  scrollbar-width:none;
+  pointer-events:all;
+}
+.landing-strip::-webkit-scrollbar{display:none}
+.strip-pill{
+  flex-shrink:0;
+  padding:7px 18px;
+  border-radius:40px;
+  border:1px solid rgba(235,235,223,.18);
+  background:rgba(14,21,32,.55);
+  backdrop-filter:blur(12px);
+  color:rgba(235,235,223,.55);
+  font-size:.72rem;font-weight:500;letter-spacing:.05em;
+  text-decoration:none;white-space:nowrap;
+  transition:background .2s,color .2s,border-color .2s;
+}
+.strip-pill:hover,.strip-pill-active{
+  background:var(--teal);
+  border-color:var(--teal);
+  color:#fff;
+}
+
 /* tile-4: full-width bottom strip */
 .tile-4{
   grid-column:1 / -1;
@@ -693,6 +725,8 @@ footer{
   .tile-title{font-size:1.6rem;line-height:1.05}
   .tile-sub{font-size:.82rem;max-width:none;line-height:1.5;margin-top:4px}
   .tile-arrow{margin-top:auto;font-size:1.1rem;align-self:flex-end}
+
+  .landing-strip{padding:0 16px;bottom:56px}
 
   /* tile-4 strip — compact fixed height at bottom */
   .tile-4{
