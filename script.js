@@ -1,4 +1,19 @@
 
+/* ── LANDING HISTORY ── */
+history.replaceState({landing:true},'');
+
+function enterSite(){
+  document.getElementById('landing').style.display='none';
+  history.pushState({landing:false},'');
+}
+
+window.addEventListener('popstate',function(e){
+  if(e.state&&e.state.landing){
+    document.getElementById('landing').style.display='';
+    window.scrollTo({top:0,behavior:'smooth'});
+  }
+});
+
 (function(){
   const nav=document.getElementById("nav");
   const panels=["panel1","panel2","panel3","panel4"];
