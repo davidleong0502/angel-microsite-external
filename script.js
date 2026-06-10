@@ -296,6 +296,62 @@ const ISSUES = {
     ],
     signoff: { line: 'Clone, adapt, and share what works.', name: 'A&GEL Development Team' },
   },
+  'feature-scribe': {
+    issue: null, title: 'Scribe',
+    subtitle: 'Record, transcribe, live-translate and edit meetings — all in one place.',
+    date: 'Issues 3, 4 & 5', readMins: 5, cover: 'assets/covers/issue-3.jpg',
+    glance: [
+      '<strong>Live editing</strong> — edit the transcript as Scribe records; edited portions are underlined.',
+      '<strong>Audio playback</strong> — click any transcript segment to play back its recording from that point.',
+      '<strong>Live Translation</strong> — translate in real time into the language of your choice.',
+      '<strong>Timestamped downloads</strong> — exported Word transcripts carry timestamps for easy navigation.',
+    ],
+    sections: [
+      { kicker: 'Issue 3 — Scribe', heading: 'Live editing & audio playback', blocks: [
+        { p: '<strong>Live editing</strong> — the improved Scribe lets you edit the transcript; edited portions are underlined for ease of reference. <strong>Audio playback</strong> — after transcription is saved, open the raw transcript and click any segment to play the recording from that point.' },
+        { gallery: [
+          { src: 'assets/i3/05_image006.png', caption: 'Scribe recording in progress, with live transcription.' },
+          { src: 'assets/i3/06_image007.png', caption: 'The raw transcript — click a segment to play back its audio.' },
+        ]},
+      ]},
+      { kicker: 'Issue 4 — Scribe', heading: 'Live-translation, now in Scribe', blocks: [
+        { p: 'Understand calls and meetings in the language of your choice. Tick the <strong>Live Translation</strong> box and pick a language — A&GEL renders the translation beneath the original transcription on the fly.' },
+        { figure: { src: 'assets/i4/04_image005.png', caption: 'Enable Live Translation and select a language from the drop-down.', wide: true } },
+        { p: 'As A&GEL transcribes and translates, you can type notes or amend the transcript directly — your edits appear in <strong>yellow</strong> to distinguish them from A&GEL\'s text. Saved transcripts retain both the translation and your edits.' },
+        { gallery: [
+          { src: 'assets/i4/05_image006.png', caption: 'Live translation beneath the original, with editable notes in yellow.' },
+          { src: 'assets/i4/06_image007.png', caption: 'Timestamps run down the left of the raw transcription.' },
+        ]},
+      ]},
+      { kicker: 'Issue 5 — Scribe', heading: 'Downloadable transcripts, now with timestamps', blocks: [
+        { p: 'Scribe transcripts now include <strong>timestamps</strong> within the downloaded Word document — markers that make it simpler to navigate to specific moments in a recorded conversation or meeting.' },
+        { figure: { src: 'assets/i5/05_image007.jpg', caption: 'A downloaded Scribe transcript with timestamps and translation retained.', wide: false } },
+      ]},
+    ],
+    signoff: { line: 'Record, review, replay.', name: 'A&GEL Development Team' },
+  },
+  'feature-guided-summary': {
+    issue: null, title: 'Quick Info & Guided Summary',
+    subtitle: 'A fast, sourced read of any single document — snapshot or steered.',
+    date: 'Issue 2', readMins: 3, cover: 'assets/covers/issue-2.png',
+    glance: [
+      'Use <strong>Quick Info</strong> for an instant snapshot of any document.',
+      '<strong>Guided Summary</strong> (under Apps) lets you steer the focus — pair it with a prompt from the library.',
+      'Upload a document, pick a prompt, and add any specific points you want covered.',
+      'Outputs are an efficient starting point — review and verify before use.',
+    ],
+    sections: [
+      { kicker: '01 — Guided Summary', heading: 'A sourced summary of any document, steered by a prompt', blocks: [
+        { p: 'The prompt library includes two prompts for summarising documents — one for a concise overview, one for a more detailed analysis. They were adapted from SAL\'s published prompts and refined with generative AI.' },
+        { figure: { src: 'assets/i2/04_image005.png', caption: 'Case Summariser (Concise) v1.1 and Case Summariser (Detailed) v1.1 in the prompt library.', wide: false } },
+        { p: 'In our experience the <strong>Detailed</strong> summariser is generally superior, especially on more complex documents. A&GEL is instructed to rely <em>exclusively</em> on the source — though it can struggle to distinguish <em>ratio decidendi</em> from <em>obiter dicta</em> in case law.' },
+        { callout: { kind: 'note', title: 'Not a silver bullet', body: 'Outputs must still be reviewed and verified in the usual manner — checked thoroughly for accuracy and completeness. These prompts give you an efficient starting point, not a finished work product.' } },
+        { p: 'Use the <strong>Guided Summary</strong> function (under Apps) to run any prompt against a single document. Upload the file, pick the prompt from the library, and add any specific points you are concerned with.' },
+        { figure: { src: 'assets/i2/05_image006.png', caption: 'A detailed summary generated by A&GEL via the Guided Summary function.', wide: true } },
+      ]},
+    ],
+    signoff: { line: 'Quick Info for a snapshot; Guided Summary when you want to steer the focus.', name: 'A&GEL Development Team' },
+  },
   'issue-3': {
     issue: 3, title: 'New Timeline & Multi-Step Prompt Apps',
     subtitle: '.msg uploads, a smarter Scribe, structured multi-step prompting, and a substantially revamped Timeline.',
@@ -373,7 +429,7 @@ function openIssue(id) {
   if (!issue) return;
   const reader = document.getElementById('reader');
   document.getElementById('reader-cover').src = issue.cover;
-  document.getElementById('reader-issue-label').textContent = 'Issue ' + issue.issue;
+  document.getElementById('reader-issue-label').textContent = issue.issue != null ? 'Issue ' + issue.issue : 'Feature Guide';
   document.getElementById('reader-title').textContent = issue.title;
   document.getElementById('reader-subtitle').textContent = issue.subtitle;
   document.getElementById('reader-date').textContent = issue.date;
