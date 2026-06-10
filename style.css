@@ -15,7 +15,7 @@
   --butter:#F2E6B1;
   --butter-dim:rgba(242,230,177,0.12);
 }
-html{scroll-behavior:smooth;scroll-snap-type:y mandatory}
+html{scroll-behavior:smooth;scroll-snap-type:y proximity}
 body{font-family:"Inter",sans-serif;background:var(--ink);color:var(--light);overflow-x:hidden}
 
 /* NAV */
@@ -49,12 +49,13 @@ nav{
 
 /* PANELS */
 .panel{
-  height:100vh;min-height:640px;
+  min-height:100vh;
   scroll-snap-align:start;
   position:relative;display:flex;
   flex-direction:column;justify-content:center;
   overflow:hidden;
 }
+.panel-1{overflow:visible;padding-bottom:80px;}
 .panel-1{background:linear-gradient(135deg,var(--ink) 0%,#1a2f42 100%)}
 .panel-2{background:var(--sand)}
 .panel-3{background:linear-gradient(135deg,#111827 0%,var(--ink) 100%)}
