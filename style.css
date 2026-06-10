@@ -649,12 +649,14 @@ footer{
   color:var(--butter);line-height:1.65;
   max-width:280px;
 }
-.tile-arrow{
-  font-size:1.4rem;color:rgba(235,235,223,.5);
-  transition:transform .25s,color .25s;
-  display:inline-block;
+.tile-enter{
+  font-family:"JetBrains Mono",monospace;
+  font-size:.58rem;font-weight:400;letter-spacing:.22em;text-transform:uppercase;
+  color:rgba(235,235,223,.2);
+  transition:color .3s,letter-spacing .3s;
+  align-self:flex-end;
 }
-.landing-tile:hover .tile-arrow{color:var(--light);transform:translateX(6px)}
+.landing-tile:hover .tile-enter{color:var(--teal);letter-spacing:.32em}
 
 /* LANDING PILL STRIP */
 .landing-strip{
@@ -703,7 +705,7 @@ footer{
 .tile-4 .tile-mid{flex-direction:row;align-items:center;gap:24px;flex:1}
 .tile-4 .tile-title{font-size:clamp(1.1rem,1.6vw,1.5rem);line-height:1;white-space:nowrap}
 .tile-4 .tile-sub{font-size:.82rem;max-width:360px;line-height:1.5;margin:0}
-.tile-4 .tile-arrow{margin-left:auto;flex-shrink:0}
+.tile-4 .tile-enter{margin-left:auto;flex-shrink:0;align-self:center}
 
 @media(max-width:768px){
   /* LANDING — fills viewport, tiles share space equally */
@@ -734,7 +736,7 @@ footer{
   .tile-mid{gap:4px;flex:1;justify-content:center;display:flex;flex-direction:column}
   .tile-title{font-size:1.6rem;line-height:1.05}
   .tile-sub{font-size:.82rem;max-width:none;line-height:1.5;margin-top:4px}
-  .tile-arrow{margin-top:auto;font-size:1.1rem;align-self:flex-end}
+  .tile-enter{margin-top:auto;align-self:flex-end}
 
   .landing-strip{padding:0 16px;bottom:56px}
 
