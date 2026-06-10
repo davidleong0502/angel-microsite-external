@@ -693,13 +693,13 @@ footer{
   grid-column:1 / -1;
   flex-direction:row;align-items:center;
   padding:22px 48px;
-  background:rgba(255,255,255,.02);
+  background:#0b1622;
   border-top:1px solid rgba(255,255,255,.08);
   border-right:none;
   gap:32px;
   justify-content:flex-start;
 }
-.tile-4:hover{background:rgba(0,154,197,.06)}
+.tile-4:hover{background:#0d2535}
 .tile-4 .tile-mid{flex-direction:row;align-items:center;gap:24px;flex:1}
 .tile-4 .tile-title{font-size:clamp(1.1rem,1.6vw,1.5rem);line-height:1;white-space:nowrap}
 .tile-4 .tile-sub{font-size:.82rem;max-width:360px;line-height:1.5;margin:0}
