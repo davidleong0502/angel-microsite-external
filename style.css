@@ -567,7 +567,7 @@ footer{
 .landing-tiles{
   display:grid;
   grid-template-columns:repeat(3,1fr);
-  grid-template-rows:1fr auto;
+  grid-template-rows:1fr auto auto;
   width:100%;height:100vh;
   position:relative;z-index:2;
 }
@@ -673,12 +673,13 @@ footer{
 
 /* LANDING PILL STRIP */
 .landing-strip-wrap{
-  position:absolute;
-  bottom:72px; /* sits just above the Future Stuff strip */
-  left:0;right:0;
+  grid-column:1 / -1;
   z-index:20;
   display:flex;flex-direction:column;gap:10px;
-  pointer-events:all;
+  padding:14px 0;
+  border-top:1px solid rgba(255,255,255,.06);
+  background:rgba(14,21,32,0.6);
+  backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);
 }
 .strip-label{
   padding:0 48px;
@@ -762,7 +763,7 @@ footer{
   .tile-sub{font-size:.82rem;max-width:none;line-height:1.5;margin-top:4px}
   .tile-enter{margin-top:auto;align-self:flex-end}
 
-  .landing-strip-wrap{bottom:56px}
+  .landing-strip-wrap{padding:12px 0}
   .landing-strip,.strip-label{padding:0 16px}
 
   /* tile-4 strip — compact fixed height at bottom */
