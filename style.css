@@ -672,17 +672,26 @@ footer{
 .landing-tile:hover .tile-enter{color:var(--teal);transform:translateY(-3px)}
 
 /* LANDING PILL STRIP */
-.landing-strip{
+.landing-strip-wrap{
   position:absolute;
   bottom:72px; /* sits just above the Future Stuff strip */
   left:0;right:0;
   z-index:20;
+  display:flex;flex-direction:column;gap:10px;
+  pointer-events:all;
+}
+.strip-label{
+  padding:0 48px;
+  font-size:.68rem;font-weight:500;
+  letter-spacing:.1em;text-transform:uppercase;
+  color:rgba(235,235,223,.32);
+}
+.landing-strip{
   display:flex;gap:8px;
   padding:0 48px;
   overflow-x:auto;
   -webkit-overflow-scrolling:touch;
   scrollbar-width:none;
-  pointer-events:all;
 }
 .landing-strip::-webkit-scrollbar{display:none}
 .strip-pill{
@@ -753,7 +762,8 @@ footer{
   .tile-sub{font-size:.82rem;max-width:none;line-height:1.5;margin-top:4px}
   .tile-enter{margin-top:auto;align-self:flex-end}
 
-  .landing-strip{padding:0 16px;bottom:56px}
+  .landing-strip-wrap{bottom:56px}
+  .landing-strip,.strip-label{padding:0 16px}
 
   /* tile-4 strip — compact fixed height at bottom */
   .tile-4{
