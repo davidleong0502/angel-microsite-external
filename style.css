@@ -726,7 +726,7 @@ footer{
 .tile-4 .tile-mid{flex-direction:row;align-items:center;gap:24px;flex:1}
 .tile-4 .tile-title{font-size:clamp(1.4rem,2vw,2rem);line-height:1;white-space:nowrap}
 .tile-4 .tile-sub{font-size:.88rem;max-width:400px;line-height:1.5;margin:0}
-.tile-4 .tile-enter{position:static;margin-left:auto;flex-shrink:0;align-self:center}
+.tile-4 .tile-enter{position:absolute;bottom:32px;right:32px}
 
 @media(max-width:768px){
   /* LANDING — fills viewport, tiles share space equally */
