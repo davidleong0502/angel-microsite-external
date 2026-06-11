@@ -649,9 +649,9 @@ footer{
 .landing-tile:last-child{border-right:none}
 
 /* tiles 1-3: extended top fade via CSS gradient over image, no bottom fade */
-.tile-1{background:linear-gradient(to bottom,rgba(12,18,28,.97) 0%,rgba(12,18,28,.90) 15%,rgba(12,18,28,.62) 28%,rgba(12,18,28,.12) 36%,transparent 40%),url('assets/tile-bg-1.png') center top/auto 130% no-repeat}
-.tile-2{background:linear-gradient(to bottom,rgba(12,18,28,.97) 0%,rgba(12,18,28,.90) 15%,rgba(12,18,28,.62) 28%,rgba(12,18,28,.12) 36%,transparent 40%),url('assets/tile-bg-2.png') center top/auto 130% no-repeat}
-.tile-3{background:linear-gradient(to bottom,rgba(12,18,28,.97) 0%,rgba(12,18,28,.90) 15%,rgba(12,18,28,.62) 28%,rgba(12,18,28,.12) 36%,transparent 40%),url('assets/tile-bg-3.png') center top/auto 130% no-repeat}
+.tile-1{background:linear-gradient(to bottom,rgba(12,18,28,.97) 0%,rgba(12,18,28,.90) 20%,rgba(12,18,28,.72) 38%,rgba(12,18,28,.40) 52%,rgba(12,18,28,.10) 62%,transparent 70%),url('assets/tile-bg-1.png') center top/auto 130% no-repeat}
+.tile-2{background:linear-gradient(to bottom,rgba(12,18,28,.97) 0%,rgba(12,18,28,.90) 20%,rgba(12,18,28,.72) 38%,rgba(12,18,28,.40) 52%,rgba(12,18,28,.10) 62%,transparent 70%),url('assets/tile-bg-2.png') center top/auto 130% no-repeat}
+.tile-3{background:linear-gradient(to bottom,rgba(12,18,28,.97) 0%,rgba(12,18,28,.90) 20%,rgba(12,18,28,.72) 38%,rgba(12,18,28,.40) 52%,rgba(12,18,28,.10) 62%,transparent 70%),url('assets/tile-bg-3.png') center top/auto 130% no-repeat}
 
 .tile-1:hover,.tile-2:hover,.tile-3:hover{}
 
