@@ -355,12 +355,12 @@ const ISSUES = {
   'feature-guided-summary': {
     issue: null, title: 'Quick Info & Guided Summary',
     subtitle: 'A fast, sourced read of any single document — snapshot or steered.',
-    date: '', readMins: 3, cover: 'assets/covers/issue-2.png',
+    date: '', readMins: 4, cover: 'assets/covers/issue-2.png',
     glance: [
       'Use <strong>Quick Info</strong> for an instant snapshot of any document.',
       '<strong>Guided Summary</strong> (under Apps) lets you steer the focus — pair it with a prompt from the library.',
       'Upload a document, pick a prompt, and add any specific points you want covered.',
-      'Outputs are an efficient starting point — review and verify before use.',
+      'Now faster — with <strong>interim updates and inline references</strong> during generation.',
     ],
     sections: [
       { kicker: '01 — Guided Summary', heading: 'A sourced summary of any document, steered by a prompt', blocks: [
@@ -369,6 +369,10 @@ const ISSUES = {
         { callout: { kind: 'note', title: 'Not a silver bullet', body: 'Outputs must still be reviewed and verified in the usual manner — checked thoroughly for accuracy and completeness. These prompts give you an efficient starting point, not a finished work product.' } },
         { p: 'Use the <strong>Guided Summary</strong> function (under Apps) to run any prompt against a single document. Upload the file, pick the prompt from the library, and add any specific points you are concerned with.' },
         { figure: { src: 'assets/i2/05_image006.png', caption: 'Case Summariser (Concise) v1.1 and Case Summariser (Detailed) v1.1 in the Prompt Library.', wide: true } },
+      ]},
+      { kicker: '02 — Speed & Updates', heading: 'Faster generation with interim updates', blocks: [
+        { p: 'Guided Summary now provides <strong>interim updates with inline references</strong> during generation — you can see sections arrive progressively and begin cross-checking citations before the full output is complete.' },
+        { p: 'Overall output speed is also increased. Note: for simpler documents, the summary may load fast enough that the interim updates are skipped entirely.' },
       ]},
     ],
     signoff: { line: 'Quick Info for a snapshot; Guided Summary when you want to steer the focus.', name: 'A&GEL Development Team' },
@@ -457,12 +461,12 @@ const ISSUES = {
   'feature-sidebyside': {
     issue: null, title: 'Side-by-Side & Comparison',
     subtitle: 'The most granular review modes — clause by clause, with full source-paragraph verification.',
-    date: '', readMins: 3, cover: 'assets/covers/issue-5.png',
+    date: '', readMins: 4, cover: 'assets/covers/issue-5.png',
     glance: [
       '<strong>Side-by-Side</strong> works clause by clause, with full source-paragraph verification for every finding.',
       '<strong>Comparison</strong> generates a first-pass legal review of tracked changes or document amendments.',
       'Every finding links back to the exact source clause — no hunting through the document.',
-      'Export results as a structured Word document.',
+      'The <strong>mini-chat window</strong> is now moveable and resizable — drag it clear of your workspace.',
     ],
     sections: [
       { kicker: '01 — Side-by-Side', heading: 'Clause-by-clause analysis with source verification', blocks: [
@@ -473,6 +477,9 @@ const ISSUES = {
       { kicker: '02 — Comparison', heading: 'First-pass review of tracked changes', blocks: [
         { p: '<strong>Comparison</strong> generates a first-pass legal review of tracked changes or document amendments. Upload the amended document and A&GEL produces a structured analysis of what has changed and what the implications are.' },
         { callout: { kind: 'note', title: 'A starting point, not a finished product', body: 'Side-by-Side and Comparison outputs are efficient starting points — always verify against the source before finalising.' } },
+      ]},
+      { kicker: '03 — Mini-Chat', heading: 'Moveable mini-chat interface', blocks: [
+        { p: 'Review, Comparison, and Side by Side all feature a <strong>mini-chat window</strong> that lets you ask questions about the documents and A&GEL outputs simultaneously. The window is now <strong>moveable and resizable</strong> — drag it anywhere on screen so it doesn\'t obstruct the output you are reviewing.' },
       ]},
     ],
     signoff: { line: 'Clause by clause. Source verified.', name: 'A&GEL Development Team' },
@@ -517,7 +524,7 @@ const ISSUES = {
     date: '', readMins: 4, cover: 'assets/covers/issue-3.jpg',
     glance: [
       'Combines chronologies from <strong>up to 100 documents</strong> into one timeline.',
-      '<strong>Source references</strong> — click any event to open the originating document with the line highlighted.',
+      '<strong>Clickable inline citations</strong> — click any reference to open the source with the passage highlighted.',
       '<strong>Smart Timeline</strong> lets you extract custom fields: entities, supporting paragraphs, and more.',
       'Works on chat logs and message screenshots (WhatsApp, WeChat) too.',
     ],
@@ -528,7 +535,7 @@ const ISSUES = {
           { src: 'assets/i3/09_image010.png', caption: 'A combined Statement of Claim & Defence timeline across five files.' },
           { src: 'assets/i3/12_image013.png', caption: 'Drill into a single event — source document, entities, and supporting paragraph all shown.' },
         ]},
-        { p: '<strong>View the source.</strong> Click the reference at the end of any event to open the source document, with the originating line highlighted.' },
+        { p: '<strong>View the source.</strong> Click the inline citation at the end of any event to open the source document with the originating line highlighted.' },
       ]},
       { kicker: '02 — Smart Timeline', heading: 'Extract custom fields for your matter', blocks: [
         { p: 'Click <strong>Extend Prompt</strong> to focus extraction on topics of interest. The <em>Basic Litigation (shared)</em> configuration extracts Event Description, Source Document, Entities / Individuals, and Supporting Paragraph — add your own fields too.' },
@@ -576,6 +583,69 @@ const ISSUES = {
       ]},
     ],
     signoff: { line: 'Emails, attachments and all.', name: 'A&GEL Development Team' },
+  },
+
+  'feature-inline-ref': {
+    issue: null, title: 'Inline Referencing',
+    subtitle: 'Clickable pin-cite citations in Deep Research, Timeline, Scope Summary, and Review — verify every output against its source without leaving the page.',
+    date: '', readMins: 2, cover: 'assets/covers/issue-5.png',
+    glance: [
+      'Deep Research, Timeline, and Scope Summary outputs now carry <strong>clickable inline citations</strong>.',
+      'Click any citation to open the source document with the exact passage highlighted.',
+      'Review\'s <strong>Explanation panel</strong> also has structured inline references for each AI-generated finding.',
+      'No tab-switching — all verification happens on a single page.',
+    ],
+    sections: [
+      { kicker: 'Inline Referencing', heading: 'Verify every output against its source', blocks: [
+        { p: 'All major A&GEL output apps — <strong>Deep Research, Timeline, Scope Summary</strong> — now feature clickable inline citations. Each reference is numbered and linked: click it to open the source document with the exact passage highlighted.' },
+        { figure: { src: 'assets/i5/01_image002.png', caption: 'Inline citations in a Deep Research output — click any reference to jump to the source.', wide: true } },
+        { p: 'This eliminates the need to switch tabs or manually search source documents to verify a specific point. Cross-referencing is available on a single page.' },
+      ]},
+      { kicker: 'Inline Referencing in Review', heading: 'Structured citations in the Explanation panel', blocks: [
+        { p: 'The Review page\'s <strong>Explanation</strong> section — expanded by clicking any cell — now features structured inline references. Each explanatory point is linked to its source clause or paragraph, making verification of AI-generated findings against the ground truth straightforward.' },
+        { figure: { src: 'assets/i5/02_image004.jpg', caption: 'The Explanation panel in Review, with structured inline references linked to source documents.', wide: false } },
+      ]},
+    ],
+    signoff: { line: 'Every output. Source verified.', name: 'A&GEL Development Team' },
+  },
+
+  'issue-5': {
+    issue: 5, title: 'Inline Referencing, Mini-Chat & More',
+    subtitle: 'Pin-cite citations across all apps, a moveable mini-chat, Scribe timestamps, and a string of quality-of-life updates.',
+    date: '10 Apr 2026', readMins: 5, cover: 'assets/covers/issue-5.png',
+    glance: [
+      'Deep Research, Timeline, Scope Summary & Review now feature <strong>clickable inline citations</strong>.',
+      'The mini-chat window in Review, Comparison & Side by Side is now <strong>moveable and resizable</strong>.',
+      'Scribe transcripts now include <strong>timestamps</strong> in the downloaded Word document.',
+      'Sessions can now be <strong>terminated via the History tab</strong> in addition to the Stop button.',
+      'Search improvements: better keyword matching and in-document search.',
+    ],
+    sections: [
+      { kicker: '01 — Inline Referencing', heading: 'Pin-cite citations across all apps', blocks: [
+        { p: 'Deep Research, Timeline, and Scope Summary now feature <strong>clickable inline citations</strong>. These references allow you to cross-check outputs against source documents instantly — click any citation to open the source with the relevant passage highlighted, all without leaving the page.' },
+        { figure: { src: 'assets/i5/01_image002.png', caption: 'Inline citations in a Deep Research / Review output — click any reference number to jump to the source.', wide: true } },
+        { p: 'The Review page\'s expanded <strong>Explanation</strong> section also receives structured inline references linked to source documents, making it easier to verify AI-generated analysis against the ground truth.' },
+        { figure: { src: 'assets/i5/02_image004.jpg', caption: 'The Explanation panel in Review — structured inline references linked to source documents.', wide: false } },
+      ]},
+      { kicker: '02 — Mini-Chat', heading: 'Moveable mini-chat interface', blocks: [
+        { p: 'The mini-chat window available in <strong>Review, Comparison, and Side by Side</strong> is now moveable and resizable. Drag it out of the way while you work through outputs — it no longer obstructs your primary workspace.' },
+      ]},
+      { kicker: '03 — Scribe', heading: 'Timestamps in downloaded transcripts', blocks: [
+        { p: 'Downloaded Scribe transcripts (Word documents) now include <strong>timestamps</strong> — markers that allow you to navigate to a specific moment in the recording directly from the document.' },
+        { figure: { src: 'assets/i5/05_image007.jpg', caption: 'A downloaded Scribe transcript showing timestamps alongside translation.', wide: false } },
+      ]},
+      { kicker: '04 — Other Updates', heading: 'Quality-of-life improvements', blocks: [
+        { h: 'Easier session termination' },
+        { p: 'Ongoing sessions can now be terminated by <strong>deleting them from the History tab</strong>, in addition to the existing Stop button — useful when you need to amend a prompt and rerun, or when a session is unresponsive.' },
+        { h: 'Enhanced Search' },
+        { p: 'Search now benefits from <strong>inline referencing</strong>, better keyword matching, and in-document search — making it easier to locate specific content across your Vault.' },
+        { h: 'Faster Guided Summary' },
+        { p: 'Guided Summary now provides <strong>interim updates with inline references</strong> during generation, and overall output speed is increased. For simpler documents, the summary may load fast enough that interim updates are skipped.' },
+        { h: 'Optimised Files UI' },
+        { p: 'The Files page now has improved pagination — you can see more files and folders at a glance, with the page filling your screen dynamically.' },
+      ]},
+    ],
+    signoff: { line: 'Faster verification. Cleaner workspace.', name: 'A&GEL Development Team' },
   },
 
   'feature-faq': {
