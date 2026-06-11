@@ -579,7 +579,7 @@ const ISSUES = {
   },
 
   'feature-faq': {
-    issue: null, toc: true, title: 'Frequently Asked Questions',
+    issue: null, title: 'Frequently Asked Questions',
     subtitle: 'Getting started with A&GEL — from file management and prompting to checking your outputs.',
     date: '10 Feb 2026', readMins: 10, cover: 'assets/covers/issue-1.png',
     glance: [
