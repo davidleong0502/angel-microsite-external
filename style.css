@@ -584,22 +584,10 @@ footer{
 }
 .landing-tile:last-child{border-right:none}
 
-/* tiles 1-3: photo clear at top, fades to navy at bottom */
-.tile-1{
-  background:
-    linear-gradient(to bottom, rgba(14,21,32,0) 55%, #0e1520 100%),
-    url('assets/tile-bg-1.jpg') center/cover no-repeat;
-}
-.tile-2{
-  background:
-    linear-gradient(to bottom, rgba(14,21,32,0) 55%, #0e1520 100%),
-    url('assets/tile-bg-2.jpg') center/cover no-repeat;
-}
-.tile-3{
-  background:
-    linear-gradient(to bottom, rgba(14,21,32,0) 55%, #0e1520 100%),
-    url('assets/tile-bg-3.jpg') center/cover no-repeat;
-}
+/* tiles 1-3: gradient baked into images */
+.tile-1{background:url('assets/tile-bg-1.jpg') center/cover no-repeat}
+.tile-2{background:url('assets/tile-bg-2.jpg') center/cover no-repeat}
+.tile-3{background:url('assets/tile-bg-3.jpg') center/cover no-repeat}
 
 .tile-1:hover,.tile-2:hover,.tile-3:hover{}
 
