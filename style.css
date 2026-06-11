@@ -60,7 +60,7 @@ nav.nav-hidden{opacity:0;pointer-events:none}
 }
 .panel-1{overflow:visible;padding-bottom:80px;}
 .panel-1{background:linear-gradient(135deg,var(--ink) 0%,#1a2f42 100%)}
-.panel-2{background:var(--sand);padding-top:56px}
+.panel-2{background:var(--sand);padding-top:56px;padding-bottom:80px}
 .panel-3{background:linear-gradient(135deg,#111827 0%,var(--ink) 100%);padding-top:56px}
 .panel-4{background:var(--ink);min-height:90vh;border-top:1px solid rgba(255,255,255,.06);padding-top:56px}
 
@@ -119,6 +119,7 @@ nav.nav-hidden{opacity:0;pointer-events:none}
 
 /* CARDS */
 .panel-cards{display:flex;gap:14px;flex-wrap:wrap}
+.panel-1 .panel-cards{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
 .card-screenshot{
   display:block;
   width:calc(100% + 48px);
