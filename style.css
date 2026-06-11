@@ -405,12 +405,7 @@ a.wip-card{text-decoration:none;color:inherit}
 .reader-body{max-width:1100px;margin:0 auto;padding:60px 60px 100px;}
 .reader-cover-wrap{margin-bottom:48px;border-radius:10px;overflow:hidden;}
 .reader-cover{width:100%;display:block;max-height:420px;object-fit:cover;}
-.reader-issue-tag{
-  display:inline-block;margin-bottom:16px;
-  font-family:"JetBrains Mono",monospace;font-size:.65rem;
-  letter-spacing:.2em;text-transform:uppercase;
-  color:var(--teal);
-}
+.reader-issue-tag{display:none}
 .reader-title{
   font-family:"Cormorant Garamond",serif;font-size:clamp(2rem,5vw,3.2rem);
   font-weight:300;color:var(--light);line-height:1.15;margin-bottom:14px;
@@ -492,6 +487,7 @@ a.wip-card{text-decoration:none;color:inherit}
 .reader-step-text{font-size:.88rem;color:rgba(235,235,223,.65);line-height:1.7;}
 .reader-figure{margin:24px 0;}
 .reader-figure img{width:100%;border-radius:8px;display:block;}
+.reader-figure-sm img{width:auto;max-width:100%;}
 .reader-figure figcaption{font-size:.75rem;color:rgba(235,235,223,.3);margin-top:8px;line-height:1.5;}
 .reader-gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px;margin:20px 0;}
 .reader-gallery figure{margin:0;}

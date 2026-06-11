@@ -596,7 +596,7 @@ function renderBlock(b) {
   }
   if (b.prompt) return `<div class="reader-prompt"><div class="reader-prompt-label">${b.prompt.label}</div><pre class="reader-prompt-text">${b.prompt.text}</pre></div>`;
   if (b.steps) return `<div class="reader-steps">${b.steps.map(s=>`<div class="reader-step"><span class="reader-step-n">${s.n}</span><span class="reader-step-text">${s.text}</span></div>`).join('')}</div>`;
-  if (b.figure) return `<figure class="reader-figure"><img src="${b.figure.src}" alt="${b.figure.caption}" loading="lazy"/><figcaption>${b.figure.caption}</figcaption></figure>`;
+  if (b.figure) return `<figure class="reader-figure${b.figure.wide ? '' : ' reader-figure-sm'}"><img src="${b.figure.src}" alt="${b.figure.caption}" loading="lazy"/><figcaption>${b.figure.caption}</figcaption></figure>`;
   if (b.gallery) return `<div class="reader-gallery">${b.gallery.map(g=>`<figure><img src="${g.src}" alt="${g.caption}" loading="lazy"/><figcaption>${g.caption}</figcaption></figure>`).join('')}</div>`;
   return '';
 }
