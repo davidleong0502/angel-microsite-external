@@ -892,6 +892,39 @@ function closeReader() {
 
 document.addEventListener('keydown', e => { if (e.key === 'Escape') closeReader(); });
 
+/* ── KEYBOARD SCROLL ── */
+(function(){
+  const SECTIONS = ['landing','panel1','panel2','panel3','panel4','misc'];
+  let scrolling = false;
+
+  document.addEventListener('keydown', function(e) {
+    if (e.key !== 'ArrowDown' && e.key !== 'ArrowUp') return;
+    // Don't intercept if reader is open or user is in a text input
+    if (document.getElementById('reader').classList.contains('reader-visible')) return;
+    if (['INPUT','TEXTAREA','SELECT'].includes(document.activeElement.tagName)) return;
+
+    e.preventDefault();
+    if (scrolling) return;
+
+    const els = SECTIONS.map(id => document.getElementById(id)).filter(Boolean);
+
+    let currentIdx = 0;
+    for (let i = 0; i < els.length; i++) {
+      if (els[i].getBoundingClientRect().top <= 10) currentIdx = i;
+    }
+
+    const targetIdx = e.key === 'ArrowDown'
+      ? Math.min(currentIdx + 1, els.length - 1)
+      : Math.max(currentIdx - 1, 0);
+
+    if (targetIdx === currentIdx) return;
+
+    scrolling = true;
+    els[targetIdx].scrollIntoView({ behavior: 'smooth', block: 'start' });
+    setTimeout(() => { scrolling = false; }, 800);
+  });
+})();
+
 /* ── PILL STRIP ── */
 (function(){
   const pills = document.querySelectorAll('.strip-pill');
