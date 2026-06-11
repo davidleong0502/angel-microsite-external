@@ -208,7 +208,7 @@ nav.nav-hidden{opacity:0;pointer-events:none}
   font-size:.7rem;font-weight:600;letter-spacing:.06em;
   color:var(--teal);text-decoration:none;transition:letter-spacing .2s;
 }
-.card-light:hover .card-light-link{letter-spacing:.12em}
+.card-light:hover .card-light-link,.wip-card:hover .card-light-link{letter-spacing:.12em}
 
 /* WIP CARDS */
 .wip-cards{display:flex;gap:18px;flex-wrap:wrap}
