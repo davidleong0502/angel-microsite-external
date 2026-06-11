@@ -60,9 +60,9 @@ nav.nav-hidden{opacity:0;pointer-events:none}
 }
 .panel-1{overflow:visible;padding-bottom:80px;}
 .panel-1{background:linear-gradient(135deg,var(--ink) 0%,#1a2f42 100%)}
-.panel-2{background:var(--sand)}
-.panel-3{background:linear-gradient(135deg,#111827 0%,var(--ink) 100%)}
-.panel-4{background:var(--ink);min-height:90vh;border-top:1px solid rgba(255,255,255,.06)}
+.panel-2{background:var(--sand);padding-top:56px}
+.panel-3{background:linear-gradient(135deg,#111827 0%,var(--ink) 100%);padding-top:56px}
+.panel-4{background:var(--ink);min-height:90vh;border-top:1px solid rgba(255,255,255,.06);padding-top:56px}
 
 .panel-bg-word{
   position:absolute;
