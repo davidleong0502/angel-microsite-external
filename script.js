@@ -579,7 +579,7 @@ const ISSUES = {
   },
 
   'feature-faq': {
-    issue: null, title: 'Frequently Asked Questions',
+    issue: null, toc: true, title: 'Frequently Asked Questions',
     subtitle: 'Getting started with A&GEL — from file management and prompting to checking your outputs.',
     date: '10 Feb 2026', readMins: 10, cover: 'assets/covers/issue-1.png',
     glance: [
@@ -700,9 +700,9 @@ const ISSUES = {
   },
 };
 
-function renderBlock(b) {
+function renderBlock(b, hId) {
   if (b.p !== undefined) return `<p class="reader-p">${b.p}</p>`;
-  if (b.h !== undefined) return `<h4 class="reader-h">${b.h}</h4>`;
+  if (b.h !== undefined) return `<h4 class="reader-h"${hId ? ` id="${hId}"` : ''}>${b.h}</h4>`;
   if (b.quote !== undefined) return `<blockquote class="reader-quote">${b.quote}</blockquote>`;
   if (b.list) return `<ul class="reader-list">${b.list.map(i=>`<li>${i}</li>`).join('')}</ul>`;
   if (b.callout) {
@@ -717,6 +717,8 @@ function renderBlock(b) {
   if (b.gallery) return `<div class="reader-gallery">${b.gallery.map(g=>`<figure><img src="${g.src}" alt="${g.caption}" loading="lazy"/><figcaption>${g.caption}</figcaption></figure>`).join('')}</div>`;
   return '';
 }
+
+let _tocSpyCleanup = null;
 
 function openIssue(id) {
   const issue = ISSUES[id];
@@ -733,17 +735,77 @@ function openIssue(id) {
   document.getElementById('reader-mins').textContent = issue.readMins;
   const glanceEl = document.getElementById('reader-glance');
   glanceEl.innerHTML = `<div class="reader-glance-title">At a glance</div><ul>${issue.glance.map(g=>`<li>${g}</li>`).join('')}</ul>`;
+
+  // Build content with anchored IDs for h blocks
   const contentEl = document.getElementById('reader-content');
-  contentEl.innerHTML = issue.sections.map(s =>
-    `<div class="reader-section">
+  let hCounter = 0;
+  contentEl.innerHTML = issue.sections.map((s, si) => {
+    const secId = `toc-s${si}`;
+    const blocksHtml = s.blocks.map(b => {
+      if (b.h !== undefined) {
+        const hId = `toc-h${hCounter++}`;
+        return renderBlock(b, hId);
+      }
+      return renderBlock(b);
+    }).join('');
+    return `<div class="reader-section" id="${secId}">
       <div class="reader-section-kicker">${s.kicker}</div>
       <h3 class="reader-section-heading">${s.heading}</h3>
-      ${s.blocks.map(renderBlock).join('')}
-    </div>`
-  ).join('');
+      ${blocksHtml}
+    </div>`;
+  }).join('');
+
   document.getElementById('reader-signoff').innerHTML =
     `<div class="reader-signoff-line">${issue.signoff.line}</div><div>${issue.signoff.name}</div>
      <a href="https://app.angellaw.ai" class="reader-angel-cta" target="_blank">Open A&amp;GEL &rarr;</a>`;
+
+  // Build TOC
+  if (_tocSpyCleanup) { _tocSpyCleanup(); _tocSpyCleanup = null; }
+  const tocEl = document.getElementById('reader-toc');
+  if (issue.toc) {
+    let hIdx = 0;
+    const tocHtml = `<div class="reader-toc-title">Contents</div>` +
+      issue.sections.map((s, si) => {
+        const secId = `toc-s${si}`;
+        const subItems = s.blocks.filter(b => b.h !== undefined).map(b => {
+          const hId = `toc-h${hIdx++}`;
+          return `<button class="reader-toc-item" data-target="${hId}">${b.h}</button>`;
+        }).join('');
+        return `<div class="reader-toc-section">
+          <button class="reader-toc-section-link" data-target="${secId}">${s.kicker}</button>
+          ${subItems ? `<div class="reader-toc-items">${subItems}</div>` : ''}
+        </div>`;
+      }).join('');
+    tocEl.innerHTML = tocHtml;
+    tocEl.classList.remove('reader-toc-hidden');
+
+    tocEl.onclick = function(e) {
+      const btn = e.target.closest('[data-target]');
+      if (!btn) return;
+      const target = document.getElementById(btn.dataset.target);
+      if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    };
+
+    // Scroll spy
+    const allTargets = [...tocEl.querySelectorAll('[data-target]')].map(b => b.dataset.target);
+    function updateSpy() {
+      const scrollTop = reader.scrollTop + 120;
+      let active = null;
+      for (const tid of allTargets) {
+        const el = document.getElementById(tid);
+        if (el && el.offsetTop <= scrollTop) active = tid;
+      }
+      tocEl.querySelectorAll('[data-target]').forEach(btn => {
+        btn.classList.toggle('toc-active', btn.dataset.target === active);
+      });
+    }
+    reader.addEventListener('scroll', updateSpy);
+    _tocSpyCleanup = () => reader.removeEventListener('scroll', updateSpy);
+  } else {
+    tocEl.innerHTML = '';
+    tocEl.classList.add('reader-toc-hidden');
+  }
+
   reader.classList.remove('reader-hidden');
   reader.classList.add('reader-visible');
   reader.scrollTop = 0;
@@ -751,6 +813,7 @@ function openIssue(id) {
 }
 
 function closeReader() {
+  if (_tocSpyCleanup) { _tocSpyCleanup(); _tocSpyCleanup = null; }
   const reader = document.getElementById('reader');
   reader.classList.remove('reader-visible');
   reader.classList.add('reader-hidden');

@@ -327,23 +327,26 @@
     <button class="reader-back" onclick="closeReader()">&#8592; Back</button>
     <span class="reader-label">A&amp;GEL INSIDER</span>
   </div>
-  <div class="reader-body">
-    <div class="reader-cover-wrap">
-      <img id="reader-cover" class="reader-cover" src="" alt=""/>
-    </div>
-    <div class="reader-meta">
-      <span id="reader-issue-label" class="reader-issue-tag"></span>
-      <h1 id="reader-title" class="reader-title"></h1>
-      <p id="reader-subtitle" class="reader-subtitle"></p>
-      <div class="reader-byline">
-        <span id="reader-date"></span>
-        <span class="reader-dot">·</span>
-        <span id="reader-mins"></span> min read
+  <div class="reader-layout">
+    <nav id="reader-toc" class="reader-toc reader-toc-hidden"></nav>
+    <div class="reader-body">
+      <div class="reader-cover-wrap">
+        <img id="reader-cover" class="reader-cover" src="" alt=""/>
       </div>
+      <div class="reader-meta">
+        <span id="reader-issue-label" class="reader-issue-tag"></span>
+        <h1 id="reader-title" class="reader-title"></h1>
+        <p id="reader-subtitle" class="reader-subtitle"></p>
+        <div class="reader-byline">
+          <span id="reader-date"></span>
+          <span class="reader-dot">·</span>
+          <span id="reader-mins"></span> min read
+        </div>
+      </div>
+      <div id="reader-glance" class="reader-glance"></div>
+      <div id="reader-content" class="reader-content"></div>
+      <div id="reader-signoff" class="reader-signoff"></div>
     </div>
-    <div id="reader-glance" class="reader-glance"></div>
-    <div id="reader-content" class="reader-content"></div>
-    <div id="reader-signoff" class="reader-signoff"></div>
   </div>
 </div>
 
