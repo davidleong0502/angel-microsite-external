@@ -294,7 +294,7 @@ a.wip-card{text-decoration:none;color:inherit}
 .misc-left{position:relative}
 .misc-right{display:flex;flex-direction:column;gap:0}
 .misc-kicker{
-  font-family:"JetBrains Mono",monospace;font-size:.65rem;
+  font-family:"JetBrains Mono",monospace;font-size:.9rem;
   letter-spacing:.2em;text-transform:uppercase;color:var(--teal);
   margin-bottom:18px;display:block;
 }
