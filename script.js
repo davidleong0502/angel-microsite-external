@@ -429,6 +429,139 @@ const ISSUES = {
     ],
     signoff: { line: 'Smaller steps, sharper chronologies.', name: 'A&GEL Development Team' },
   },
+
+  'feature-dispute': {
+    issue: null, title: 'Dispute Resolution',
+    subtitle: 'Case summaries, SOC analysis, Defence drafting, and pleadings tracking — all within A&GEL.',
+    date: 'Issue 2', readMins: 4, cover: 'assets/covers/issue-2.png',
+    glance: [
+      '<strong>Case summaries</strong> — the Detailed version generally outperforms Concise for complex judgments.',
+      '<strong>SOC Analysis</strong> — upload the Statement of Claim and run the analysis prompt directly.',
+      '<strong>Defence drafting</strong> — generate a first-draft defence from the SOC.',
+      '<strong>Pleadings tracker</strong> — REVIEW mode maps each cause of action against every party\'s position across the full document set.',
+    ],
+    sections: [
+      { kicker: '01 — Case Summaries', heading: 'Summarising judgments and pleadings', blocks: [
+        { p: 'The Prompt Library includes two case summariser prompts — Concise and Detailed. In our experience, the <strong>Detailed</strong> version is generally superior, especially for complex judgments. A&GEL is instructed to rely exclusively on the source document.' },
+        { figure: { src: 'assets/i2/05_image006.png', caption: 'Case Summariser (Concise) v1.1 and Case Summariser (Detailed) v1.1 in the Prompt Library.', wide: false } },
+      ]},
+      { kicker: '02 — SOC & Defence', heading: 'Statement of Claim analysis and Defence drafting', blocks: [
+        { p: 'Use the <strong>Statement of Claim Analysis and Chronology</strong> prompt for early case assessment. Upload the SOC and run the prompt — A&GEL extracts the key facts, causes of action, and a chronology.' },
+        { p: 'To draft a first Defence, use the <strong>Draft a defence to a Statement of Claim</strong> prompt from the library. Clone it and adapt the context to your matter.' },
+        { callout: { kind: 'tip', title: 'Detailed over Concise', body: 'For complex judgments or lengthy SOCs, the Detailed summariser consistently produces more accurate and complete outputs.' } },
+      ]},
+      { kicker: '03 — Pleadings Tracker', heading: 'REVIEW mode as a pleadings tracker', blocks: [
+        { p: 'REVIEW mode runs a question list across multiple documents simultaneously. For dispute resolution, load the Statement of Claim, defences, and replies, define your questions (one per cause of action), and A&GEL maps each party\'s position in a single table.' },
+        { figure: { src: 'assets/i2/12_image013.png', caption: 'Lim Group: REVIEW mode tracking fraud and misconduct claims across 5 files.', wide: true } },
+      ]},
+    ],
+    signoff: { line: 'Faster case assessment, better preparation.', name: 'A&GEL Development Team' },
+  },
+
+  'feature-sidebyside': {
+    issue: null, title: 'Side-by-Side & Comparison',
+    subtitle: 'The most granular review modes — clause by clause, with full source-paragraph verification.',
+    date: 'Issue 5', readMins: 3, cover: 'assets/covers/issue-5.png',
+    glance: [
+      '<strong>Side-by-Side</strong> works clause by clause, with full source-paragraph verification for every finding.',
+      '<strong>Comparison</strong> generates a first-pass legal review of tracked changes or document amendments.',
+      'Every finding links back to the exact source clause — no hunting through the document.',
+      'Export results as a structured Word document.',
+    ],
+    sections: [
+      { kicker: '01 — Side-by-Side', heading: 'Clause-by-clause analysis with source verification', blocks: [
+        { p: 'Side-by-Side is A&GEL\'s most granular review mode. It works through a document clause by clause, and for every finding it surfaces the exact source paragraph — so you can verify the output directly against the original.' },
+        { figure: { src: 'assets/i5/03_image005.jpg', caption: 'Side-by-Side analysis of an SPA — each finding links back to the source clause.', wide: true } },
+        { figure: { src: 'assets/i5/04_image006.jpg', caption: 'The explanation panel — A&GEL\'s reasoning shown inline alongside the source.', wide: false } },
+      ]},
+      { kicker: '02 — Comparison', heading: 'First-pass review of tracked changes', blocks: [
+        { p: '<strong>Comparison</strong> generates a first-pass legal review of tracked changes or document amendments. Upload the amended document and A&GEL produces a structured analysis of what has changed and what the implications are.' },
+        { callout: { kind: 'note', title: 'A starting point, not a finished product', body: 'Side-by-Side and Comparison outputs are efficient starting points — always verify against the source before finalising.' } },
+      ]},
+    ],
+    signoff: { line: 'Clause by clause. Source verified.', name: 'A&GEL Development Team' },
+  },
+
+  'feature-multistep': {
+    issue: null, title: 'Multi-Step Prompt',
+    subtitle: 'Break complex legal tasks into sequential steps — each building on the last.',
+    date: 'Issue 3', readMins: 4, cover: 'assets/covers/issue-3.jpg',
+    glance: [
+      'Found under <strong>Specialised Apps</strong>.',
+      'Each step builds on the output of the previous — ideal for complex workflows.',
+      'Works for both multi-step workflows <em>and</em> single complex prompts on a document.',
+      'Outputs include inline source references — click to open the source with highlights.',
+    ],
+    sections: [
+      { kicker: '01 — Getting started', heading: 'A structured mode for complex legal work', blocks: [
+        { p: 'Found under <strong>Specialised Apps</strong>. Multi-Step Prompt lets you deconstruct a legal problem into a sequence of targeted steps — each builds on the last. Well suited to both multi-step workflows and single complex prompts that need document-level precision.' },
+        { figure: { src: 'assets/i3/07_image008.png', caption: 'Multi-Step Prompt in the Specialised Apps grid.', wide: false } },
+      ]},
+      { kicker: '02 — Examples', heading: 'Breaking workflows into logical phases', blocks: [
+        { steps: [
+          { n: 'Corporate · Step 1', text: 'Summarise what each party is obligated to do.' },
+          { n: 'Step 2', text: 'With that summary in mind, flag any one-sided or unusual clauses.' },
+          { n: 'Step 3', text: 'For the flagged clauses, redline the top five changes I should push for if I represent [party].' },
+        ]},
+        { steps: [
+          { n: 'Litigation · Step 1', text: 'Based on the Statement of Claim [attached], draft a first set of interrogatories.' },
+          { n: 'Step 2', text: 'Having completed Step 1, draft corresponding document requests.' },
+          { n: 'Step 3', text: 'Identify the top five custodians likely to have responsive documents, and explain why.' },
+        ]},
+        { callout: { kind: 'tip', title: 'Only one prompt? Still use it', body: 'Even with a single step, this app is excellent for complex prompts on a document — often better than Chat mode.' } },
+        { figure: { src: 'assets/i3/08_image009.jpg', caption: 'Multi-Step Prompt output — references open an inline document viewer with highlights.', wide: false } },
+      ]},
+    ],
+    signoff: { line: 'Smaller steps, sharper outputs.', name: 'A&GEL Development Team' },
+  },
+
+  'feature-timeline': {
+    issue: null, title: 'Timeline',
+    subtitle: 'Combine chronologies across up to 100 documents into a single, source-verified timeline.',
+    date: 'Issue 3', readMins: 4, cover: 'assets/covers/issue-3.jpg',
+    glance: [
+      'Combines chronologies from <strong>up to 100 documents</strong> into one timeline.',
+      '<strong>Source references</strong> — click any event to open the originating document with the line highlighted.',
+      '<strong>Smart Timeline</strong> lets you extract custom fields: entities, supporting paragraphs, and more.',
+      'Works on chat logs and message screenshots (WhatsApp, WeChat) too.',
+    ],
+    sections: [
+      { kicker: '01 — Combined timelines', heading: 'Chronologies across multiple documents', blocks: [
+        { p: 'The updated Timeline extracts a chronology from each selected document and merges them into one — invaluable when you have multiple large affidavits, pleadings or submissions, each with its own timeline.' },
+        { gallery: [
+          { src: 'assets/i3/09_image010.png', caption: 'A combined Statement of Claim & Defence timeline across five files.' },
+          { src: 'assets/i3/12_image013.png', caption: 'Drill into a single event — source document, entities, and supporting paragraph all shown.' },
+        ]},
+        { p: '<strong>View the source.</strong> Click the reference at the end of any event to open the source document, with the originating line highlighted.' },
+      ]},
+      { kicker: '02 — Smart Timeline', heading: 'Extract custom fields for your matter', blocks: [
+        { p: 'Click <strong>Extend Prompt</strong> to focus extraction on topics of interest. The <em>Basic Litigation (shared)</em> configuration extracts Event Description, Source Document, Entities / Individuals, and Supporting Paragraph — add your own fields too.' },
+        { figure: { src: 'assets/i3/11_image012.png', caption: 'Smart Timeline: add custom extraction fields under Extend Prompt.', wide: false } },
+        { callout: { kind: 'note', title: 'Works on messages too', body: 'Point Timeline at chat logs or screenshots of messages (WhatsApp, WeChat) to build a chronology.' } },
+      ]},
+    ],
+    signoff: { line: 'One timeline. Every document.', name: 'A&GEL Development Team' },
+  },
+
+  'feature-playbook': {
+    issue: null, title: 'Playbook',
+    subtitle: 'Codify your team\'s house position into a standardised review — returns a Word document in tracked changes.',
+    date: 'Issue 4', readMins: 3, cover: 'assets/covers/issue-4.png',
+    glance: [
+      'Encode your team\'s negotiating positions into a Playbook once — reuse it on every contract.',
+      'A&GEL applies the playbook and returns a <strong>Word document in tracked changes</strong>.',
+      'Review amendments with accepted / rejected / pending states.',
+      'More detail on building and using Playbooks coming in the next A&GEL Insider issue.',
+    ],
+    sections: [
+      { kicker: '01 — Playbook', heading: 'Your house position, automated', blocks: [
+        { p: 'Playbook lets you encode your team\'s negotiating and standard positions into a reusable review template. Once built, upload any contract and A&GEL applies the playbook — returning a Word document with proposed changes in tracked-changes format, ready for review and amendment.' },
+        { figure: { src: 'assets/i4/07_image008.jpg', caption: 'Playbook in action — reviewing amendments and comments with accepted/rejected/pending states.', wide: true } },
+        { callout: { kind: 'note', title: 'Full Playbook guide coming soon', body: 'The next A&GEL Insider issue will cover how to build a Playbook from scratch and how to put it to work on your team\'s matters.' } },
+      ]},
+    ],
+    signoff: { line: 'Your positions. Applied automatically.', name: 'A&GEL Development Team' },
+  },
 };
 
 function renderBlock(b) {
