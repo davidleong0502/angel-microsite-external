@@ -584,39 +584,24 @@ footer{
 }
 .landing-tile:last-child{border-right:none}
 
-/* tiles 1-3: dark at top, photo fully clear at bottom */
+/* tiles 1-3: photo clear at top, fades to navy at bottom */
 .tile-1{
   background:
-    linear-gradient(to bottom, rgba(10,18,28,0.78) 0%, rgba(10,18,28,0.55) 40%, rgba(10,18,28,0.12) 80%, rgba(10,18,28,0) 100%),
+    linear-gradient(to bottom, rgba(14,21,32,0) 55%, #0e1520 100%),
     url('assets/tile-bg-1.jpg') center/cover no-repeat;
 }
 .tile-2{
   background:
-    linear-gradient(to bottom, rgba(10,18,28,0.78) 0%, rgba(10,18,28,0.55) 40%, rgba(10,18,28,0.12) 80%, rgba(10,18,28,0) 100%),
+    linear-gradient(to bottom, rgba(14,21,32,0) 55%, #0e1520 100%),
     url('assets/tile-bg-2.jpg') center/cover no-repeat;
 }
 .tile-3{
   background:
-    linear-gradient(to bottom, rgba(10,18,28,0.78) 0%, rgba(10,18,28,0.55) 40%, rgba(10,18,28,0.12) 80%, rgba(10,18,28,0) 100%),
+    linear-gradient(to bottom, rgba(14,21,32,0) 55%, #0e1520 100%),
     url('assets/tile-bg-3.jpg') center/cover no-repeat;
 }
 
-/* hover: lighten top slightly */
-.tile-1:hover{
-  background:
-    linear-gradient(to bottom, rgba(10,18,28,0.62) 0%, rgba(10,18,28,0.38) 40%, rgba(10,18,28,0.08) 80%, rgba(10,18,28,0) 100%),
-    url('assets/tile-bg-1.jpg') center/cover no-repeat;
-}
-.tile-2:hover{
-  background:
-    linear-gradient(to bottom, rgba(10,18,28,0.62) 0%, rgba(10,18,28,0.38) 40%, rgba(10,18,28,0.08) 80%, rgba(10,18,28,0) 100%),
-    url('assets/tile-bg-2.jpg') center/cover no-repeat;
-}
-.tile-3:hover{
-  background:
-    linear-gradient(to bottom, rgba(10,18,28,0.62) 0%, rgba(10,18,28,0.38) 40%, rgba(10,18,28,0.08) 80%, rgba(10,18,28,0) 100%),
-    url('assets/tile-bg-3.jpg') center/cover no-repeat;
-}
+.tile-1:hover,.tile-2:hover,.tile-3:hover{}
 
 /* vertical divider glow on hover */
 .tile-2::after,.tile-3::after{
