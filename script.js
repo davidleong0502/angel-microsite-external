@@ -305,7 +305,7 @@ const ISSUES = {
   'feature-scribe': {
     issue: null, title: 'Scribe',
     subtitle: 'Record, transcribe, live-translate and edit meetings — all in one place.',
-    date: 'Issues 3, 4 & 5', readMins: 5, cover: 'assets/covers/issue-3.jpg',
+    date: '', readMins: 5, cover: 'assets/covers/issue-3.jpg',
     glance: [
       '<strong>Live editing</strong> — edit the transcript as Scribe records; edited portions are underlined.',
       '<strong>Audio playback</strong> — click any transcript segment to play back its recording from that point.',
@@ -313,14 +313,14 @@ const ISSUES = {
       '<strong>Timestamped downloads</strong> — exported Word transcripts carry timestamps for easy navigation.',
     ],
     sections: [
-      { kicker: 'Issue 3 — Scribe', heading: 'Live editing & audio playback', blocks: [
+      { kicker: 'Scribe', heading: 'Live editing & audio playback', blocks: [
         { p: '<strong>Live editing</strong> — the improved Scribe lets you edit the transcript; edited portions are underlined for ease of reference. <strong>Audio playback</strong> — after transcription is saved, open the raw transcript and click any segment to play the recording from that point.' },
         { gallery: [
           { src: 'assets/i3/05_image006.png', caption: 'Scribe recording in progress, with live transcription.' },
           { src: 'assets/i3/06_image007.png', caption: 'The raw transcript — click a segment to play back its audio.' },
         ]},
       ]},
-      { kicker: 'Issue 4 — Scribe', heading: 'Live-translation, now in Scribe', blocks: [
+      { kicker: 'Scribe', heading: 'Live-translation, now in Scribe', blocks: [
         { p: 'Understand calls and meetings in the language of your choice. Tick the <strong>Live Translation</strong> box and pick a language — A&GEL renders the translation beneath the original transcription on the fly.' },
         { figure: { src: 'assets/i4/04_image005.png', caption: 'Enable Live Translation and select a language from the drop-down.', wide: true } },
         { p: 'As A&GEL transcribes and translates, you can type notes or amend the transcript directly — your edits appear in <strong>yellow</strong> to distinguish them from A&GEL\'s text. Saved transcripts retain both the translation and your edits.' },
@@ -329,7 +329,7 @@ const ISSUES = {
           { src: 'assets/i4/06_image007.png', caption: 'Timestamps run down the left of the raw transcription.' },
         ]},
       ]},
-      { kicker: 'Issue 5 — Scribe', heading: 'Downloadable transcripts, now with timestamps', blocks: [
+      { kicker: 'Scribe', heading: 'Downloadable transcripts, now with timestamps', blocks: [
         { p: 'Scribe transcripts now include <strong>timestamps</strong> within the downloaded Word document — markers that make it simpler to navigate to specific moments in a recorded conversation or meeting.' },
         { figure: { src: 'assets/i5/05_image007.jpg', caption: 'A downloaded Scribe transcript with timestamps and translation retained.', wide: false } },
       ]},
@@ -339,14 +339,14 @@ const ISSUES = {
   'feature-prompt-library': {
     issue: null, title: 'Prompt Library',
     subtitle: 'Find, clone and adapt community-built prompts — and sharpen them with built-in tools.',
-    date: 'Issue 2', readMins: 2, cover: 'assets/covers/issue-2.png',
+    date: '', readMins: 2, cover: 'assets/covers/issue-2.png',
     glance: [
       'Browse, clone and adapt community-built prompts from the Prompt Library for your specific matter.',
       '<strong>Test your prompt</strong> — compare A&GEL\'s output against a model answer you have already prepared.',
       'Use <strong>Improve My Prompt v1.0</strong> in the prompt library to further refine any prompt that isn\'t performing as expected.',
     ],
     sections: [
-      { kicker: 'Issue 2 — Craft', heading: 'Tips for prompting: test and improve', blocks: [
+      { kicker: 'Craft', heading: 'Tips for prompting: test and improve', blocks: [
         { p: '<strong>Test your prompt.</strong> An effective way to gauge a prompt\'s effectiveness is to compare A&GEL\'s output against a "model answer" or reference output you have already prepared.' },
         { p: 'For instance, if you are developing a prompt to summarise a case, refer to a case summary you have previously prepared and are familiar with as your benchmark. Run your summary prompt and assess A&GEL\'s output against your prior work. If the output aligns closely with your benchmark, your prompt is likely well-developed. If it does not, identify the specific gaps and refine your prompt accordingly — for example, by adding further context.' },
         { p: '<strong>Improve your prompt.</strong> Consider using the <em>Improve My Prompt v1.0</em> tool available in your prompt library to further refine your prompt.' },
@@ -358,7 +358,7 @@ const ISSUES = {
   'feature-guided-summary': {
     issue: null, title: 'Quick Info & Guided Summary',
     subtitle: 'A fast, sourced read of any single document — snapshot or steered.',
-    date: 'Issue 2', readMins: 3, cover: 'assets/covers/issue-2.png',
+    date: '', readMins: 3, cover: 'assets/covers/issue-2.png',
     glance: [
       'Use <strong>Quick Info</strong> for an instant snapshot of any document.',
       '<strong>Guided Summary</strong> (under Apps) lets you steer the focus — pair it with a prompt from the library.',
@@ -433,7 +433,7 @@ const ISSUES = {
   'feature-dispute': {
     issue: null, title: 'Dispute Resolution',
     subtitle: 'Case summaries, SOC analysis, Defence drafting, and pleadings tracking — all within A&GEL.',
-    date: 'Issue 2', readMins: 4, cover: 'assets/covers/issue-2.png',
+    date: '', readMins: 4, cover: 'assets/covers/issue-2.png',
     glance: [
       '<strong>Case summaries</strong> — the Detailed version generally outperforms Concise for complex judgments.',
       '<strong>SOC Analysis</strong> — upload the Statement of Claim and run the analysis prompt directly.',
@@ -461,7 +461,7 @@ const ISSUES = {
   'feature-sidebyside': {
     issue: null, title: 'Side-by-Side & Comparison',
     subtitle: 'The most granular review modes — clause by clause, with full source-paragraph verification.',
-    date: 'Issue 5', readMins: 3, cover: 'assets/covers/issue-5.png',
+    date: '', readMins: 3, cover: 'assets/covers/issue-5.png',
     glance: [
       '<strong>Side-by-Side</strong> works clause by clause, with full source-paragraph verification for every finding.',
       '<strong>Comparison</strong> generates a first-pass legal review of tracked changes or document amendments.',
@@ -485,7 +485,7 @@ const ISSUES = {
   'feature-multistep': {
     issue: null, title: 'Multi-Step Prompt',
     subtitle: 'Break complex legal tasks into sequential steps — each building on the last.',
-    date: 'Issue 3', readMins: 4, cover: 'assets/covers/issue-3.jpg',
+    date: '', readMins: 4, cover: 'assets/covers/issue-3.jpg',
     glance: [
       'Found under <strong>Specialised Apps</strong>.',
       'Each step builds on the output of the previous — ideal for complex workflows.',
@@ -518,7 +518,7 @@ const ISSUES = {
   'feature-timeline': {
     issue: null, title: 'Timeline',
     subtitle: 'Combine chronologies across up to 100 documents into a single, source-verified timeline.',
-    date: 'Issue 3', readMins: 4, cover: 'assets/covers/issue-3.jpg',
+    date: '', readMins: 4, cover: 'assets/covers/issue-3.jpg',
     glance: [
       'Combines chronologies from <strong>up to 100 documents</strong> into one timeline.',
       '<strong>Source references</strong> — click any event to open the originating document with the line highlighted.',
@@ -546,7 +546,7 @@ const ISSUES = {
   'feature-playbook': {
     issue: null, title: 'Playbook',
     subtitle: 'Codify your team\'s house position into a standardised review — returns a Word document in tracked changes.',
-    date: 'Issue 4', readMins: 3, cover: 'assets/covers/issue-4.png',
+    date: '', readMins: 3, cover: 'assets/covers/issue-4.png',
     glance: [
       'Encode your team\'s negotiating positions into a Playbook once — reuse it on every contract.',
       'A&GEL applies the playbook and returns a <strong>Word document in tracked changes</strong>.',
@@ -590,7 +590,10 @@ function openIssue(id) {
   document.getElementById('reader-issue-label').textContent = issue.issue != null ? 'Issue ' + issue.issue : 'Feature Guide';
   document.getElementById('reader-title').textContent = issue.title;
   document.getElementById('reader-subtitle').textContent = issue.subtitle;
-  document.getElementById('reader-date').textContent = issue.date;
+  const dateEl = document.getElementById('reader-date');
+  const dotEl = document.querySelector('.reader-dot');
+  dateEl.textContent = issue.date || '';
+  if (dotEl) dotEl.style.display = issue.date ? '' : 'none';
   document.getElementById('reader-mins').textContent = issue.readMins;
   const glanceEl = document.getElementById('reader-glance');
   glanceEl.innerHTML = `<div class="reader-glance-title">At a glance</div><ul>${issue.glance.map(g=>`<li>${g}</li>`).join('')}</ul>`;
