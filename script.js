@@ -562,6 +562,25 @@ const ISSUES = {
     ],
     signoff: { line: 'Your positions. Applied automatically.', name: 'A&GEL Development Team' },
   },
+
+  'feature-msg': {
+    issue: null, title: '.msg Email Upload',
+    subtitle: 'Upload entire email files into A&GEL — including attachments — and work with them like any other document.',
+    date: '', readMins: 2, cover: 'assets/covers/issue-3.jpg',
+    glance: [
+      'Upload <strong>.msg</strong> email files directly into Files.',
+      'A&GEL reads all contents — including attachments.',
+      'Use with Chat or any specialised mode (Guided Summary, Timeline, etc.).',
+      'Exception: attachments with <em>Internal Only</em> labels or password protection are skipped.',
+    ],
+    sections: [
+      { kicker: '.msg Upload', heading: 'Upload email files (.msg)', blocks: [
+        { p: 'A&GEL users can now upload entire <strong>.msg</strong> email files into Files, for use with Chat or any specialised mode. A&GEL reads all contents — including attachments — except attachments carrying <em>Internal Only</em> sensitivity labels or that are password-protected.' },
+        { p: 'Once uploaded, ask A&GEL to summarise the email, summarise the attached documents, or run any prompt from the library against it.' },
+      ]},
+    ],
+    signoff: { line: 'Emails, attachments and all.', name: 'A&GEL Development Team' },
+  },
 };
 
 function renderBlock(b) {
