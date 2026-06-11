@@ -318,6 +318,7 @@ a.wip-card{text-decoration:none;color:inherit}
   font-size:.58rem;letter-spacing:.12em;text-transform:uppercase;
   padding:5px 11px;border-radius:5px;white-space:nowrap;flex-shrink:0;
 }
+.nl-pill-faq{background:rgba(0,154,197,.15);color:var(--teal)}
 .nl-title{font-family:"Cormorant Garamond",serif;font-size:1rem;font-weight:600;color:var(--light)}
 .nl-desc{font-size:.78rem;color:var(--muted);margin-top:2px}
 .nl-chev{margin-left:auto;color:rgba(235,235,223,.2);transition:color .2s,transform .2s;flex-shrink:0;font-size:1.1rem}
