@@ -222,6 +222,7 @@ nav.nav-hidden{opacity:0;pointer-events:none}
   cursor:pointer;
   transition:border-color .3s,background .3s,transform .25s,box-shadow .3s;
 }
+a.wip-card{text-decoration:none;color:inherit}
 .wip-card:hover{
   border-color:rgba(0,154,197,.65);
   background:rgba(0,154,197,.1);
