@@ -694,6 +694,7 @@ footer{
 .tile-2:hover .tile-title{color:var(--teal)}
 .tile-3:hover .tile-title{color:var(--teal)}
 .tile-2 .tile-title{white-space:nowrap}
+.tile-1 .tile-mid,.tile-2 .tile-mid,.tile-3 .tile-mid{position:absolute;top:38%;left:28px;right:28px}
 .tile-sub{
   font-size:.88rem;font-weight:300;
   color:var(--butter);line-height:1.65;
