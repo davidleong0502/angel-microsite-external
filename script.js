@@ -992,3 +992,17 @@ document.addEventListener('keydown', e => { if (e.key === 'Escape') closeReader(
     });
   });
 })();
+
+/* ── STRIP SCROLL AFFORDANCE ── */
+(function(){
+  const strip = document.querySelector('.landing-strip');
+  const outer = document.querySelector('.landing-strip-outer');
+  if (!strip || !outer) return;
+  function check(){
+    const atEnd = strip.scrollLeft + strip.clientWidth >= strip.scrollWidth - 1;
+    outer.classList.toggle('strip-end', atEnd);
+  }
+  strip.addEventListener('scroll', check, { passive: true });
+  window.addEventListener('resize', check);
+  check();
+})();

@@ -739,6 +739,30 @@ footer{
   letter-spacing:.02em;
   color:rgba(235,235,223,.38);
 }
+.landing-strip-outer{
+  position:relative;
+}
+.landing-strip-outer::after{
+  content:'';
+  position:absolute;right:0;top:0;bottom:0;width:80px;
+  background:linear-gradient(to right,transparent,rgba(14,21,32,.95));
+  pointer-events:none;z-index:1;
+  transition:opacity .35s;
+}
+.strip-scroll-chevron{
+  position:absolute;right:14px;top:50%;
+  transform:translateY(-50%) translateX(0);
+  color:var(--teal);font-size:1.3rem;line-height:1;
+  pointer-events:none;z-index:2;
+  transition:opacity .35s;
+  animation:chevron-nudge 2s ease-in-out infinite;
+}
+.landing-strip-outer.strip-end::after,
+.landing-strip-outer.strip-end .strip-scroll-chevron{opacity:0}
+@keyframes chevron-nudge{
+  0%,100%{transform:translateY(-50%) translateX(0)}
+  50%{transform:translateY(-50%) translateX(4px)}
+}
 .landing-strip{
   display:flex;gap:8px;
   padding:0 48px;
