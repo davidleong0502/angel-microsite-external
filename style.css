@@ -192,7 +192,8 @@ nav.nav-hidden{opacity:0;pointer-events:none}
 }
 .card-dark:hover .card-dark-link{letter-spacing:.12em}
 
-.panel-2 .panel-cards{display:grid;grid-template-columns:repeat(4,1fr);gap:24px}
+.panel-2 .panel-cards{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:1fr;gap:24px}
+.panel-2 .card-dark{min-width:0;max-width:none;min-height:360px}
 .panel-2 .card-light{min-width:0;max-width:none}
 
 .card-light{
