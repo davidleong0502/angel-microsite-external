@@ -352,6 +352,36 @@ const ISSUES = {
     ],
     signoff: { line: 'Clone, adapt, and share what works.', name: 'A&GEL Development Team' },
   },
+  'feature-prompting': {
+    issue: null, title: 'Prompting',
+    subtitle: 'A prompt without context is a guess. Here\'s the framework that changes that.',
+    date: '', readMins: 3, cover: 'assets/covers/issue-1.png',
+    glance: [
+      'Every effective prompt has four parts: <strong>Persona, Task, Context, and Format</strong>.',
+      'Context is the part only <em>you</em> can supply — it\'s where your expertise makes the difference.',
+      'A prompt without context is "prompt roulette" — technically valid, but unlikely to produce useful output.',
+      'Clone a prompt from the library, then adapt it with your matter\'s specific facts and legal framework.',
+    ],
+    sections: [
+      { kicker: '01 — The Framework', heading: 'Persona, Task, Context, Format', blocks: [
+        { p: 'Every effective prompt has four parts. Think of it as a checklist:' },
+        { p: '<strong>Persona</strong> — tell A&GEL what role to adopt. <em>"You are a litigation lawyer with 20 years of experience."</em> This shapes the tone, depth, and specificity of the output.' },
+        { p: '<strong>Task</strong> — describe what you want done, clearly and specifically.' },
+        { p: '<strong>Context</strong> — this is the part only you can supply. The specific legal framework, the commercial facts, the surrounding circumstances of the matter. A prompt without context is just a guess — what the team calls "prompt roulette". The quality of A&GEL\'s output is directly proportional to the quality of context you provide.' },
+        { p: '<strong>Format</strong> — specify how you want the output structured. A numbered list? A table? A draft clause? A concise paragraph? If you don\'t specify, A&GEL will default to a generic format that may not suit your workflow.' },
+      ]},
+      { kicker: '02 — Context in Practice', heading: 'The difference context makes', blocks: [
+        { p: 'Think of A&GEL as a capable assistant that needs the full picture to do its best work. Instead of asking simple questions, provide the specific background details that only you know — your key goals, the facts of the matter, what a "good" or "bad" answer looks like.' },
+        { p: 'The more legal content (e.g. a short summary of the applicable areas of law) and commercial context (e.g. the surrounding facts of the transaction or dispute) you supply, the more useful the output. When such context is provided, the quality of results can be night and day compared to basic prompting.' },
+        { callout: { kind: 'tip', title: 'Case summary example', body: 'When using a case summary prompt, add brief details of the legal issues you care about — e.g. the distinction between ratio decidendi and obiter dicta. Clone the prompt from the library, edit it to reflect your specific focus, and you will find the output far more targeted than using the prompt as-is.' } },
+      ]},
+      { kicker: '03 — Test & Improve', heading: 'Benchmark, then refine', blocks: [
+        { p: 'Test any prompt against a "model answer" you already have — a case summary you\'ve prepared, a clause you\'ve drafted previously. Run the prompt and compare the output against your benchmark. If it aligns, the prompt is well-developed. If not, identify the specific gaps and add context accordingly.' },
+        { p: 'Use the <strong>Improve My Prompt v1.0</strong> tool in the Prompt Library to further refine any prompt that isn\'t performing as expected.' },
+      ]},
+    ],
+    signoff: { line: 'You know your context best — put it in the prompt.', name: 'A&GEL Development Team' },
+  },
   'feature-guided-summary': {
     issue: null, title: 'Quick Info & Guided Summary',
     subtitle: 'A fast, sourced read of any single document — snapshot or steered.',
