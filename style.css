@@ -216,6 +216,8 @@ nav.nav-hidden{opacity:0;pointer-events:none}
   font-size:1rem;font-weight:600;color:var(--navy);margin-bottom:5px;
 }
 .card-light-body{font-size:.78rem;color:var(--bodymid);line-height:1.6}
+.card-light-rule{border:none;border-top:1px solid rgba(13,49,110,.1);margin:12px 0}
+.card-light-eg{font-size:.75rem;color:var(--bodymid);line-height:1.55}
 .card-light-link{
   display:inline-block;margin-top:12px;
   font-size:.7rem;font-weight:600;letter-spacing:.06em;
