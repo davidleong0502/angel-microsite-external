@@ -939,15 +939,23 @@ document.addEventListener('keydown', e => { if (e.key === 'Escape') closeReader(
       if (!cardId) return; // no card target — let href scroll to panel normally
 
       e.preventDefault();
+
+      // if the card has a reader article, open it directly
+      const issueId = this.dataset.issue;
+      if (issueId) {
+        openIssue(issueId);
+        return;
+      }
+
+      // otherwise scroll to the card and pulse it
       const card = document.getElementById(cardId);
       if (!card) return;
 
       card.scrollIntoView({ behavior: 'smooth', block: 'center' });
 
-      // wait for scroll to settle, then pulse the card
       setTimeout(() => {
         card.classList.remove('card-highlighted');
-        void card.offsetWidth; // force reflow so animation restarts
+        void card.offsetWidth;
         card.classList.add('card-highlighted');
         card.addEventListener('animationend', () => card.classList.remove('card-highlighted'), { once: true });
       }, 650);
