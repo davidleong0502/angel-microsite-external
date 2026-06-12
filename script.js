@@ -559,7 +559,7 @@ const ISSUES = {
     sections: [
       { kicker: '01 — Playbook', heading: 'Your house position, automated', blocks: [
         { p: 'Playbook lets you encode your team\'s negotiating and standard positions into a reusable review template. Once built, upload any contract and A&GEL applies the playbook — returning a Word document with proposed changes in tracked-changes format, ready for review and amendment.' },
-        { figure: { src: 'assets/i4/07_image008.jpg', caption: 'Playbook in action — reviewing amendments and comments with accepted/rejected/pending states.', wide: true } },
+        { figure: { src: 'assets/Playbook_VIMA.png', caption: 'Playbook in action — reviewing amendments and comments with accepted/rejected/pending states.', wide: true } },
         { callout: { kind: 'note', title: 'Full Playbook guide coming soon', body: 'The next A&GEL Insider issue will cover how to build a Playbook from scratch and how to put it to work on your team\'s matters.' } },
       ]},
     ],
