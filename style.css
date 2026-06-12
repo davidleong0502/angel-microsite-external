@@ -763,9 +763,11 @@ footer{
 }
 .tile-4:hover{background:rgba(0,154,197,.12);border-top-color:rgba(0,154,197,.45)}
 .tile-4 .tile-mid{flex-direction:row;align-items:center;gap:24px;flex:1}
-.tile-4 .tile-title{font-size:clamp(1.4rem,2vw,2rem);line-height:1;white-space:nowrap}
-.tile-4 .tile-sub{font-size:.88rem;max-width:400px;line-height:1.5;margin:0}
-.tile-4 .tile-enter{position:absolute;bottom:32px;right:32px}
+.tile-4 .tile-title{font-size:clamp(2.1rem,3vw,3rem);line-height:1;white-space:nowrap}
+.tile-4 .tile-sub{font-size:1.32rem;max-width:400px;line-height:1.5;margin:0}
+.tile-4-sub-row{display:flex;align-items:center;gap:12px}
+.tile-4 .tile-enter{position:static;color:rgba(235,235,223,.4)}
+.tile-4 .tile-enter svg{width:27px;height:27px}
 
 @media(max-width:768px){
   /* LANDING — fills viewport, tiles share space equally */
