@@ -639,7 +639,7 @@ footer{
 }
 .landing-tile{
   display:flex;flex-direction:column;justify-content:center;
-  padding:48px;
+  padding:48px 28px;
   text-decoration:none;
   position:relative;overflow:hidden;
   border-right:1px solid rgba(255,255,255,0.06);
@@ -691,6 +691,7 @@ footer{
 .tile-1:hover .tile-title{color:var(--teal)}
 .tile-2:hover .tile-title{color:var(--teal)}
 .tile-3:hover .tile-title{color:var(--teal)}
+.tile-2 .tile-title{white-space:nowrap}
 .tile-sub{
   font-size:.88rem;font-weight:300;
   color:var(--butter);line-height:1.65;
