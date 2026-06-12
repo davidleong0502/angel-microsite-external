@@ -767,7 +767,7 @@ footer{
 .tile-4 .tile-sub{font-size:.88rem;max-width:400px;line-height:1.65;margin:0}
 .tile-4-sub-row{display:flex;align-items:center;gap:12px}
 .tile-4 .tile-enter{position:static;color:rgba(235,235,223,.4)}
-.tile-4 .tile-enter svg{width:27px;height:27px}
+.tile-4 .tile-enter svg{width:18px;height:18px}
 
 @media(max-width:768px){
   /* LANDING — fills viewport, tiles share space equally */
