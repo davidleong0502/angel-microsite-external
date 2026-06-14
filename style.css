@@ -668,7 +668,7 @@ footer{
 .tile-1{background:linear-gradient(to bottom,rgba(12,18,28,.97) 0%,rgba(12,18,28,.90) 20%,rgba(12,18,28,.72) 50%,rgba(12,18,28,.40) 62%,rgba(12,18,28,.10) 74%,transparent 82%)}
 .tile-2{background:linear-gradient(to bottom,rgba(12,18,28,.97) 0%,rgba(12,18,28,.90) 20%,rgba(12,18,28,.72) 50%,rgba(12,18,28,.40) 62%,rgba(12,18,28,.10) 74%,transparent 82%)}
 .tile-1::before,.tile-2::before{content:'';position:absolute;inset:0;background-size:cover;background-position:center bottom;background-repeat:no-repeat;z-index:-1;animation:kb3 16s ease-in-out infinite alternate}
-.tile-1::before{background-image:url('assets/tile-bg-1.png')}
+.tile-1::before{background-image:url('assets/MI%20Rev%2039v430%201.svg');background-size:contain;background-position:center bottom}
 .tile-2::before{background-image:url('assets/tile-bg-2.png');animation-delay:-5s}
 .tile-3{background:linear-gradient(to bottom,rgba(12,18,28,.97) 0%,rgba(12,18,28,.90) 20%,rgba(12,18,28,.72) 50%,rgba(12,18,28,.40) 62%,rgba(12,18,28,.10) 74%,transparent 82%)}
 .tile-3-bg{position:absolute;inset:0;background-size:cover;background-position:center bottom;background-repeat:no-repeat;z-index:-1}
