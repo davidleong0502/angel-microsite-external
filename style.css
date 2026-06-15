@@ -55,7 +55,6 @@ nav.nav-hidden{opacity:0;pointer-events:none}
 .panel{
   min-height:100vh;
   scroll-snap-align:start;
-  scroll-margin-top:56px;
   position:relative;display:flex;
   flex-direction:column;justify-content:center;
   overflow:hidden;
