@@ -672,10 +672,10 @@ footer{
 .tile-2::before{background-image:url('assets/MI%20Rev%2039v430%202.svg');animation-delay:-5s}
 .tile-3{background:linear-gradient(to bottom,rgba(12,18,28,.97) 0%,rgba(12,18,28,.90) 20%,rgba(12,18,28,.72) 50%,rgba(12,18,28,.40) 62%,rgba(12,18,28,.10) 74%,transparent 82%)}
 .tile-3-bg{position:absolute;inset:0;background-size:cover;background-position:center bottom;background-repeat:no-repeat;z-index:-1}
-.tile-3-bg1{background-image:url('assets/tile-bg-3-bayfront.png');animation:kb3 8s linear infinite alternate,t3fade1 8s linear infinite}
-.tile-3-bg2{background-image:url('assets/tile-bg-3-sunlit.png');animation:kb3 8s linear infinite alternate,t3fade2 8s linear infinite;animation-delay:-2s,0s}
+.tile-3-bg1{background-image:url('assets/tile-bg-3-sunlit.png');animation:kb3 8s linear infinite alternate,t3fade1 8s linear infinite}
+.tile-3-bg2{background-image:url('assets/MI%20Rev%2039v412%201.svg');animation:kb3 8s linear infinite alternate,t3fade2 8s linear infinite;animation-delay:-2s,0s}
 .tile-3-bg3{background-image:url('assets/i-t42JGmZ-4K%201.svg');animation:kb3 8s linear infinite alternate,t3fade3 8s linear infinite;animation-delay:-4s,0s}
-.tile-3-bg4{background-image:url('assets/MI%20Rev%2039v412%201.svg');animation:kb3 8s linear infinite alternate,t3fade4 8s linear infinite;animation-delay:-6s,0s}
+.tile-3-bg4{background-image:url('assets/tile-bg-3-bayfront.png');animation:kb3 8s linear infinite alternate,t3fade4 8s linear infinite;animation-delay:-6s,0s}
 @keyframes kb3{0%{transform:scale(1) translate(0%,0%)}100%{transform:scale(1.1) translate(-1%,-0.5%)}}
 @keyframes t3fade1{0%,21%{opacity:1}25%,96%{opacity:0}100%{opacity:1}}
 @keyframes t3fade2{0%,21%{opacity:0}25%,46%{opacity:1}50%,100%{opacity:0}}
