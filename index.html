@@ -105,6 +105,10 @@
   <div class="panel-inner">
     <div class="panel-num rv">01 &mdash; Basics</div>
     <h2 class="panel-h rv d1">Start here.<br><em>Get going.</em></h2>
+    <div class="welcome-tally rv">
+      <span class="wt-bar"></span><span class="wt-bar"></span><span class="wt-bar"></span>
+      <span class="wt-text">3 things to know</span>
+    </div>
     <div class="panel-welcome rv d2">
       <p class="panel-welcome-intro">We&rsquo;re thrilled to have you here. As you begin exploring A&amp;GEL, we want to share a few thoughts to get you started on a good footing.</p>
       <h3 class="panel-welcome-h">Learning New Tools Takes Time &ndash; And That&rsquo;s Okay</h3>
@@ -140,7 +144,7 @@
         <p class="card-light-eg"><span class="card-eg-label">E.G.</span> Press the Chat icon on any file or folder to work in exactly that context.</p>
       </div>
       <a class="card-light" href="#" onclick="openIssue('feature-prompting');return false;">
-        <div class="card-thumb" style="background:linear-gradient(135deg,#1e3a4f 0%,#2C576E 100%)"></div>
+        <div class="card-thumb anim-prompt"><div class="prompt-line pl-a"></div><div class="prompt-line pl-b"></div><div class="prompt-line pl-c"></div><div class="prompt-cursor"></div></div>
         <div class="card-light-title">Prompting</div>
         <p class="card-light-body">Every effective prompt has four parts: Persona, Task, Context, and Format. Context is where your expertise comes in &mdash; a prompt without it is a guess.</p>
         <hr class="card-light-rule"/>
@@ -148,7 +152,7 @@
         <span class="card-light-link">See More &rarr;</span>
       </a>
       <a class="card-light" id="card-prompts" href="#" onclick="openIssue('feature-prompt-library');return false;">
-        <div class="card-thumb" style="background:linear-gradient(135deg,#1a4060 0%,#2C576E 100%)"></div>
+        <div class="card-thumb anim-library"><div class="lib-row"></div><div class="lib-row"></div><div class="lib-row"></div><div class="lib-row"></div></div>
         <div class="card-light-title">Prompt Library</div>
         <p class="card-light-body">Find, clone and adapt community-built prompts. Most are designed to be adapted, not used as-is &mdash; test against a benchmark, then refine.</p>
         <hr class="card-light-rule"/>
@@ -156,7 +160,7 @@
         <span class="card-light-link">See More &rarr;</span>
       </a>
       <a class="card-light" id="card-quickinfo" href="#" onclick="openIssue('feature-guided-summary');return false;">
-        <div class="card-thumb" style="background:linear-gradient(135deg,#0D316E 0%,#2C576E 100%)"></div>
+        <div class="card-thumb anim-sonar-wrap"><div class="sonar"><div class="sonar-c"></div><div class="sonar-r"></div><div class="sonar-r"></div><div class="sonar-r"></div></div></div>
         <div class="card-light-title">Quick Info / Guided Summary</div>
         <p class="card-light-body">A fast, sourced read of any single document. Quick Info for a snapshot; Guided Summary when you want to steer the focus.</p>
         <span class="card-light-link">See More &rarr;</span>
@@ -219,7 +223,7 @@
         <span class="card-dark-link">See More &rarr;</span>
       </a>
       <a class="card-dark" id="card-scopesummary" href="#" onclick="openIssue('feature-scopesummary');return false;">
-        <div class="card-thumb" style="background:linear-gradient(135deg,#1a4060 0%,#009AC5 100%)"></div>
+        <div class="card-thumb anim-scan"><div class="scan-line"></div><div class="scan-line"></div><div class="scan-line"></div><div class="scan-bar"></div></div>
         <div class="card-dark-title">Scope Summary</div>
         <p class="card-dark-body">Generate a structured summary scoped to your defined focus areas. Every extracted point carries a clickable inline citation to verify against the source.</p>
         <span class="card-dark-link">See More &rarr;</span>
@@ -279,7 +283,7 @@
         <span class="card-light-link">See More &rarr;</span>
       </a>
       <a class="wip-card" href="#" onclick="openIssue('feature-inline-ref');return false;">
-        <img class="wip-screenshot" src="assets/i5/04_image006.jpg" alt="Inline Referencing">
+        <div class="wip-anim"><div class="cite-anim"><div class="cite-line cl-long"></div><div class="cite-pin"><div class="cite-dot"></div><div class="cite-ring"></div><div class="cite-ring"></div></div><div class="cite-line cl-med"></div></div></div>
         <div class="wip-title">Inline Referencing</div>
         <div class="wip-sub">Deep Research, Timeline, Scope Summary, and Review now carry clickable pin-cite citations &mdash; verify any output against its source without leaving the page.</div>
         <span class="card-light-link">See More &rarr;</span>

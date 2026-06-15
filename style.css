@@ -253,20 +253,20 @@ a.wip-card{text-decoration:none;color:inherit}
   transform:translateY(-6px);
   box-shadow:0 0 28px rgba(0,154,197,.18);
 }
-.wip-anim{height:48px;display:flex;align-items:center}
-.orbit{width:40px;height:40px;position:relative;display:flex;align-items:center;justify-content:center}
-.orbit-c{width:10px;height:10px;background:var(--teal);border-radius:50%;opacity:.8}
+.wip-anim{height:55px;display:flex;align-items:center}
+.orbit{width:46px;height:46px;position:relative;display:flex;align-items:center;justify-content:center}
+.orbit-c{width:11.5px;height:11.5px;background:var(--teal);border-radius:50%;opacity:.8}
 .orbit-r{position:absolute;inset:0;border-radius:50%;border:1px dashed rgba(0,154,197,.35);animation:orb 4s linear infinite}
-.orbit-r::after{content:"";position:absolute;width:6px;height:6px;background:var(--teal);border-radius:50%;top:-3px;left:50%;transform:translateX(-50%)}
+.orbit-r::after{content:"";position:absolute;width:7px;height:7px;background:var(--teal);border-radius:50%;top:-3.5px;left:50%;transform:translateX(-50%)}
 @keyframes orb{to{transform:rotate(360deg)}}
-.sonar{width:40px;height:40px;position:relative;display:flex;align-items:center;justify-content:center}
-.sonar-c{width:10px;height:10px;background:var(--teal);border-radius:50%;z-index:1}
-.sonar-r{position:absolute;width:10px;height:10px;border:1.5px solid var(--teal);border-radius:50%;animation:son 2.4s ease-out infinite}
+.sonar{width:46px;height:46px;position:relative;display:flex;align-items:center;justify-content:center}
+.sonar-c{width:11.5px;height:11.5px;background:var(--teal);border-radius:50%;z-index:1}
+.sonar-r{position:absolute;width:11.5px;height:11.5px;border:1.5px solid var(--teal);border-radius:50%;animation:son 2.4s ease-out infinite}
 .sonar-r:nth-child(2){animation-delay:.8s}
 .sonar-r:nth-child(3){animation-delay:1.6s}
 @keyframes son{0%{transform:scale(1);opacity:.8}100%{transform:scale(4.5);opacity:0}}
-.bars{display:flex;align-items:flex-end;gap:4px;height:40px}
-.bar{width:7px;background:var(--teal);border-radius:2px 2px 0 0;opacity:.7}
+.bars{display:flex;align-items:flex-end;gap:5px;height:46px}
+.bar{width:8px;background:var(--teal);border-radius:2px 2px 0 0;opacity:.7}
 .bar:nth-child(1){animation:ba 1.8s ease-in-out infinite 0s}
 .bar:nth-child(2){animation:ba 1.8s ease-in-out infinite .3s}
 .bar:nth-child(3){animation:ba 1.8s ease-in-out infinite .6s}
@@ -281,8 +281,58 @@ a.wip-card{text-decoration:none;color:inherit}
   font-size:.58rem;font-weight:500;letter-spacing:.14em;text-transform:uppercase;
   padding:4px 12px;border-radius:40px;align-self:flex-start;
 }
-.wip-dot{width:5px;height:5px;background:var(--teal);border-radius:50%;animation:ld 1.8s ease-in-out infinite}
+.wip-dot{width:6px;height:6px;background:var(--teal);border-radius:50%;animation:ld 1.8s ease-in-out infinite}
 @keyframes ld{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.3;transform:scale(.6)}}
+
+/* NEW CARD ANIMATIONS */
+.anim-prompt{background:linear-gradient(135deg,#1e3a4f 0%,#2C576E 100%);display:flex;flex-direction:column;justify-content:center;padding:0 20px;gap:11px}
+.prompt-line{height:3px;background:rgba(0,154,197,.5);border-radius:2px;transform-origin:left;transform:scaleX(0)}
+.pl-a{width:75%;animation:pl-in 2.8s ease-in-out infinite}
+.pl-b{width:52%;animation:pl-in 2.8s ease-in-out infinite .5s}
+.pl-c{width:65%;animation:pl-in 2.8s ease-in-out infinite 1s}
+.prompt-cursor{width:2px;height:14px;background:var(--teal);border-radius:1px;animation:blink 1s step-end infinite}
+@keyframes pl-in{0%,100%{transform:scaleX(0);opacity:0}25%,75%{transform:scaleX(1);opacity:1}}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:0}}
+
+.anim-library{background:linear-gradient(135deg,#1a4060 0%,#2C576E 100%);display:flex;flex-direction:column;justify-content:center;padding:0 20px;gap:9px}
+.lib-row{height:3px;background:rgba(235,235,223,.15);border-radius:2px;position:relative;overflow:hidden}
+.lib-row:nth-child(1){width:88%}
+.lib-row:nth-child(2){width:68%}
+.lib-row:nth-child(3){width:82%}
+.lib-row:nth-child(4){width:50%}
+.lib-row::after{content:"";position:absolute;inset:0;background:rgba(0,154,197,.65);transform:translateX(-100%);animation:lib-slide 2.6s ease-in-out infinite}
+.lib-row:nth-child(1)::after{animation-delay:0s}
+.lib-row:nth-child(2)::after{animation-delay:.3s}
+.lib-row:nth-child(3)::after{animation-delay:.6s}
+.lib-row:nth-child(4)::after{animation-delay:.9s}
+@keyframes lib-slide{0%,100%{transform:translateX(-100%);opacity:0}30%,70%{transform:translateX(0);opacity:1}}
+
+.anim-sonar-wrap{background:linear-gradient(135deg,#0D316E 0%,#2C576E 100%);display:flex;align-items:center;justify-content:center}
+
+.anim-scan{background:linear-gradient(135deg,#1a4060 0%,#009AC5 100%);display:flex;flex-direction:column;justify-content:center;padding:0 20px;gap:8px;position:relative;overflow:hidden}
+.scan-line{height:3px;background:rgba(235,235,223,.2);border-radius:2px}
+.scan-line:nth-child(1){width:85%}
+.scan-line:nth-child(2){width:65%}
+.scan-line:nth-child(3){width:75%}
+.scan-bar{position:absolute;left:0;right:0;height:12px;background:rgba(0,154,197,.18);border-top:1px solid rgba(0,154,197,.5);border-bottom:1px solid rgba(0,154,197,.5);animation:scan-move 2s ease-in-out infinite alternate}
+@keyframes scan-move{0%{top:15%}100%{top:72%}}
+
+.cite-anim{display:flex;flex-direction:column;justify-content:center;gap:8px}
+.cite-line{height:3px;background:rgba(235,235,223,.25);border-radius:2px}
+.cl-long{width:80%}
+.cl-med{width:55%}
+.cite-pin{position:relative;width:46px;height:46px;display:flex;align-items:center;justify-content:center}
+.cite-dot{width:11.5px;height:11.5px;background:var(--teal);border-radius:50%;z-index:1}
+.cite-ring{position:absolute;width:11.5px;height:11.5px;border:1.5px solid var(--teal);border-radius:50%;animation:son 2.4s ease-out infinite}
+.cite-ring:nth-child(3){animation-delay:.8s}
+
+/* WELCOME TALLY */
+.welcome-tally{display:flex;align-items:center;gap:8px;margin-bottom:16px}
+.wt-bar{display:inline-block;height:3px;background:var(--teal);border-radius:2px}
+.wt-bar:nth-child(1){width:28px;opacity:.9}
+.wt-bar:nth-child(2){width:20px;opacity:.55}
+.wt-bar:nth-child(3){width:14px;opacity:.3}
+.wt-text{font-family:"JetBrains Mono",monospace;font-size:.62rem;letter-spacing:.16em;text-transform:uppercase;color:var(--teal)}
 
 /* SCROLL ARROW */
 .panel-scroll{
