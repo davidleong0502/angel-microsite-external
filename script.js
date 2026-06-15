@@ -208,6 +208,34 @@
 
 /* ── INSIDER READER ───────────────────────────────────────────── */
 const ISSUES = {
+  'basics-intro': {
+    issue: null, title: 'Welcome to A&GEL',
+    subtitle: 'A few thoughts to get you started on a good footing.',
+    date: '', readMins: 3, cover: 'assets/Frame 2718.svg',
+    glance: [
+      'Learning new tools takes time — we\'re here to support you every step.',
+      'A&GEL tools <strong>amplify your capabilities</strong> far beyond what was possible alone.',
+      'The best way to learn is to <strong>start using A&GEL</strong> — explore freely, make mistakes.',
+      'When teams embrace A&GEL together, the benefits compound for everyone.',
+    ],
+    sections: [
+      { kicker: '01 — Getting started', heading: 'Learning New Tools Takes Time – And That\'s Okay', blocks: [
+        { p: 'We\'re thrilled to have you here. As you begin exploring A&GEL, we want to share a few thoughts to get you started on a good footing.' },
+        { p: 'We know that getting comfortable with new technology can feel challenging at first. Please remember: we\'re here to support you every step of the way. Don\'t hesitate to reach out if you have questions or if you are ever stuck or would like us to walk you through something.' },
+        { figure: { src: 'assets/Frame%202718.svg', caption: '', wide: false } },
+        { p: 'AI tools like A&GEL <strong>are different</strong> from the ones before — they empower <strong>you directly</strong>. Think of it like having an army of assistants at your fingertips: they may not replace human judgment, but in many ways, they amplify your capabilities far beyond what was possible alone.' },
+        { p: '<strong>The best way to start learning is to start using A&GEL —</strong> we encourage you to explore freely. Try things out, make mistakes (the same safe kind), and discover what works best for you.' },
+      ]},
+      { kicker: '02 — Skill building', heading: 'Progress at Your Own Pace', blocks: [
+        { p: 'Think of skill-building like climbing a staircase. Start with the basics, and as you grow more confident, moving to the next level will feel much more natural. There\'s no rush — this isn\'t a race. Take the time you need to build a strong foundation.' },
+        { figure: { src: 'assets/Frame%202717%20(1).svg', caption: '', wide: false } },
+      ]},
+      { kicker: '03 — Community', heading: 'Together, We Can Go Further', blocks: [
+        { p: 'When teams and firms embrace A&GEL together, the benefits compound for everyone. Sharing knowledge and collaborating across your community of users creates a ripple effect that lifts all.' },
+      ]},
+    ],
+    signoff: { line: 'Welcome aboard — we\'re excited to see what we can accomplish with A&GEL.', name: 'Kok Leong<br>A&GEL Development Team' },
+  },
   'issue-1': {
     issue: 1, title: 'Context is (almost) Everything',
     subtitle: 'Prompting essentials — how context selection shapes everything A&GEL returns.',

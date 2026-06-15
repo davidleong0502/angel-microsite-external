@@ -120,12 +120,19 @@ nav.nav-hidden{opacity:0;pointer-events:none}
 }
 .panel-1 .panel-sub{color:var(--bodymid)}
 .panel-2 .panel-sub,.panel-3 .panel-sub{color:var(--muted)}
+.panel-welcome{max-width:640px;margin-bottom:48px}
+.panel-welcome-intro{font-size:1.05rem;font-weight:300;color:var(--bodymid);line-height:1.75;margin-bottom:28px}
+.panel-welcome-h{font-family:"Cormorant Garamond",serif;font-size:1.35rem;font-weight:600;color:var(--navy);margin:28px 0 10px;letter-spacing:-.01em}
+.panel-welcome-p{font-size:.95rem;font-weight:300;color:var(--bodymid);line-height:1.8;margin-bottom:12px}
+.panel-welcome-img{max-width:200px;height:auto;display:block;margin:18px 0}
+.panel-welcome-sig{font-size:.9rem;color:var(--bodymid);margin-top:24px;line-height:2}
 .panel-cta{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:56px}
 
 /* CARDS */
 .panel-cards{display:flex;gap:14px;flex-wrap:wrap}
 .panel-1 .panel-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
 .panel-1 .card-dark,.panel-1 .card-light{min-width:0;max-width:none}
+.panel-1 .card-featured{grid-column:1/-1;display:flex;flex-direction:row;align-items:center;gap:24px;justify-content:space-between}
 .card-thumb{
   display:block;width:calc(100% + 48px);
   margin:-22px -24px 16px;height:130px;
