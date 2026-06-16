@@ -1080,37 +1080,45 @@ document.addEventListener('keydown', e => { if (e.key === 'Escape') closeReader(
       lineEl.innerHTML='';
       extraEl.innerHTML='';
 
-      // 1. Wrap prefix + bad text in inline-block so bar matches text width
-      const wrap=document.createElement('span');
-      wrap.className='tw-bad-wrap';
-
+      // 1. Build bad content directly in lineEl (no wrapper)
       const badPrefixEl=document.createElement('strong');
       badPrefixEl.className='tw-prefix';
       badPrefixEl.textContent='This is ok:';
-      wrap.appendChild(badPrefixEl);
-      wrap.appendChild(document.createTextNode(' '));
+      lineEl.appendChild(badPrefixEl);
+      lineEl.appendChild(document.createTextNode(' '));
 
       const badTextEl=document.createElement('span');
       badTextEl.className='tw-text';
       badTextEl.textContent=bad;
-      wrap.appendChild(badTextEl);
+      lineEl.appendChild(badTextEl);
 
+      // Append strikeBar to lineEl (position:relative); position set after layout
       const strikeBar=document.createElement('span');
       strikeBar.className='tw-strike-bar';
-      wrap.appendChild(strikeBar);
+      lineEl.appendChild(strikeBar);
 
-      lineEl.appendChild(wrap);
-
-      // 2. Hold so reader can take it in
+      // 2. Hold — browser lays out text during this wait
       await sleep(1500);
       if(signal.cancelled) break;
 
-      // 3. Sweep strikethrough across prefix + text only
-      strikeBar.classList.add('tw-strike-active');
+      // 3. Measure text and position bar, then sweep
+      const lineRect   = lineEl.getBoundingClientRect();
+      const prefixRect = badPrefixEl.getBoundingClientRect();
+      const textRect   = badTextEl.getBoundingClientRect();
+
+      const barTop  = prefixRect.top - lineRect.top + prefixRect.height / 2 - 1;
+      const barLeft = prefixRect.left - lineRect.left;
+      const barWidth= textRect.right - prefixRect.left;
+
+      strikeBar.style.top  = barTop + 'px';
+      strikeBar.style.left = barLeft + 'px';
+      strikeBar.offsetWidth; // force reflow so transition fires from width:0
+      strikeBar.style.transition = 'width 600ms linear';
+      strikeBar.style.width = barWidth + 'px';
       await sleep(600);
       if(signal.cancelled) break;
 
-      // 4. Short pause, then reveal good version below (bad stays visible)
+      // 4. Short pause, then reveal good version below
       await sleep(400);
       if(signal.cancelled) break;
 
