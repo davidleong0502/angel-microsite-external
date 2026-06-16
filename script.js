@@ -1130,7 +1130,7 @@ document.addEventListener('keydown', e => { if (e.key === 'Escape') closeReader(
       goodWords.style.cssText = '';
 
       // Step 1: left slams in fast, right stays hidden
-      const ok1 = await slamIn(badWords, badUnits, false, 25, 'kt-word kt-word-fast', 60, signal);
+      const ok1 = await slamIn(badWords, badUnits, false, 40, 'kt-word kt-word-fast', 60, signal);
       if(!ok1 || signal.cancelled) break;
 
       // Step 2: pause, then reveal right column and slam it in slowly
