@@ -1066,58 +1066,70 @@ document.addEventListener('keydown', e => { if (e.key === 'Escape') closeReader(
     const rawLines = container.dataset.goodLines || '';
     const goodLines= rawLines ? rawLines.split('|||') : null;
 
-    const prefixEl = container.querySelector('.tw-prefix');
-    const textEl   = container.querySelector('.tw-text');
-    const cursorEl = container.querySelector('.tw-cursor');
-    const extraEl  = container.querySelector('.tw-extra-lines');
+    const lineEl = container.querySelector('.tw-line');
+    const extraEl= container.querySelector('.tw-extra-lines');
 
+    const cursorEl=container.querySelector('.tw-cursor');
     if(cursorEl) cursorEl.hidden=true;
 
-    const lineEl=prefixEl.parentElement; // the .tw-line <p>
+    let goodLine=null;
 
     while(!signal.cancelled){
       // Reset
-      const oldBar=lineEl.querySelector('.tw-strike-bar');
-      if(oldBar) oldBar.remove();
-      textEl.innerHTML='';
-      textEl.style.cssText='';
-      textEl.classList.remove('tw-good');
-      prefixEl.textContent='This is ok:';
+      if(goodLine){ goodLine.remove(); goodLine=null; }
+      lineEl.innerHTML='';
       extraEl.innerHTML='';
 
-      // 1. Bad text appears instantly; strike bar hangs off the full .tw-line
-      textEl.textContent=bad;
+      // 1. Wrap prefix + bad text in inline-block so bar matches text width
+      const wrap=document.createElement('span');
+      wrap.className='tw-bad-wrap';
+
+      const badPrefixEl=document.createElement('strong');
+      badPrefixEl.className='tw-prefix';
+      badPrefixEl.textContent='This is ok:';
+      wrap.appendChild(badPrefixEl);
+      wrap.appendChild(document.createTextNode(' '));
+
+      const badTextEl=document.createElement('span');
+      badTextEl.className='tw-text';
+      badTextEl.textContent=bad;
+      wrap.appendChild(badTextEl);
+
       const strikeBar=document.createElement('span');
       strikeBar.className='tw-strike-bar';
-      lineEl.appendChild(strikeBar);
+      wrap.appendChild(strikeBar);
+
+      lineEl.appendChild(wrap);
 
       // 2. Hold so reader can take it in
       await sleep(1500);
       if(signal.cancelled) break;
 
-      // 3. Sweep strikethrough across entire line (prefix + text) over 600ms
+      // 3. Sweep strikethrough across prefix + text only
       strikeBar.classList.add('tw-strike-active');
       await sleep(600);
       if(signal.cancelled) break;
 
-      // 4. Short pause, then fade out the line content
+      // 4. Short pause, then reveal good version below (bad stays visible)
       await sleep(400);
       if(signal.cancelled) break;
-      textEl.style.transition='opacity 300ms ease';
-      textEl.style.opacity='0';
-      await sleep(320);
-      if(signal.cancelled) break;
 
-      // 5. Switch to good mode; remove strike bar
-      strikeBar.remove();
-      textEl.innerHTML='';
-      textEl.style.cssText='';
-      textEl.classList.add('tw-good');
-      prefixEl.textContent='But this is better:';
+      // 5. Insert good line after bad line
+      goodLine=document.createElement('p');
+      goodLine.className='tw-line';
+      const goodPrefixEl=document.createElement('strong');
+      goodPrefixEl.className='tw-prefix';
+      goodPrefixEl.textContent='But this is better:';
+      goodLine.appendChild(goodPrefixEl);
+      goodLine.appendChild(document.createTextNode(' '));
+      const goodTextEl=document.createElement('span');
+      goodTextEl.className='tw-text tw-good';
+      goodLine.appendChild(goodTextEl);
+      lineEl.insertAdjacentElement('afterend', goodLine);
 
       // 6. Reveal good words with fade + upward drift
       if(goodLines){
-        await revealWords(textEl, goodLines[0], signal);
+        await revealWords(goodTextEl, goodLines[0], signal);
         if(signal.cancelled) break;
         await sleep(250);
         for(let i=1;i<goodLines.length;i++){
@@ -1129,7 +1141,7 @@ document.addEventListener('keydown', e => { if (e.key === 'Escape') closeReader(
           await sleep(180);
         }
       } else {
-        await revealWords(textEl, good, signal);
+        await revealWords(goodTextEl, good, signal);
       }
 
       if(signal.cancelled) break;
@@ -1137,15 +1149,10 @@ document.addEventListener('keydown', e => { if (e.key === 'Escape') closeReader(
     }
 
     // Cleanup on exit
-    const oldBar=lineEl.querySelector('.tw-strike-bar');
-    if(oldBar) oldBar.remove();
-    textEl.innerHTML='';
-    textEl.style.cssText='';
-    textEl.classList.remove('tw-good');
-    prefixEl.textContent='This is ok:';
+    if(goodLine){ goodLine.remove(); goodLine=null; }
+    lineEl.innerHTML='';
     extraEl.innerHTML='';
   }
-
   const signals=new Map();
 
   const io=new IntersectionObserver(entries=>{

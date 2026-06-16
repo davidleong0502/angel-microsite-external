@@ -153,7 +153,7 @@ nav{
 .habit-example strong{color:rgba(13,49,110,.9);font-weight:500}
 /* Typewriter example blocks */
 .habit-typewriter{margin:16px 0 0}
-.tw-line{position:relative;font-size:.84rem;font-weight:300;line-height:1.8;margin:0}
+.tw-line{font-size:.84rem;font-weight:300;line-height:1.8;margin:0}
 .tw-prefix{font-weight:600;color:rgba(13,49,110,.8);margin-right:4px}
 .tw-text{color:rgba(13,49,110,.68)}
 .tw-text.tw-good{color:var(--teal)}
