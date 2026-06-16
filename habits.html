@@ -12,7 +12,7 @@ html{scroll-snap-type:none}
 .habits-page{
   min-height:100vh;
   background:var(--ink);
-  padding-top:42px;
+  padding-top:83px;
 }
 
 /* ── Page header ── */
@@ -48,7 +48,7 @@ html{scroll-snap-type:none}
 .habits-grid{
   display:grid;
   grid-template-columns:repeat(3,1fr);
-  min-height:calc(100vh - 42px - 210px);
+  min-height:calc(100vh - 83px - 210px);
 }
 .habit-tile{
   padding:48px 36px 64px;
@@ -216,11 +216,11 @@ html{scroll-snap-type:none}
           <li><strong>What about the query or instruction in my prompt itself? Does that count as &lsquo;giving something to A&amp;GEL?&rsquo;</strong> Yes. To AI tools like A&amp;GEL, the prompt is ingested/processed just as a series of words, so this means the entire prompt is just &lsquo;context&rsquo; for the AI tool or A&amp;GEL. If you are asking a question in your prompt, ask better questions and you will get better answers.</li>
         </ol>
         <div class="habit-section-label">Examples</div>
-        <div class="habit-example">
-          <p><strong>Don&rsquo;t do this:</strong> Asking A&amp;GEL to &ldquo;Review this clause&rdquo;</p>
-        </div>
-        <div class="habit-example">
-          <p><strong>Do this instead:</strong> &ldquo;Review this clause for the [customer], for [&hellip;]&rdquo; and state what the review should be looking out for (e.g. &ldquo;any issues that relate to fees or financial matters&rdquo;).</p>
+        <div class="habit-typewriter"
+          data-bad='Asking A&amp;GEL to &ldquo;Review this clause&rdquo;'
+          data-good='&ldquo;Review this clause for the [customer], for [&hellip;]&rdquo; and state what the review should be looking out for (e.g. &ldquo;any issues that relate to fees or financial matters&rdquo;).'>
+          <p class="tw-line"><strong class="tw-prefix">This is ok:</strong> <span class="tw-text"></span><span class="tw-cursor" aria-hidden="true">|</span></p>
+          <div class="tw-extra-lines"></div>
         </div>
       </div>
     </div>
@@ -237,17 +237,11 @@ html{scroll-snap-type:none}
         <p>Many users treat A&amp;GEL like a simple chatbot, typing one long prompt and hoping for the best. This is not the best way to use AI tools like A&amp;GEL. Advanced users break down complex tasks into smaller, manageable ones &ndash; so instead of one large prompt, have several sub-prompts. This technique, known as <em>decomposition</em>, often leads to higher quality results.</p>
         <img src="assets/group-2509.svg" alt="One Long Prompt" class="habit-svg-illus"/>
         <div class="habit-section-label">Examples</div>
-        <div class="habit-example">
-          <p><strong>Don&rsquo;t do this:</strong> &lsquo;One elaborate multi-part prompt like &ldquo;prepare a report that captures all my concerns from document 1 and 2 and then summarise the report to create an executive summary and combine both the full report and executive summary into one document&rdquo;&rsquo;</p>
-        </div>
-        <div class="habit-example">
-          <p><strong>Do this instead:</strong> chop up the prompt &ndash; break it down a little</p>
-          <ol class="habit-ol">
-            <li>summarise the concerns in document 1 and 2, one document at a time</li>
-            <li>draft a report combining both summaries</li>
-            <li>create an executive summary from the report</li>
-            <li>Append the executive summary to the start of the report</li>
-          </ol>
+        <div class="habit-typewriter"
+          data-bad='&lsquo;One elaborate multi-part prompt like &ldquo;prepare a report that captures all my concerns from document 1 and 2 and then summarise the report to create an executive summary and combine both the full report and executive summary into one document&rdquo;&rsquo;'
+          data-good-lines='chop up the prompt &ndash; break it down a little|||1. summarise the concerns in document 1 and 2, one document at a time|||2. draft a report combining both summaries|||3. create an executive summary from the report|||4. Append the executive summary to the start of the report'>
+          <p class="tw-line"><strong class="tw-prefix">This is ok:</strong> <span class="tw-text"></span><span class="tw-cursor" aria-hidden="true">|</span></p>
+          <div class="tw-extra-lines"></div>
         </div>
         <div class="habit-section-label">Coming Soon</div>
         <ul>

@@ -1040,3 +1040,92 @@ document.addEventListener('keydown', e => { if (e.key === 'Escape') closeReader(
   window.addEventListener('resize', check);
   check();
 })();
+
+/* ── TYPEWRITER EXAMPLES ── */
+(function(){
+  function sleep(ms){ return new Promise(r=>setTimeout(r,ms)); }
+
+  async function typeChars(el, text, ms){
+    for(const ch of [...text]){ el.textContent+=ch; await sleep(ms); }
+  }
+
+  async function deleteChars(el, ms){
+    const arr=[...el.textContent];
+    while(arr.length){ arr.pop(); el.textContent=arr.join(''); await sleep(ms); }
+  }
+
+  async function run(container){
+    const bad         = container.dataset.bad || '';
+    const good        = container.dataset.good || '';
+    const rawLines    = container.dataset.goodLines || '';
+    const goodLines   = rawLines ? rawLines.split('|||') : null;
+
+    const prefixEl = container.querySelector('.tw-prefix');
+    const textEl   = container.querySelector('.tw-text');
+    const cursorEl = container.querySelector('.tw-cursor');
+    const extraEl  = container.querySelector('.tw-extra-lines');
+
+    function showCursor(){ cursorEl.hidden=false; cursorEl.classList.add('tw-blink'); }
+    function solidCursor(){ cursorEl.hidden=false; cursorEl.classList.remove('tw-blink'); }
+    function hideCursor(){ cursorEl.hidden=true;  cursorEl.classList.remove('tw-blink'); }
+
+    while(true){
+      // Reset
+      textEl.textContent='';
+      textEl.classList.remove('tw-good');
+      prefixEl.textContent='This is ok:';
+      extraEl.innerHTML='';
+      showCursor();
+
+      // Type the bad prompt
+      await typeChars(textEl, bad, 30);
+
+      // Pause — solid cursor so reader can take it in
+      solidCursor();
+      await sleep(2000);
+
+      // Delete backwards
+      showCursor();
+      await deleteChars(textEl, 15);
+
+      // Switch to "good" mode
+      prefixEl.textContent='But this is better:';
+      textEl.classList.add('tw-good');
+
+      if(goodLines){
+        // Type first line in main span
+        await typeChars(textEl, goodLines[0], 30);
+        hideCursor();
+        await sleep(300);
+        // Type remaining lines one by one below
+        for(let i=1; i<goodLines.length; i++){
+          const line=document.createElement('div');
+          line.className='tw-extra-line';
+          extraEl.appendChild(line);
+          for(const ch of [...goodLines[i]]){
+            line.textContent+=ch;
+            await sleep(22);
+          }
+          await sleep(180);
+        }
+      } else {
+        await typeChars(textEl, good, 30);
+        hideCursor();
+      }
+
+      // Pause then loop
+      await sleep(4000);
+    }
+  }
+
+  // Trigger each typewriter block when it scrolls into view
+  const io=new IntersectionObserver(entries=>{
+    entries.forEach(entry=>{
+      if(!entry.isIntersecting) return;
+      io.unobserve(entry.target);
+      run(entry.target);
+    });
+  },{threshold:0.4});
+
+  document.querySelectorAll('.habit-typewriter').forEach(el=>io.observe(el));
+})();
