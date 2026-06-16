@@ -265,9 +265,8 @@ nav{
 
 /* CARDS */
 .panel-cards{display:flex;gap:14px;flex-wrap:wrap}
-.basics-cards-wrap .panel-cards{display:grid;grid-template-columns:repeat(6,1fr);gap:14px}
+.basics-cards-wrap .panel-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
 .basics-cards-wrap .card-light{min-width:0;max-width:none}
-.basics-cards-wrap .card-thumb{height:150px}
 .panel-1 .card-dark,.panel-1 .card-light{min-width:0;max-width:none}
 .panel-1 .card-featured{grid-column:1/-1;display:flex;flex-direction:row;align-items:center;gap:24px;justify-content:space-between}
 .card-thumb{
