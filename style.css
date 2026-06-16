@@ -62,13 +62,13 @@ nav{
 
 /* HABITS PANEL */
 .panel-habits{
-  background:var(--ink);
+  background:var(--sand);
   display:block;padding:0;
   justify-content:unset;min-height:unset;
 }
 .habits-header{
   padding:56px 60px 44px;
-  border-bottom:1px solid rgba(255,255,255,.06);
+  border-bottom:1px solid rgba(13,49,110,.1);
   display:flex;flex-direction:column;gap:12px;
 }
 .habits-eyebrow{
@@ -79,18 +79,18 @@ nav{
 .habits-page-title{
   font-family:"Cormorant Garamond",serif;
   font-size:clamp(2rem,3.8vw,3.2rem);font-weight:300;
-  color:var(--light);line-height:1.15;
+  color:var(--navy);line-height:1.15;
 }
 .habits-page-intro{
   max-width:680px;font-size:.92rem;font-weight:300;
-  color:rgba(235,235,223,.55);line-height:1.8;
+  color:rgba(13,49,110,.6);line-height:1.8;
 }
 .habits-grid{
   display:grid;grid-template-columns:repeat(3,1fr);
 }
 .habit-tile{
   padding:48px 36px 64px;
-  border-right:1px solid rgba(255,255,255,.06);
+  border-right:1px solid rgba(13,49,110,.1);
   position:relative;overflow:hidden;
 }
 .habit-tile:last-child{border-right:none}
@@ -99,10 +99,10 @@ nav{
 .habit-tile-2::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;
   background:linear-gradient(90deg,var(--navy),transparent)}
 .habit-tile-3::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;
-  background:linear-gradient(90deg,rgba(197,180,158,.5),transparent)}
-.habit-tile-1{background:linear-gradient(160deg,rgba(0,154,197,.07) 0%,transparent 50%)}
-.habit-tile-2{background:linear-gradient(160deg,rgba(13,49,110,.09) 0%,transparent 50%)}
-.habit-tile-3{background:linear-gradient(160deg,rgba(197,180,158,.06) 0%,transparent 50%)}
+  background:linear-gradient(90deg,rgba(13,49,110,.3),transparent)}
+.habit-tile-1{background:linear-gradient(160deg,rgba(0,154,197,.05) 0%,transparent 50%)}
+.habit-tile-2{background:linear-gradient(160deg,rgba(13,49,110,.05) 0%,transparent 50%)}
+.habit-tile-3{background:linear-gradient(160deg,rgba(168,159,149,.08) 0%,transparent 50%)}
 .habit-num{
   font-family:"JetBrains Mono",monospace;
   font-size:.62rem;letter-spacing:.25em;text-transform:uppercase;
@@ -111,13 +111,13 @@ nav{
 .habit-title{
   font-family:"Cormorant Garamond",serif;
   font-size:clamp(1.5rem,2vw,2.2rem);font-weight:400;
-  color:var(--light);line-height:1.2;margin-bottom:20px;
+  color:var(--navy);line-height:1.2;margin-bottom:20px;
 }
 .habit-intro{
   font-size:.86rem;font-weight:300;
-  color:rgba(235,235,223,.7);line-height:1.8;
+  color:rgba(13,49,110,.65);line-height:1.8;
   margin-bottom:28px;padding-bottom:28px;
-  border-bottom:1px solid rgba(255,255,255,.06);
+  border-bottom:1px solid rgba(13,49,110,.1);
 }
 .habit-section-label{
   font-family:"JetBrains Mono",monospace;
@@ -126,21 +126,21 @@ nav{
 }
 .habit-body p{
   font-size:.84rem;font-weight:300;
-  color:rgba(235,235,223,.58);line-height:1.8;margin-bottom:14px;
+  color:rgba(13,49,110,.68);line-height:1.8;margin-bottom:14px;
 }
 .habit-body ul{list-style:none;padding:0;margin:0 0 20px}
 .habit-body li{
   font-size:.82rem;font-weight:300;
-  color:rgba(235,235,223,.55);line-height:1.75;
+  color:rgba(13,49,110,.62);line-height:1.75;
   padding:9px 0 9px 20px;position:relative;
-  border-bottom:1px solid rgba(255,255,255,.04);
+  border-bottom:1px solid rgba(13,49,110,.07);
 }
 .habit-body li:last-child{border-bottom:none}
-.habit-body li::before{content:'—';position:absolute;left:0;color:var(--teal);opacity:.55}
+.habit-body li::before{content:'—';position:absolute;left:0;color:var(--teal);opacity:.6}
 .habit-body ol.habit-ol{padding:0 0 0 18px;margin:0 0 20px;display:flex;flex-direction:column;gap:10px}
-.habit-body ol.habit-ol li{font-size:.84rem;font-weight:300;color:rgba(235,235,223,.58);line-height:1.8;padding:0;border-bottom:none}
+.habit-body ol.habit-ol li{font-size:.84rem;font-weight:300;color:rgba(13,49,110,.62);line-height:1.8;padding:0;border-bottom:none}
 .habit-body ol.habit-ol li::before{display:none}
-.habit-section-sublabel{font-size:.84rem;font-weight:600;color:rgba(235,235,223,.75);margin:4px 0 12px}
+.habit-section-sublabel{font-size:.84rem;font-weight:600;color:rgba(13,49,110,.8);margin:4px 0 12px}
 .habit-svg-illus{width:100%;max-width:280px;display:block;margin:20px auto 24px}
 .habit-example{
   background:rgba(0,154,197,.06);
@@ -148,26 +148,26 @@ nav{
   border-radius:0 6px 6px 0;
   padding:12px 16px;margin:10px 0;
 }
-.habit-example p{margin:0 0 6px;font-size:.8rem;color:rgba(235,235,223,.6)}
+.habit-example p{margin:0 0 6px;font-size:.8rem;color:rgba(13,49,110,.65)}
 .habit-example p:last-child{margin-bottom:0}
-.habit-example strong{color:rgba(235,235,223,.85);font-weight:500}
+.habit-example strong{color:rgba(13,49,110,.9);font-weight:500}
 .habit-placeholder{
   display:flex;flex-direction:column;align-items:center;justify-content:center;
   text-align:center;padding:48px 24px;
-  border:1px dashed rgba(197,180,158,.15);border-radius:10px;margin-top:12px;
+  border:1px dashed rgba(13,49,110,.15);border-radius:10px;margin-top:12px;
 }
 .habit-placeholder-glyph{font-size:1.8rem;opacity:.18;margin-bottom:12px}
-.habit-placeholder p{font-size:.78rem;color:rgba(235,235,223,.2);line-height:1.6;margin:0}
+.habit-placeholder p{font-size:.78rem;color:rgba(13,49,110,.25);line-height:1.6;margin:0}
 .habits-continue{
   display:flex;align-items:center;justify-content:space-between;
-  padding:28px 60px;border-top:1px solid rgba(255,255,255,.06);
+  padding:28px 60px;border-top:1px solid rgba(13,49,110,.1);
 }
-.habits-continue-label{font-size:.8rem;font-weight:300;color:rgba(235,235,223,.35)}
+.habits-continue-label{font-size:.8rem;font-weight:300;color:rgba(13,49,110,.4)}
 .habits-continue-btn{
   font-size:.8rem;font-weight:500;letter-spacing:.04em;
-  color:rgba(235,235,223,.7);text-decoration:none;
+  color:rgba(13,49,110,.7);text-decoration:none;
   padding:9px 22px;border-radius:40px;
-  border:1px solid rgba(235,235,223,.18);
+  border:1px solid rgba(13,49,110,.2);
   transition:background .2s,color .2s,border-color .2s;
 }
 .habits-continue-btn:hover{background:var(--teal);color:#fff;border-color:var(--teal)}
