@@ -153,11 +153,10 @@ nav{
 .habit-example strong{color:rgba(13,49,110,.9);font-weight:500}
 /* Typewriter example blocks */
 .habit-typewriter{margin:16px 0 0}
-.tw-line{font-size:.84rem;font-weight:300;line-height:1.8;margin:0}
+.tw-line{position:relative;font-size:.84rem;font-weight:300;line-height:1.8;margin:0}
 .tw-prefix{font-weight:600;color:rgba(13,49,110,.8);margin-right:4px}
 .tw-text{color:rgba(13,49,110,.68)}
 .tw-text.tw-good{color:var(--teal)}
-.tw-bad-wrap{position:relative;display:inline-block}
 .tw-strike-bar{position:absolute;left:0;top:50%;height:2px;width:0;background:rgba(0,154,197,0.4);transform:translateY(-50%);transition:width 600ms linear;pointer-events:none}
 .tw-strike-bar.tw-strike-active{width:100%}
 .tw-extra-lines{margin-top:6px;display:flex;flex-direction:column;gap:2px}

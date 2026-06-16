@@ -1073,33 +1073,34 @@ document.addEventListener('keydown', e => { if (e.key === 'Escape') closeReader(
 
     if(cursorEl) cursorEl.hidden=true;
 
+    const lineEl=prefixEl.parentElement; // the .tw-line <p>
+
     while(!signal.cancelled){
       // Reset
+      const oldBar=lineEl.querySelector('.tw-strike-bar');
+      if(oldBar) oldBar.remove();
       textEl.innerHTML='';
       textEl.style.cssText='';
       textEl.classList.remove('tw-good');
       prefixEl.textContent='This is ok:';
       extraEl.innerHTML='';
 
-      // 1. Bad text appears instantly inside a relative wrapper
-      const badWrap=document.createElement('span');
-      badWrap.className='tw-bad-wrap';
-      badWrap.appendChild(document.createTextNode(bad));
+      // 1. Bad text appears instantly; strike bar hangs off the full .tw-line
+      textEl.textContent=bad;
       const strikeBar=document.createElement('span');
       strikeBar.className='tw-strike-bar';
-      badWrap.appendChild(strikeBar);
-      textEl.appendChild(badWrap);
+      lineEl.appendChild(strikeBar);
 
       // 2. Hold so reader can take it in
       await sleep(1500);
       if(signal.cancelled) break;
 
-      // 3. Sweep strikethrough left → right over 600ms
+      // 3. Sweep strikethrough across entire line (prefix + text) over 600ms
       strikeBar.classList.add('tw-strike-active');
       await sleep(600);
       if(signal.cancelled) break;
 
-      // 4. Short pause, then fade out bad text
+      // 4. Short pause, then fade out the line content
       await sleep(400);
       if(signal.cancelled) break;
       textEl.style.transition='opacity 300ms ease';
@@ -1107,7 +1108,8 @@ document.addEventListener('keydown', e => { if (e.key === 'Escape') closeReader(
       await sleep(320);
       if(signal.cancelled) break;
 
-      // 5. Switch to good mode
+      // 5. Switch to good mode; remove strike bar
+      strikeBar.remove();
       textEl.innerHTML='';
       textEl.style.cssText='';
       textEl.classList.add('tw-good');
@@ -1120,10 +1122,10 @@ document.addEventListener('keydown', e => { if (e.key === 'Escape') closeReader(
         await sleep(250);
         for(let i=1;i<goodLines.length;i++){
           if(signal.cancelled) break;
-          const lineEl=document.createElement('div');
-          lineEl.className='tw-extra-line';
-          extraEl.appendChild(lineEl);
-          await revealWords(lineEl, goodLines[i], signal);
+          const extraLineEl=document.createElement('div');
+          extraLineEl.className='tw-extra-line';
+          extraEl.appendChild(extraLineEl);
+          await revealWords(extraLineEl, goodLines[i], signal);
           await sleep(180);
         }
       } else {
@@ -1135,6 +1137,8 @@ document.addEventListener('keydown', e => { if (e.key === 'Escape') closeReader(
     }
 
     // Cleanup on exit
+    const oldBar=lineEl.querySelector('.tw-strike-bar');
+    if(oldBar) oldBar.remove();
     textEl.innerHTML='';
     textEl.style.cssText='';
     textEl.classList.remove('tw-good');
