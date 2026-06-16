@@ -26,15 +26,15 @@ nav{
   position:fixed;top:0;left:0;right:0;z-index:500;
   height:83px;display:flex;align-items:center;justify-content:flex-end;
   padding:0 48px;
-  background:rgba(68,34,18,0.96);
+  background:rgba(208,198,186,0.97);
   backdrop-filter:blur(20px);
-  border-bottom:1px solid rgba(255,255,255,0.06);
+  border-bottom:1px solid rgba(0,0,0,0.08);
   transition:border-color .4s,opacity .4s;
 }
 .nav-insider-logo{height:26px;display:block;flex-shrink:0;}
 .nav-labels{display:flex;gap:4px}
 .nav-label{
-  color:rgba(235,235,223,.45);text-decoration:none;
+  color:rgba(13,49,110,.6);text-decoration:none;
   font-size:.75rem;font-weight:500;letter-spacing:.05em;
   padding:6px 16px;border-radius:40px;white-space:nowrap;
   transition:background .2s,color .2s;
@@ -43,7 +43,7 @@ nav{
 .nav-dots{display:flex;align-items:center;gap:6px}
 .nav-dot{
   width:8px;height:8px;border-radius:50%;
-  background:rgba(235,235,223,.2);border:none;cursor:pointer;
+  background:rgba(13,49,110,.2);border:none;cursor:pointer;
   transition:background .25s,transform .25s;padding:0;
 }
 .nav-dot.on{background:var(--teal);transform:scale(1.3)}
