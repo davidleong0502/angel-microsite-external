@@ -706,7 +706,7 @@ footer{
 }
 .landing-logo-img{
   height:38px;display:block;
-  filter:brightness(1.5) drop-shadow(0 0 6px rgba(0,150,200,0.25));
+  filter:none;
 }
 .landing-insider{
   font-family:"Cormorant Garamond",serif;
