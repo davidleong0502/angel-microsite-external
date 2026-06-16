@@ -1,7 +1,6 @@
 
 
 (function(){
-  const nav=document.getElementById("nav");
   const panels=["panel1","panel2","panel3","panel4"];
   const dots=document.querySelectorAll(".nav-dot");
   const labels=document.querySelectorAll(".nav-label");
@@ -18,10 +17,6 @@
   });
 
   window.addEventListener("scroll",()=>{
-    const landing=document.getElementById("landing");
-    const pastLanding=scrollY>=(landing?landing.offsetHeight*0.8:0);
-    nav.classList.toggle("solid",pastLanding);
-    nav.classList.toggle("nav-hidden",!pastLanding);
     let cur=0;
     panels.forEach((id,i)=>{
       const el=document.getElementById(id);
@@ -29,8 +24,6 @@
     });
     setActive(cur);
   });
-  // set initial nav state
-  nav.classList.add("nav-hidden");
 })();
 
 (function(){

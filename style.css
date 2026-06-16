@@ -31,9 +31,7 @@ nav{
   border-bottom:1px solid rgba(255,255,255,0.06);
   transition:border-color .4s,opacity .4s;
 }
-nav.nav-hidden{opacity:0;pointer-events:none}
-.nav-logo{cursor:pointer;text-decoration:none}
-.nav-logo img{height:28px;display:block;}
+.nav-insider-logo{height:26px;display:block;flex-shrink:0;}
 .nav-labels{display:flex;gap:4px}
 .nav-label{
   color:rgba(235,235,223,.45);text-decoration:none;
