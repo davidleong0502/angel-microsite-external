@@ -699,7 +699,7 @@ footer{
   gap:0;overflow:hidden;
 }
 .landing-logo{
-  position:absolute;top:36px;left:48px;z-index:10;
+  position:absolute;top:36px;right:48px;z-index:10;
 }
 .landing-brand{
   display:flex;align-items:flex-end;gap:10px;
