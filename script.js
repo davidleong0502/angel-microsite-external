@@ -1045,20 +1045,21 @@ document.addEventListener('keydown', e => { if (e.key === 'Escape') closeReader(
 (function(){
   function sleep(ms){ return new Promise(r=>setTimeout(r,ms)); }
 
-  async function typeChars(el, text, ms){
-    for(const ch of [...text]){ el.textContent+=ch; await sleep(ms); }
-  }
-
-  async function deleteChars(el, ms){
-    const arr=[...el.textContent];
-    while(arr.length){ arr.pop(); el.textContent=arr.join(''); await sleep(ms); }
+  async function typeWords(el, text, ms){
+    const words=text.split(' ');
+    let built='';
+    for(const word of words){
+      built=built?built+' '+word:word;
+      el.textContent=built;
+      await sleep(ms);
+    }
   }
 
   async function run(container){
-    const bad         = container.dataset.bad || '';
-    const good        = container.dataset.good || '';
-    const rawLines    = container.dataset.goodLines || '';
-    const goodLines   = rawLines ? rawLines.split('|||') : null;
+    const bad       = container.dataset.bad || '';
+    const good      = container.dataset.good || '';
+    const rawLines  = container.dataset.goodLines || '';
+    const goodLines = rawLines ? rawLines.split('|||') : null;
 
     const prefixEl = container.querySelector('.tw-prefix');
     const textEl   = container.querySelector('.tw-text');
@@ -1077,39 +1078,36 @@ document.addEventListener('keydown', e => { if (e.key === 'Escape') closeReader(
       extraEl.innerHTML='';
       showCursor();
 
-      // Type the bad prompt
-      await typeChars(textEl, bad, 30);
+      // Reveal bad prompt word by word
+      await typeWords(textEl, bad, 90);
 
       // Pause — solid cursor so reader can take it in
       solidCursor();
       await sleep(2000);
 
-      // Delete backwards
-      showCursor();
-      await deleteChars(textEl, 15);
+      // Instant clear
+      textEl.textContent='';
 
       // Switch to "good" mode
       prefixEl.textContent='But this is better:';
       textEl.classList.add('tw-good');
+      showCursor();
 
       if(goodLines){
-        // Type first line in main span
-        await typeChars(textEl, goodLines[0], 30);
+        // Reveal first line word by word
+        await typeWords(textEl, goodLines[0], 90);
         hideCursor();
-        await sleep(300);
-        // Type remaining lines one by one below
+        await sleep(250);
+        // Reveal remaining lines word by word with a gap between lines
         for(let i=1; i<goodLines.length; i++){
           const line=document.createElement('div');
           line.className='tw-extra-line';
           extraEl.appendChild(line);
-          for(const ch of [...goodLines[i]]){
-            line.textContent+=ch;
-            await sleep(22);
-          }
+          await typeWords(line, goodLines[i], 90);
           await sleep(180);
         }
       } else {
-        await typeChars(textEl, good, 30);
+        await typeWords(textEl, good, 90);
         hideCursor();
       }
 
