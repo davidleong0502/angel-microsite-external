@@ -24,9 +24,9 @@ body{font-family:"Inter",sans-serif;background:var(--ink);color:var(--light);ove
 /* NAV */
 nav{
   position:fixed;top:0;left:0;right:0;z-index:500;
-  height:56px;display:flex;align-items:center;justify-content:space-between;
+  height:56px;display:flex;align-items:center;justify-content:flex-end;
   padding:0 48px;
-  background:rgba(14,21,32,0.92);
+  background:rgba(38,28,20,0.92);
   backdrop-filter:blur(20px);
   border-bottom:1px solid rgba(255,255,255,0.06);
   transition:border-color .4s,opacity .4s;
