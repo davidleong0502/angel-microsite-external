@@ -1045,8 +1045,6 @@ document.addEventListener('keydown', e => { if (e.key === 'Escape') closeReader(
 (function(){
   function sleep(ms){ return new Promise(r=>setTimeout(r,ms)); }
 
-  const EXIT_EASE = 'cubic-bezier(0.4,0,1,1)';
-
   // delay: ms gap between each word; transitionMs: per-word CSS transition duration
   async function slamIn(wordsEl, units, addBreaks, delay, transitionMs, signal){
     const t = `opacity ${transitionMs}ms ease-out, transform ${transitionMs}ms ease-out`;
@@ -1129,50 +1127,52 @@ document.addEventListener('keydown', e => { if (e.key === 'Escape') closeReader(
     goodCol.style.opacity = '0';
     container.style.visibility = '';
 
-    while(!signal.cancelled){
-      // Reset both word containers
-      badWords.innerHTML = '';
-      badWords.style.cssText = '';
-      goodWords.innerHTML = '';
-      goodWords.style.cssText = '';
+    // Slam in plays once — no loop
+    const ok1 = await slamIn(badWords, badUnits, false, badDelay, badTrans, signal);
+    if(!ok1 || signal.cancelled){ container.innerHTML = ''; return; }
 
-      // Step 1: left slams in fast, right stays hidden
-      const ok1 = await slamIn(badWords, badUnits, false, badDelay, badTrans, signal);
-      if(!ok1 || signal.cancelled) break;
+    await sleep(500);
+    if(signal.cancelled){ container.innerHTML = ''; return; }
+    goodCol.style.transition = 'none';
+    goodCol.style.opacity = '1';
 
-      // Step 2: pause, then reveal right column and slam it in slowly
-      await sleep(500);
-      if(signal.cancelled) break;
+    const ok2 = await slamIn(goodWords, goodUnits, addBreaks, goodDelay, goodTrans, signal);
+    if(!ok2 || signal.cancelled){ container.innerHTML = ''; return; }
 
-      goodCol.style.transition = 'none';
-      goodCol.style.opacity = '1';
+    // Brief settle before idle animations kick in
+    await sleep(700);
+    if(signal.cancelled){ container.innerHTML = ''; return; }
 
-      const ok2 = await slamIn(goodWords, goodUnits, addBreaks, goodDelay, goodTrans, signal);
-      if(!ok2 || signal.cancelled) break;
+    // Sequential breathing wave — each span gets a staggered delay
+    // matching the order it appeared, so the wave re-traces the reveal
+    const badSpans  = [...badWords.querySelectorAll('.kt-word')];
+    const goodSpans = [...goodWords.querySelectorAll('.kt-word')];
+    [...badSpans, ...goodSpans].forEach((span, i) => {
+      span.style.transition = ''; // clear slam-in transition so animation owns the property
+      span.style.animationDelay = (i * 0.13) % 2.6 + 's';
+      span.classList.add('kt-word-breathe');
+    });
 
-      // Step 3: both visible — hold for reading
-      await sleep(3500);
-      if(signal.cancelled) break;
-
-      // Step 4: both exit simultaneously
-      const et = `transform 300ms ${EXIT_EASE}, opacity 300ms ${EXIT_EASE}`;
-      badWords.style.transition = et;
-      goodWords.style.transition = et;
-      badWords.offsetWidth; // single reflow triggers both transitions together
-      badWords.style.transform = 'rotateZ(8deg) translateX(-40px)';
-      badWords.style.opacity = '0';
-      goodWords.style.transform = 'rotateZ(8deg) translateX(-40px)';
-      goodWords.style.opacity = '0';
-      await sleep(320);
-      if(signal.cancelled) break;
-
-      // Step 5: brief pause, hide right col before next cycle
-      await sleep(300);
-      goodCol.style.transition = 'none';
-      goodCol.style.opacity = '0';
+    // Cursor proximity glow — casts a soft halo on words near the pointer
+    function glowHandler(e){
+      if(signal.cancelled){ container.removeEventListener('mousemove', glowHandler); return; }
+      const rect = container.getBoundingClientRect();
+      const mx = e.clientX - rect.left;
+      const my = e.clientY - rect.top;
+      badSpans.forEach(span => {
+        const r = span.getBoundingClientRect();
+        const d = Math.hypot(mx - (r.left + r.width/2 - rect.left), my - (r.top + r.height/2 - rect.top));
+        const t = Math.max(0, 1 - d / 140);
+        span.style.textShadow = t > 0.06 ? `0 0 ${Math.round(t*10)}px rgba(138,155,176,${(t*0.75).toFixed(2)})` : '';
+      });
+      goodSpans.forEach(span => {
+        const r = span.getBoundingClientRect();
+        const d = Math.hypot(mx - (r.left + r.width/2 - rect.left), my - (r.top + r.height/2 - rect.top));
+        const t = Math.max(0, 1 - d / 140);
+        span.style.textShadow = t > 0.06 ? `0 0 ${Math.round(t*14)}px rgba(0,154,197,${(t*0.65).toFixed(2)})` : '';
+      });
     }
-
-    container.innerHTML = '';
+    container.addEventListener('mousemove', glowHandler);
   }
 
   const signals = new Map();
