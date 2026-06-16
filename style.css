@@ -342,7 +342,7 @@ a.wip-card{text-decoration:none;color:inherit}
 .wt-bar:nth-child(1){width:28px;opacity:.9}
 .wt-bar:nth-child(2){width:20px;opacity:.55}
 .wt-bar:nth-child(3){width:14px;opacity:.3}
-.wt-text{font-family:"JetBrains Mono",monospace;font-size:.62rem;letter-spacing:.16em;text-transform:uppercase;color:var(--teal)}
+.wt-text{font-family:"JetBrains Mono",monospace;font-size:.775rem;letter-spacing:.16em;text-transform:uppercase;color:var(--teal)}
 
 /* SCROLL ARROW */
 .panel-scroll{
