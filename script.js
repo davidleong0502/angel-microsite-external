@@ -1047,84 +1047,90 @@ document.addEventListener('keydown', e => { if (e.key === 'Escape') closeReader(
 
   const EXIT_EASE = 'cubic-bezier(0.4,0,1,1)';
 
-  // Slam in word/line units one at a time; returns final upward drift (px) or null if cancelled
-  async function slamIn(block, units, isGood, signal){
-    let drift = 0;
+  // Slam in units as inline-block spans; addBreaks puts a <br> between units instead of a space
+  async function slamIn(wordsEl, units, addBreaks, signal){
     for(let i = 0; i < units.length; i++){
-      if(signal.cancelled) return null;
-      const el = document.createElement('div');
-      el.className = 'kt-word' + (isGood ? ' kt-word-good' : '');
-      el.textContent = units[i];
-      block.appendChild(el);
-      // Shift block upward as it grows so it feels like it expands from centre
-      drift = Math.min(i * 3, 30);
-      block.style.transform = `translateY(-${drift}px)`;
-      el.offsetWidth; // force reflow so CSS initial state registers before transition
-      el.classList.add('kt-word-in');
+      if(signal.cancelled) return false;
+      if(i > 0) wordsEl.appendChild(
+        addBreaks ? document.createElement('br') : document.createTextNode(' ')
+      );
+      const span = document.createElement('span');
+      span.className = 'kt-word';
+      span.textContent = units[i];
+      wordsEl.appendChild(span);
+      span.offsetWidth; // force reflow so initial CSS state registers before transition fires
+      span.classList.add('kt-word-in');
       await sleep(80);
     }
     await sleep(120); // let last word finish its 120ms transition
-    return drift;
+    return true;
   }
 
-  async function spinExit(block, drift){
-    block.style.transition = `transform 300ms ${EXIT_EASE},opacity 300ms ${EXIT_EASE}`;
-    block.offsetWidth; // force reflow so new transition applies before property change
-    block.style.transform = `translateY(-${drift}px) rotateZ(8deg) translateX(-40px)`;
-    block.style.opacity = '0';
+  async function spinExit(el){
+    el.style.transition = `transform 300ms ${EXIT_EASE},opacity 300ms ${EXIT_EASE}`;
+    el.offsetWidth; // force reflow so new transition takes effect before property changes
+    el.style.transform = 'rotateZ(8deg) translateX(-40px)';
+    el.style.opacity = '0';
     await sleep(320);
   }
 
+  async function loopCol(wordsEl, units, addBreaks, signal){
+    while(!signal.cancelled){
+      wordsEl.innerHTML = '';
+      wordsEl.style.cssText = ''; // clear exit transform/opacity from previous cycle
+
+      const ok = await slamIn(wordsEl, units, addBreaks, signal);
+      if(!ok || signal.cancelled) break;
+
+      await sleep(2000);
+      if(signal.cancelled) break;
+
+      await spinExit(wordsEl);
+      if(signal.cancelled) break;
+
+      await sleep(300);
+    }
+    wordsEl.innerHTML = '';
+    wordsEl.style.cssText = '';
+  }
+
   async function run(container, signal){
-    const bad = container.dataset.bad || '';
-    const good = container.dataset.good || '';
+    container.innerHTML = '';
+
+    const bad      = container.dataset.bad || '';
+    const good     = container.dataset.good || '';
     const rawLines = container.dataset.goodLines || '';
-    const badWords = bad.split(' ').filter(Boolean);
+    const badUnits  = bad.split(' ').filter(Boolean);
     const goodUnits = rawLines ? rawLines.split('|||') : good.split(' ').filter(Boolean);
 
-    while(!signal.cancelled){
-      container.innerHTML = '';
+    // Build two-column layout (DOM persists for the lifetime of this run)
+    const badCol = document.createElement('div');
+    badCol.className = 'kt-col';
+    const badLabel = document.createElement('div');
+    badLabel.className = 'kt-label';
+    badLabel.textContent = 'This is ok:';
+    const badWords = document.createElement('p');
+    badWords.className = 'kt-words kt-words-bad';
+    badCol.appendChild(badLabel);
+    badCol.appendChild(badWords);
 
-      // Phase 1 — bad prompt
-      const badLabel = document.createElement('div');
-      badLabel.className = 'kt-label';
-      badLabel.textContent = 'This is ok:';
-      container.appendChild(badLabel);
+    const goodCol = document.createElement('div');
+    goodCol.className = 'kt-col';
+    const goodLabel = document.createElement('div');
+    goodLabel.className = 'kt-label';
+    goodLabel.textContent = 'But this is better:';
+    const goodWords = document.createElement('p');
+    goodWords.className = 'kt-words kt-words-good';
+    goodCol.appendChild(goodLabel);
+    goodCol.appendChild(goodWords);
 
-      const badBlock = document.createElement('div');
-      badBlock.className = 'kt-block';
-      container.appendChild(badBlock);
+    container.appendChild(badCol);
+    container.appendChild(goodCol);
 
-      const d1 = await slamIn(badBlock, badWords, false, signal);
-      if(d1 === null || signal.cancelled) break;
-
-      await sleep(1500);
-      if(signal.cancelled) break;
-
-      await spinExit(badBlock, d1);
-      container.innerHTML = '';
-
-      await sleep(200);
-      if(signal.cancelled) break;
-
-      // Phase 2 — good prompt
-      const goodLabel = document.createElement('div');
-      goodLabel.className = 'kt-label';
-      goodLabel.textContent = 'But this is better:';
-      container.appendChild(goodLabel);
-
-      const goodBlock = document.createElement('div');
-      goodBlock.className = 'kt-block';
-      container.appendChild(goodBlock);
-
-      const d2 = await slamIn(goodBlock, goodUnits, true, signal);
-      if(d2 === null || signal.cancelled) break;
-
-      await sleep(4000);
-      if(signal.cancelled) break;
-    }
-
-    container.innerHTML = '';
+    // Left column starts immediately; right column starts 500ms later so user reads left→right
+    loopCol(badWords, badUnits, false, signal);
+    await sleep(500);
+    if(!signal.cancelled) loopCol(goodWords, goodUnits, !!rawLines, signal);
   }
 
   const signals = new Map();

@@ -152,12 +152,14 @@ nav{
 .habit-example p:last-child{margin-bottom:0}
 .habit-example strong{color:rgba(13,49,110,.9);font-weight:500}
 /* Kinetic typography example blocks */
-.habit-typewriter{margin:16px 0 0}
+.habit-typewriter{display:flex;gap:2rem;margin:16px 0 0;align-items:flex-start}
+.kt-col{flex:1;min-width:0}
 .kt-label{font-size:.84rem;font-weight:600;color:rgba(13,49,110,.8);margin-bottom:4px}
-.kt-block{display:flex;flex-direction:column;will-change:transform;transition:transform 150ms ease}
-.kt-word{font-size:.84rem;font-weight:300;line-height:1.5;color:rgba(13,49,110,.68);will-change:transform;opacity:0;transform:translateY(15px);transition:opacity 120ms ease-out,transform 120ms ease-out}
+.kt-words{font-size:.84rem;font-weight:300;line-height:1.6;margin:0;will-change:transform}
+.kt-words-bad{color:#8a9bb0}
+.kt-words-good{color:#009AC5;font-weight:500}
+.kt-word{display:inline-block;opacity:0;transform:translateY(15px);will-change:transform;transition:opacity 120ms ease-out,transform 120ms ease-out}
 .kt-word.kt-word-in{opacity:1;transform:translateY(0)}
-.kt-word.kt-word-good{color:#009AC5;font-weight:500}
 .habit-placeholder{
   display:flex;flex-direction:column;align-items:center;justify-content:center;
   text-align:center;padding:48px 24px;
