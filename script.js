@@ -1047,16 +1047,17 @@ document.addEventListener('keydown', e => { if (e.key === 'Escape') closeReader(
 
   const EXIT_EASE = 'cubic-bezier(0.4,0,1,1)';
 
-  // wordClass: 'kt-word kt-word-fast' or 'kt-word kt-word-slow'
-  // delay: ms gap between each word; transitionMs: CSS transition duration for final word wait
-  async function slamIn(wordsEl, units, addBreaks, delay, wordClass, transitionMs, signal){
+  // delay: ms gap between each word; transitionMs: per-word CSS transition duration
+  async function slamIn(wordsEl, units, addBreaks, delay, transitionMs, signal){
+    const t = `opacity ${transitionMs}ms ease-out, transform ${transitionMs}ms ease-out`;
     for(let i = 0; i < units.length; i++){
       if(signal.cancelled) return false;
       if(i > 0) wordsEl.appendChild(
         addBreaks ? document.createElement('br') : document.createTextNode(' ')
       );
       const span = document.createElement('span');
-      span.className = wordClass;
+      span.className = 'kt-word';
+      span.style.transition = t;
       span.textContent = units[i];
       wordsEl.appendChild(span);
       span.offsetWidth; // force reflow so initial CSS state registers before transition fires
@@ -1101,20 +1102,26 @@ document.addEventListener('keydown', e => { if (e.key === 'Escape') closeReader(
     container.appendChild(badCol);
     container.appendChild(goodCol);
 
+    // Per-container timing overrides (data-bad-delay, data-bad-trans, data-good-delay, data-good-trans)
+    const badDelay  = parseInt(container.dataset.badDelay)  || 40;
+    const badTrans  = parseInt(container.dataset.badTrans)  || 60;
+    const goodDelay = parseInt(container.dataset.goodDelay) || 240;
+    const goodTrans = parseInt(container.dataset.goodTrans) || 360;
+
     // Pre-render all content invisibly to measure and lock the container height
     // before the first animation frame — prevents any layout shift at any point
-    function prefill(el, units, cls, breaks){
+    function prefill(el, units, breaks){
       units.forEach((u, i) => {
         if(i > 0) el.appendChild(breaks ? document.createElement('br') : document.createTextNode(' '));
         const s = document.createElement('span');
-        s.className = `kt-word ${cls} kt-word-in`;
+        s.className = 'kt-word kt-word-in';
         s.textContent = u;
         el.appendChild(s);
       });
     }
     container.style.visibility = 'hidden';
-    prefill(badWords, badUnits, 'kt-word-fast', false);
-    prefill(goodWords, goodUnits, 'kt-word-slow', addBreaks);
+    prefill(badWords, badUnits, false);
+    prefill(goodWords, goodUnits, addBreaks);
     container.getBoundingClientRect(); // force layout
     container.style.minHeight = container.getBoundingClientRect().height + 'px';
     badWords.innerHTML = '';
@@ -1130,7 +1137,7 @@ document.addEventListener('keydown', e => { if (e.key === 'Escape') closeReader(
       goodWords.style.cssText = '';
 
       // Step 1: left slams in fast, right stays hidden
-      const ok1 = await slamIn(badWords, badUnits, false, 40, 'kt-word kt-word-fast', 60, signal);
+      const ok1 = await slamIn(badWords, badUnits, false, badDelay, badTrans, signal);
       if(!ok1 || signal.cancelled) break;
 
       // Step 2: pause, then reveal right column and slam it in slowly
@@ -1140,7 +1147,7 @@ document.addEventListener('keydown', e => { if (e.key === 'Escape') closeReader(
       goodCol.style.transition = 'none';
       goodCol.style.opacity = '1';
 
-      const ok2 = await slamIn(goodWords, goodUnits, addBreaks, 240, 'kt-word kt-word-slow', 360, signal);
+      const ok2 = await slamIn(goodWords, goodUnits, addBreaks, goodDelay, goodTrans, signal);
       if(!ok2 || signal.cancelled) break;
 
       // Step 3: both visible — hold for reading
