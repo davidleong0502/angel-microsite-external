@@ -1066,34 +1066,6 @@ document.addEventListener('keydown', e => { if (e.key === 'Escape') closeReader(
     return true;
   }
 
-  async function spinExit(el){
-    el.style.transition = `transform 300ms ${EXIT_EASE},opacity 300ms ${EXIT_EASE}`;
-    el.offsetWidth; // force reflow so new transition takes effect before property changes
-    el.style.transform = 'rotateZ(8deg) translateX(-40px)';
-    el.style.opacity = '0';
-    await sleep(320);
-  }
-
-  async function loopCol(wordsEl, units, addBreaks, signal){
-    while(!signal.cancelled){
-      wordsEl.innerHTML = '';
-      wordsEl.style.cssText = ''; // clear exit transform/opacity from previous cycle
-
-      const ok = await slamIn(wordsEl, units, addBreaks, signal);
-      if(!ok || signal.cancelled) break;
-
-      await sleep(15000);
-      if(signal.cancelled) break;
-
-      await spinExit(wordsEl);
-      if(signal.cancelled) break;
-
-      await sleep(300);
-    }
-    wordsEl.innerHTML = '';
-    wordsEl.style.cssText = '';
-  }
-
   async function run(container, signal){
     container.innerHTML = '';
 
@@ -1103,7 +1075,7 @@ document.addEventListener('keydown', e => { if (e.key === 'Escape') closeReader(
     const badUnits  = bad.split(' ').filter(Boolean);
     const goodUnits = rawLines ? rawLines.split('|||') : good.split(' ').filter(Boolean);
 
-    // Build two-column layout (DOM persists for the lifetime of this run)
+    // Build two-column layout — persists across loop cycles
     const badCol = document.createElement('div');
     badCol.className = 'kt-col';
     const badLabel = document.createElement('div');
@@ -1127,10 +1099,53 @@ document.addEventListener('keydown', e => { if (e.key === 'Escape') closeReader(
     container.appendChild(badCol);
     container.appendChild(goodCol);
 
-    // Left column starts immediately; right column starts 500ms later so user reads left→right
-    loopCol(badWords, badUnits, false, signal);
-    await sleep(500);
-    if(!signal.cancelled) loopCol(goodWords, goodUnits, !!rawLines, signal);
+    // Right column hidden until left finishes
+    goodCol.style.opacity = '0';
+
+    while(!signal.cancelled){
+      // Reset both word containers
+      badWords.innerHTML = '';
+      badWords.style.cssText = '';
+      goodWords.innerHTML = '';
+      goodWords.style.cssText = '';
+
+      // Step 1: left slams in, right stays hidden
+      const ok1 = await slamIn(badWords, badUnits, false, signal);
+      if(!ok1 || signal.cancelled) break;
+
+      // Step 2: pause, then reveal right column and slam it in
+      await sleep(500);
+      if(signal.cancelled) break;
+
+      goodCol.style.transition = 'none';
+      goodCol.style.opacity = '1';
+
+      const ok2 = await slamIn(goodWords, goodUnits, !!rawLines, signal);
+      if(!ok2 || signal.cancelled) break;
+
+      // Step 3: both visible — hold for reading
+      await sleep(3000);
+      if(signal.cancelled) break;
+
+      // Step 4: both exit simultaneously
+      const et = `transform 300ms ${EXIT_EASE}, opacity 300ms ${EXIT_EASE}`;
+      badWords.style.transition = et;
+      goodWords.style.transition = et;
+      badWords.offsetWidth; // single reflow triggers both transitions together
+      badWords.style.transform = 'rotateZ(8deg) translateX(-40px)';
+      badWords.style.opacity = '0';
+      goodWords.style.transform = 'rotateZ(8deg) translateX(-40px)';
+      goodWords.style.opacity = '0';
+      await sleep(320);
+      if(signal.cancelled) break;
+
+      // Step 5: brief pause, hide right col before next cycle
+      await sleep(300);
+      goodCol.style.transition = 'none';
+      goodCol.style.opacity = '0';
+    }
+
+    container.innerHTML = '';
   }
 
   const signals = new Map();
