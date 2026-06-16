@@ -1082,7 +1082,7 @@ document.addEventListener('keydown', e => { if (e.key === 'Escape') closeReader(
       const ok = await slamIn(wordsEl, units, addBreaks, signal);
       if(!ok || signal.cancelled) break;
 
-      await sleep(5000);
+      await sleep(15000);
       if(signal.cancelled) break;
 
       await spinExit(wordsEl);
