@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Just 3 Habits to Guide You On Your Journey — A&GEL Insider</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="style.css"/>
+<style>
+html{scroll-snap-type:none}
+
+.habits-page{
+  min-height:100vh;
+  background:var(--ink);
+  padding-top:83px;
+}
+
+/* ── Page header ── */
+.habits-header{
+  padding:56px 60px 44px;
+  border-bottom:1px solid rgba(255,255,255,.06);
+  display:flex;flex-direction:column;gap:12px;
+}
+.habits-eyebrow{
+  font-family:"JetBrains Mono",monospace;
+  font-size:.68rem;letter-spacing:.25em;text-transform:uppercase;
+  color:var(--teal);
+}
+.habits-page-title{
+  font-family:"Cormorant Garamond",serif;
+  font-size:clamp(2rem,3.8vw,3.2rem);font-weight:300;
+  color:var(--light);line-height:1.15;
+}
+.habits-page-intro{
+  max-width:680px;
+  font-size:.92rem;font-weight:300;
+  color:rgba(235,235,223,.55);line-height:1.8;
+}
+.habits-back{
+  display:inline-flex;align-items:center;gap:6px;
+  font-size:.75rem;font-weight:500;letter-spacing:.04em;
+  color:rgba(235,235,223,.35);text-decoration:none;
+  margin-bottom:8px;transition:color .2s;
+}
+.habits-back:hover{color:var(--teal)}
+
+/* ── 3-tile grid ── */
+.habits-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  min-height:calc(100vh - 83px - 210px);
+}
+.habit-tile{
+  padding:48px 36px 64px;
+  border-right:1px solid rgba(255,255,255,.06);
+  position:relative;overflow:hidden;
+}
+.habit-tile:last-child{border-right:none}
+
+/* Subtle colour accent top bar per tile */
+.habit-tile-1::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;
+  background:linear-gradient(90deg,var(--teal),transparent)}
+.habit-tile-2::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;
+  background:linear-gradient(90deg,var(--navy),transparent)}
+.habit-tile-3::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;
+  background:linear-gradient(90deg,rgba(197,180,158,.5),transparent)}
+
+/* Very subtle background tints (placeholder for photos) */
+.habit-tile-1{background:linear-gradient(160deg,rgba(0,154,197,.07) 0%,transparent 50%)}
+.habit-tile-2{background:linear-gradient(160deg,rgba(13,49,110,.09) 0%,transparent 50%)}
+.habit-tile-3{background:linear-gradient(160deg,rgba(197,180,158,.06) 0%,transparent 50%)}
+
+/* ── Tile typography ── */
+.habit-num{
+  font-family:"JetBrains Mono",monospace;
+  font-size:.62rem;letter-spacing:.25em;text-transform:uppercase;
+  color:var(--teal);margin-bottom:18px;opacity:.8;
+}
+.habit-title{
+  font-family:"Cormorant Garamond",serif;
+  font-size:clamp(1.5rem,2vw,2.2rem);font-weight:400;
+  color:var(--light);line-height:1.2;margin-bottom:20px;
+}
+.habit-intro{
+  font-size:.86rem;font-weight:300;
+  color:rgba(235,235,223,.7);line-height:1.8;
+  margin-bottom:28px;padding-bottom:28px;
+  border-bottom:1px solid rgba(255,255,255,.06);
+}
+.habit-section-label{
+  font-family:"JetBrains Mono",monospace;
+  font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--teal);margin:24px 0 10px;opacity:.8;
+}
+.habit-body p{
+  font-size:.84rem;font-weight:300;
+  color:rgba(235,235,223,.58);line-height:1.8;margin-bottom:14px;
+}
+.habit-body ul{
+  list-style:none;padding:0;margin:0 0 20px;
+}
+.habit-body li{
+  font-size:.82rem;font-weight:300;
+  color:rgba(235,235,223,.55);line-height:1.75;
+  padding:9px 0 9px 20px;position:relative;
+  border-bottom:1px solid rgba(255,255,255,.04);
+}
+.habit-body li:last-child{border-bottom:none}
+.habit-body li::before{
+  content:'—';position:absolute;left:0;
+  color:var(--teal);opacity:.55;
+}
+.habit-example{
+  background:rgba(0,154,197,.06);
+  border-left:2px solid rgba(0,154,197,.35);
+  border-radius:0 6px 6px 0;
+  padding:12px 16px;margin:10px 0;
+}
+.habit-example p{
+  margin:0;font-size:.8rem;
+  color:rgba(235,235,223,.6);
+}
+.habit-example strong{color:rgba(235,235,223,.85);font-weight:500}
+
+/* ── Placeholder tile ── */
+.habit-placeholder{
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  text-align:center;padding:60px 24px;
+  border:1px dashed rgba(197,180,158,.15);border-radius:10px;
+  margin-top:12px;
+}
+.habit-placeholder-glyph{
+  font-size:1.8rem;opacity:.18;margin-bottom:16px;
+}
+.habit-placeholder p{
+  font-size:.78rem;
+  color:rgba(235,235,223,.2);
+  line-height:1.6;margin:0;
+}
+
+/* ── Responsive ── */
+.habits-continue{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:28px 60px;
+  border-top:1px solid rgba(255,255,255,.06);
+}
+.habits-continue-label{
+  font-size:.8rem;font-weight:300;
+  color:rgba(235,235,223,.35);
+}
+.habits-continue-btn{
+  font-size:.8rem;font-weight:500;letter-spacing:.04em;
+  color:rgba(235,235,223,.7);text-decoration:none;
+  padding:9px 22px;border-radius:40px;
+  border:1px solid rgba(235,235,223,.18);
+  transition:background .2s,color .2s,border-color .2s;
+}
+.habits-continue-btn:hover{
+  background:var(--teal);color:#fff;border-color:var(--teal);
+}
+
+@media(max-width:900px){
+  .habits-grid{grid-template-columns:1fr}
+  .habit-tile{border-right:none;border-bottom:1px solid rgba(255,255,255,.06)}
+  .habit-tile:last-child{border-bottom:none}
+  .habits-header{padding:36px 24px 32px}
+  .habit-tile{padding:36px 24px 48px}
+}
+</style>
+</head>
+<body>
+
+<nav id="nav">
+  <div class="nav-right">
+    <div class="nav-labels">
+      <a href="index.html" class="nav-label">← Home</a>
+      <a href="index.html#panel1" class="nav-label">Basics</a>
+      <a href="index.html#panel2" class="nav-label">Want to Learn More?</a>
+      <a href="index.html#panel3" class="nav-label">What's New</a>
+      <a href="index.html#panel4" class="nav-label">Future Stuff</a>
+    </div>
+    <img src="assets/agel-insider-logo.svg" alt="A&GEL Insider" class="nav-insider-logo"/>
+  </div>
+</nav>
+
+<div class="habits-page">
+
+  <div class="habits-header">
+    <a href="index.html" class="habits-back">← Back to guide</a>
+    <div class="habits-eyebrow">3 Key Habits</div>
+    <h1 class="habits-page-title">Just 3 Habits to Guide You On Your Journey</h1>
+    <p class="habits-page-intro">Getting started with A&amp;GEL is about more than just typing a question and hitting enter in Chat. To truly harness the power of AI tools like A&amp;GEL, you need to shift how you think about interacting with AI.</p>
+  </div>
+
+  <div class="habits-grid">
+
+    <!-- ── Tile 1 ── -->
+    <div class="habit-tile habit-tile-1">
+      <div class="habit-num">Habit 01</div>
+      <h2 class="habit-title">Give A&amp;GEL Something to Work With</h2>
+      <p class="habit-intro">The most common mistake new users make is underestimating the importance of giving AI tools sufficient information to work with as a starting point. AI tools like A&amp;GEL are not mind-readers — they are <strong>pattern-matchers</strong>. Vague questions produce generic answers; rich, specific context produces precise, actionable results.</p>
+      <div class="habit-body">
+        <p>Let's call this starting point <strong>"context."</strong> Think of context as the raw material A&amp;GEL works with. When drafting a legal memo, don't just say "Summarize this case." Instead, upload the judgment, identify the key legal issue, and tell the AI who the audience is (or use pre-made prompts from the Prompt Library).</p>
+        <p>AI tools like A&amp;GEL empower <em>you</em> directly — they amplify your capabilities, but only if you provide the direction. Without context, the AI is like a brilliant lawyer who hasn't been briefed on the facts, or a capable colleague who lacks the background information needed to do the job.</p>
+        <div class="habit-section-label">3 Takeaways</div>
+        <ul>
+          <li><strong>Give A&amp;GEL specific documents before you prompt.</strong> Dragging and dropping a file onto Chat loads A&amp;GEL's short-term memory with only that document — like the K-drama episode you just watched (it's all you want to talk about today). This creates tunnel vision for accurate outputs.</li>
+          <li>Working with A&amp;GEL is not unlike working with a colleague — just as you would give a team member background information to help them along, the same applies here.</li>
+          <li><strong>Does your prompt itself count as context?</strong> Yes. To A&amp;GEL, the entire prompt is just a series of words to be processed. Ask better questions and you will get better answers.</li>
+        </ul>
+        <div class="habit-section-label">Examples</div>
+        <div class="habit-example">
+          <p><strong>&#x2715; Don't:</strong> "Review this clause"</p>
+        </div>
+        <div class="habit-example">
+          <p><strong>&#x2713; Do:</strong> "Review this clause for the customer for any issues that relate to fees or financial matters."</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── Tile 2 ── -->
+    <div class="habit-tile habit-tile-2">
+      <div class="habit-num">Habit 02</div>
+      <h2 class="habit-title">Use LLMs as &ldquo;Text Processors&rdquo;, Not Knowledge Engines</h2>
+      <p class="habit-intro">It is crucial to understand what Large Language Models (LLMs) actually are. They are not databases of truth, nor are they substitutes for human judgment. Instead, think of an LLM as a high-speed CPU or processor for language and basic cognitive tasks.</p>
+      <div class="habit-body">
+        <p>An LLM excels at structuring information, identifying patterns, drafting text, and organising complex data. It is a tool for <em>processing</em>, not for <em>deciding</em>. You remain the judge, the strategist, and the final authority. The AI handles the heavy lifting — rephrasing, summarising, extracting clauses — while you apply your expertise to validate the output.</p>
+        <p>This distinction is vital: trust the AI to process, but never outsource your judgment. AI tools "may not replace human judgment, but in many ways, they amplify your capabilities."</p>
+        <div class="habit-section-label">Takeaway: Break It Down</div>
+        <p>Many users treat A&amp;GEL like a simple chatbot, typing one long prompt and hoping for the best. Advanced users break down complex tasks into smaller, manageable ones. This technique, known as <em>decomposition</em>, often leads to higher quality results.</p>
+        <div class="habit-section-label">Examples</div>
+        <div class="habit-example">
+          <p><strong>&#x2715; Don't:</strong> "Prepare a report that captures all my concerns from document 1 and 2, summarise it into an executive summary, and combine both into one document."</p>
+        </div>
+        <div class="habit-example">
+          <p><strong>&#x2713; Do — break it down:</strong></p>
+          <p>1. Summarise the concerns in document 1 and 2, one at a time.</p>
+          <p>2. Draft a report combining both summaries.</p>
+          <p>3. Create an executive summary from the report.</p>
+          <p>4. Append the executive summary to the start of the report.</p>
+        </div>
+        <div class="habit-section-label">Coming Soon</div>
+        <ul>
+          <li>Reproduce — <em>to write</em></li>
+          <li>Scoring — <em>to write</em></li>
+          <li>Finding Stuff — <em>to write</em></li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- ── Tile 3 ── -->
+    <div class="habit-tile habit-tile-3">
+      <div class="habit-num">Habit 03</div>
+      <h2 class="habit-title">Don&rsquo;t Just Chat &mdash; Explore Other Features</h2>
+      <p class="habit-intro">By exploring features beyond simple chat — such as uploading documents, using specific templates, or iterating through steps — you gain granular control over the output.</p>
+      <div class="habit-body">
+        <p><strong>Experimentation is key.</strong> Please experiment and explore the other features freely and try things out. Many of the features under the Specialised Modes are tuned for more accuracy and thoroughness. Discover which features work best for your workflow, and don't be afraid to make mistakes.</p>
+        <p>Skill-building is like climbing a staircase — start with the basics, and as you grow more confident, you will naturally move to more advanced techniques.</p>
+        <p>By mastering context, respecting the AI's role as a processor, and breaking down complex tasks, you will transform A&amp;GEL from a novelty into an indispensable part of your daily practice.</p>
+        <div class="habit-placeholder">
+          <div class="habit-placeholder-glyph">&#x2736;</div>
+          <p>More content for this habit coming soon.</p>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /.habits-grid -->
+
+  <div class="habits-continue">
+    <span class="habits-continue-label">Ready to go further?</span>
+    <a href="index.html#panel2" class="habits-continue-btn">Want to Learn More? &rarr;</a>
+  </div>
+
+</div><!-- /.habits-page -->
+
+</body>
+</html>
