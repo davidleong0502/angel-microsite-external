@@ -170,6 +170,7 @@ nav{
 }
 .habit-placeholder-glyph{font-size:1.8rem;opacity:.18;margin-bottom:12px}
 .habit-placeholder p{font-size:.78rem;color:rgba(13,49,110,.25);line-height:1.6;margin:0}
+.basics-cards-wrap{background:var(--cream);padding:48px 0 64px}
 .habits-continue{
   display:flex;align-items:center;justify-content:space-between;
   padding:28px 60px;border-top:1px solid rgba(13,49,110,.1);
@@ -257,7 +258,7 @@ nav{
 
 /* CARDS */
 .panel-cards{display:flex;gap:14px;flex-wrap:wrap}
-.panel-1 .panel-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.basics-cards-wrap .panel-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
 .panel-1 .card-dark,.panel-1 .card-light{min-width:0;max-width:none}
 .panel-1 .card-featured{grid-column:1/-1;display:flex;flex-direction:row;align-items:center;gap:24px;justify-content:space-between}
 .card-thumb{
