@@ -1124,7 +1124,7 @@ document.addEventListener('keydown', e => { if (e.key === 'Escape') closeReader(
       if(!ok2 || signal.cancelled) break;
 
       // Step 3: both visible — hold for reading
-      await sleep(3000);
+      await sleep(16000);
       if(signal.cancelled) break;
 
       // Step 4: both exit simultaneously
