@@ -1075,6 +1075,7 @@ document.addEventListener('keydown', e => { if (e.key === 'Escape') closeReader(
     const rawLines = container.dataset.goodLines || '';
     const badUnits  = bad.split(' ').filter(Boolean);
     const goodUnits = rawLines ? rawLines.split('|||') : good.split(' ').filter(Boolean);
+    const addBreaks = !!rawLines;
 
     // Build two-column layout — persists across loop cycles
     const badCol = document.createElement('div');
@@ -1100,8 +1101,26 @@ document.addEventListener('keydown', e => { if (e.key === 'Escape') closeReader(
     container.appendChild(badCol);
     container.appendChild(goodCol);
 
-    // Right column hidden until left finishes
+    // Pre-render all content invisibly to measure and lock the container height
+    // before the first animation frame — prevents any layout shift at any point
+    function prefill(el, units, cls, breaks){
+      units.forEach((u, i) => {
+        if(i > 0) el.appendChild(breaks ? document.createElement('br') : document.createTextNode(' '));
+        const s = document.createElement('span');
+        s.className = `kt-word ${cls} kt-word-in`;
+        s.textContent = u;
+        el.appendChild(s);
+      });
+    }
+    container.style.visibility = 'hidden';
+    prefill(badWords, badUnits, 'kt-word-fast', false);
+    prefill(goodWords, goodUnits, 'kt-word-slow', addBreaks);
+    container.getBoundingClientRect(); // force layout
+    container.style.minHeight = container.getBoundingClientRect().height + 'px';
+    badWords.innerHTML = '';
+    goodWords.innerHTML = '';
     goodCol.style.opacity = '0';
+    container.style.visibility = '';
 
     while(!signal.cancelled){
       // Reset both word containers
@@ -1121,13 +1140,8 @@ document.addEventListener('keydown', e => { if (e.key === 'Escape') closeReader(
       goodCol.style.transition = 'none';
       goodCol.style.opacity = '1';
 
-      const ok2 = await slamIn(goodWords, goodUnits, !!rawLines, 240, 'kt-word kt-word-slow', 360, signal);
+      const ok2 = await slamIn(goodWords, goodUnits, addBreaks, 240, 'kt-word kt-word-slow', 360, signal);
       if(!ok2 || signal.cancelled) break;
-
-      // Pin container height after first full cycle so content below never jumps
-      if(!container.style.minHeight){
-        container.style.minHeight = container.getBoundingClientRect().height + 'px';
-      }
 
       // Step 3: both visible — hold for reading
       await sleep(3500);
