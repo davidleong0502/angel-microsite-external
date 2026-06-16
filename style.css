@@ -157,11 +157,13 @@ nav{
 .tw-prefix{font-weight:600;color:rgba(13,49,110,.8);margin-right:4px}
 .tw-text{color:rgba(13,49,110,.68)}
 .tw-text.tw-good{color:var(--teal)}
-.tw-cursor{color:var(--teal);font-weight:300}
-@keyframes tw-blink{0%,100%{opacity:1}50%{opacity:0}}
-.tw-blink{animation:tw-blink .7s step-end infinite}
+.tw-bad-wrap{position:relative;display:inline-block}
+.tw-strike-bar{position:absolute;left:0;top:50%;height:2px;width:0;background:rgba(0,154,197,0.4);transform:translateY(-50%);transition:width 600ms linear;pointer-events:none}
+.tw-strike-bar.tw-strike-active{width:100%}
 .tw-extra-lines{margin-top:6px;display:flex;flex-direction:column;gap:2px}
 .tw-extra-line{font-size:.84rem;font-weight:300;line-height:1.8;color:var(--teal)}
+.tw-word{display:inline-block;opacity:0;transform:translateY(5px);transition:opacity 200ms ease,transform 200ms ease;vertical-align:baseline}
+.tw-word.tw-word-in{opacity:1;transform:none}
 .habit-placeholder{
   display:flex;flex-direction:column;align-items:center;justify-content:center;
   text-align:center;padding:48px 24px;

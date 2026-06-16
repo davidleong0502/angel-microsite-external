@@ -1041,87 +1041,120 @@ document.addEventListener('keydown', e => { if (e.key === 'Escape') closeReader(
   check();
 })();
 
-/* ── TYPEWRITER EXAMPLES ── */
+/* ── TRACKED-CHANGES EXAMPLES ── */
 (function(){
   function sleep(ms){ return new Promise(r=>setTimeout(r,ms)); }
 
-  async function typeWords(el, text, ms){
+  async function revealWords(el, text, signal){
     const words=text.split(' ');
-    let built='';
-    for(const word of words){
-      built=built?built+' '+word:word;
-      el.textContent=built;
-      await sleep(ms);
+    for(let i=0;i<words.length;i++){
+      if(signal.cancelled) return;
+      if(i>0) el.appendChild(document.createTextNode(' '));
+      const span=document.createElement('span');
+      span.className='tw-word';
+      span.textContent=words[i];
+      el.appendChild(span);
+      span.offsetWidth; // force reflow so initial state registers before transition
+      span.classList.add('tw-word-in');
+      await sleep(90);
     }
   }
 
-  async function run(container){
-    const bad       = container.dataset.bad || '';
-    const good      = container.dataset.good || '';
-    const rawLines  = container.dataset.goodLines || '';
-    const goodLines = rawLines ? rawLines.split('|||') : null;
+  async function run(container, signal){
+    const bad      = container.dataset.bad || '';
+    const good     = container.dataset.good || '';
+    const rawLines = container.dataset.goodLines || '';
+    const goodLines= rawLines ? rawLines.split('|||') : null;
 
     const prefixEl = container.querySelector('.tw-prefix');
     const textEl   = container.querySelector('.tw-text');
     const cursorEl = container.querySelector('.tw-cursor');
     const extraEl  = container.querySelector('.tw-extra-lines');
 
-    function showCursor(){ cursorEl.hidden=false; cursorEl.classList.add('tw-blink'); }
-    function solidCursor(){ cursorEl.hidden=false; cursorEl.classList.remove('tw-blink'); }
-    function hideCursor(){ cursorEl.hidden=true;  cursorEl.classList.remove('tw-blink'); }
+    if(cursorEl) cursorEl.hidden=true;
 
-    while(true){
+    while(!signal.cancelled){
       // Reset
-      textEl.textContent='';
+      textEl.innerHTML='';
+      textEl.style.cssText='';
       textEl.classList.remove('tw-good');
       prefixEl.textContent='This is ok:';
       extraEl.innerHTML='';
-      showCursor();
 
-      // Reveal bad prompt word by word
-      await typeWords(textEl, bad, 90);
+      // 1. Bad text appears instantly inside a relative wrapper
+      const badWrap=document.createElement('span');
+      badWrap.className='tw-bad-wrap';
+      badWrap.appendChild(document.createTextNode(bad));
+      const strikeBar=document.createElement('span');
+      strikeBar.className='tw-strike-bar';
+      badWrap.appendChild(strikeBar);
+      textEl.appendChild(badWrap);
 
-      // Pause — solid cursor so reader can take it in
-      solidCursor();
-      await sleep(2000);
+      // 2. Hold so reader can take it in
+      await sleep(1500);
+      if(signal.cancelled) break;
 
-      // Instant clear
-      textEl.textContent='';
+      // 3. Sweep strikethrough left → right over 600ms
+      strikeBar.classList.add('tw-strike-active');
+      await sleep(600);
+      if(signal.cancelled) break;
 
-      // Switch to "good" mode
-      prefixEl.textContent='But this is better:';
+      // 4. Short pause, then fade out bad text
+      await sleep(400);
+      if(signal.cancelled) break;
+      textEl.style.transition='opacity 300ms ease';
+      textEl.style.opacity='0';
+      await sleep(320);
+      if(signal.cancelled) break;
+
+      // 5. Switch to good mode
+      textEl.innerHTML='';
+      textEl.style.cssText='';
       textEl.classList.add('tw-good');
-      showCursor();
+      prefixEl.textContent='But this is better:';
 
+      // 6. Reveal good words with fade + upward drift
       if(goodLines){
-        // Reveal first line word by word
-        await typeWords(textEl, goodLines[0], 90);
-        hideCursor();
+        await revealWords(textEl, goodLines[0], signal);
+        if(signal.cancelled) break;
         await sleep(250);
-        // Reveal remaining lines word by word with a gap between lines
-        for(let i=1; i<goodLines.length; i++){
-          const line=document.createElement('div');
-          line.className='tw-extra-line';
-          extraEl.appendChild(line);
-          await typeWords(line, goodLines[i], 90);
+        for(let i=1;i<goodLines.length;i++){
+          if(signal.cancelled) break;
+          const lineEl=document.createElement('div');
+          lineEl.className='tw-extra-line';
+          extraEl.appendChild(lineEl);
+          await revealWords(lineEl, goodLines[i], signal);
           await sleep(180);
         }
       } else {
-        await typeWords(textEl, good, 90);
-        hideCursor();
+        await revealWords(textEl, good, signal);
       }
 
-      // Pause then loop
+      if(signal.cancelled) break;
       await sleep(4000);
     }
+
+    // Cleanup on exit
+    textEl.innerHTML='';
+    textEl.style.cssText='';
+    textEl.classList.remove('tw-good');
+    prefixEl.textContent='This is ok:';
+    extraEl.innerHTML='';
   }
 
-  // Trigger each typewriter block when it scrolls into view
+  const signals=new Map();
+
   const io=new IntersectionObserver(entries=>{
     entries.forEach(entry=>{
-      if(!entry.isIntersecting) return;
-      io.unobserve(entry.target);
-      run(entry.target);
+      const el=entry.target;
+      if(entry.isIntersecting){
+        if(signals.has(el)) signals.get(el).cancelled=true;
+        const sig={cancelled:false};
+        signals.set(el,sig);
+        run(el,sig);
+      } else {
+        if(signals.has(el)) signals.get(el).cancelled=true;
+      }
     });
   },{threshold:0.4});
 
