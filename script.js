@@ -1158,14 +1158,12 @@ document.addEventListener('keydown', e => { if (e.key === 'Escape') closeReader(
   const io=new IntersectionObserver(entries=>{
     entries.forEach(entry=>{
       const el=entry.target;
-      if(entry.isIntersecting){
-        if(signals.has(el)) signals.get(el).cancelled=true;
-        const sig={cancelled:false};
-        signals.set(el,sig);
-        run(el,sig);
-      } else {
-        if(signals.has(el)) signals.get(el).cancelled=true;
-      }
+      if(!entry.isIntersecting) return;
+      // Cancel any in-flight loop and restart fresh
+      if(signals.has(el)) signals.get(el).cancelled=true;
+      const sig={cancelled:false};
+      signals.set(el,sig);
+      run(el,sig);
     });
   },{threshold:0.4});
 
