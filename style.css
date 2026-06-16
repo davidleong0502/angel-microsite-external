@@ -170,10 +170,7 @@ nav{
 }
 .habit-placeholder-glyph{font-size:1.8rem;opacity:.18;margin-bottom:12px}
 .habit-placeholder p{font-size:.78rem;color:rgba(13,49,110,.25);line-height:1.6;margin:0}
-.basics-cards-wrap{background:var(--sand);padding:56px 10vw 64px}
-.basics-cards-intro{margin-bottom:36px}
-.basics-cards-intro .habits-page-intro{max-width:560px}
-.basics-cards-wrap .panel-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.basics-cards-wrap{background:var(--sand);padding:48px 0 0}
 .habits-continue{
   display:flex;align-items:center;justify-content:space-between;
   padding:28px 60px;border-top:1px solid rgba(13,49,110,.1);
