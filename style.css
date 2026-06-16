@@ -137,6 +137,11 @@ nav{
 }
 .habit-body li:last-child{border-bottom:none}
 .habit-body li::before{content:'—';position:absolute;left:0;color:var(--teal);opacity:.55}
+.habit-body ol.habit-ol{padding:0 0 0 18px;margin:0 0 20px;display:flex;flex-direction:column;gap:10px}
+.habit-body ol.habit-ol li{font-size:.84rem;font-weight:300;color:rgba(235,235,223,.58);line-height:1.8;padding:0;border-bottom:none}
+.habit-body ol.habit-ol li::before{display:none}
+.habit-section-sublabel{font-size:.84rem;font-weight:600;color:rgba(235,235,223,.75);margin:4px 0 12px}
+.habit-svg-illus{width:100%;max-width:280px;display:block;margin:20px auto 24px}
 .habit-example{
   background:rgba(0,154,197,.06);
   border-left:2px solid rgba(0,154,197,.35);
