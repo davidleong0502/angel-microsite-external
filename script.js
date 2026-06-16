@@ -1,29 +1,127 @@
 
 
+/* ── SMOOTH SCROLL ENGINE ── */
 (function(){
-  const panels=["panel1","panel2","panel3","panel4"];
-  const dots=document.querySelectorAll(".nav-dot");
-  const labels=document.querySelectorAll(".nav-label");
+  const SECTIONS = ['landing','habits','panel1','panel2','panel3','panel4','misc'];
+  const NAV_IDS  = ['panel1','panel2','panel3','panel4'];
+  const DURATION = 860;
+  let isAnimating = false;
 
-  function setActive(i){
-    dots.forEach((d,j)=>d.classList.toggle("on",j===i));
-    labels.forEach((l,j)=>l.classList.toggle("on",j===i));
+  function ease(t){ return t<0.5?4*t*t*t:1-Math.pow(-2*t+2,3)/2; }
+
+  function getSectionEls(){ return SECTIONS.map(id=>document.getElementById(id)).filter(Boolean); }
+
+  function getCurrentIdx(){
+    const els=getSectionEls();
+    let idx=0;
+    for(let i=0;i<els.length;i++){
+      if(els[i].getBoundingClientRect().top<=window.innerHeight*0.45) idx=i;
+    }
+    return idx;
+  }
+
+  function animateTo(targetY){
+    const startY=window.scrollY, delta=targetY-startY;
+    if(Math.abs(delta)<2){isAnimating=false;return;}
+    isAnimating=true;
+    const t0=performance.now();
+    (function step(now){
+      const t=Math.min((now-t0)/DURATION,1);
+      window.scrollTo(0,startY+delta*ease(t));
+      t<1?requestAnimationFrame(step):(isAnimating=false);
+    })(t0);
+  }
+
+  function scrollToIdx(idx){
+    const els=getSectionEls();
+    if(idx<0||idx>=els.length) return;
+    animateTo(els[idx].offsetTop);
+  }
+
+  function scrollToId(id){
+    const i=SECTIONS.indexOf(id);
+    if(i>=0) scrollToIdx(i);
+    else{ const el=document.getElementById(id); if(el) animateTo(el.offsetTop); }
+  }
+
+  window._scrollToId=scrollToId;
+
+  // Wheel
+  let wheelAccum=0, wheelTimer=null;
+  window.addEventListener('wheel',function(e){
+    if(document.getElementById('reader').classList.contains('reader-visible')) return;
+    e.preventDefault();
+    if(isAnimating) return;
+    const px=e.deltaMode===1?e.deltaY*30:e.deltaMode===2?e.deltaY*window.innerHeight:e.deltaY;
+    wheelAccum+=px;
+    clearTimeout(wheelTimer);
+    wheelTimer=setTimeout(()=>{wheelAccum=0;},100);
+    if(Math.abs(wheelAccum)<35) return;
+    const dir=wheelAccum>0?1:-1;
+    wheelAccum=0;
+    scrollToIdx(Math.max(0,Math.min(SECTIONS.length-1,getCurrentIdx()+dir)));
+  },{passive:false});
+
+  // Touch
+  let touchY0=0;
+  window.addEventListener('touchstart',e=>{touchY0=e.touches[0].clientY;},{passive:true});
+  window.addEventListener('touchend',function(e){
+    if(isAnimating||document.getElementById('reader').classList.contains('reader-visible')) return;
+    const dy=touchY0-e.changedTouches[0].clientY;
+    if(Math.abs(dy)<40) return;
+    scrollToIdx(Math.max(0,Math.min(SECTIONS.length-1,getCurrentIdx()+(dy>0?1:-1))));
+  },{passive:true});
+
+  // Keyboard
+  document.addEventListener('keydown',function(e){
+    if(e.key!=='ArrowDown'&&e.key!=='ArrowUp') return;
+    if(document.getElementById('reader').classList.contains('reader-visible')) return;
+    if(['INPUT','TEXTAREA','SELECT'].includes(document.activeElement.tagName)) return;
+    e.preventDefault();
+    if(isAnimating) return;
+    scrollToIdx(getCurrentIdx()+(e.key==='ArrowDown'?1:-1));
+  });
+
+  // Nav dots
+  const dots=document.querySelectorAll('.nav-dot');
+  const labels=document.querySelectorAll('.nav-label');
+
+  function setActive(navIdx){
+    dots.forEach((d,i)=>d.classList.toggle('on',i===navIdx));
+    labels.forEach((l,i)=>l.classList.toggle('on',i===navIdx));
   }
 
   dots.forEach(d=>{
-    d.addEventListener("click",()=>{
-      document.getElementById(panels[parseInt(d.dataset.panel)]).scrollIntoView({behavior:"smooth"});
+    d.addEventListener('click',()=>scrollToId(NAV_IDS[parseInt(d.dataset.panel)]));
+  });
+
+  labels.forEach(l=>{
+    l.addEventListener('click',function(e){
+      const id=(this.getAttribute('href')||'').replace('#','');
+      if(document.getElementById(id)){e.preventDefault();scrollToId(id);}
     });
   });
 
-  window.addEventListener("scroll",()=>{
-    let cur=0;
-    panels.forEach((id,i)=>{
-      const el=document.getElementById(id);
-      if(el&&scrollY>=el.offsetTop-window.innerHeight/2) cur=i;
-    });
-    setActive(cur);
+  // Intercept all in-page anchor clicks (Let's begin, habits-continue, etc.)
+  document.addEventListener('click',function(e){
+    const a=e.target.closest('a[href^="#"]');
+    if(!a||a.classList.contains('nav-label')||a.classList.contains('strip-pill')||a.closest('#reader')) return;
+    const id=a.getAttribute('href').replace('#','');
+    const el=document.getElementById(id);
+    if(!el) return;
+    e.preventDefault();
+    scrollToId(id);
   });
+
+  // Scroll spy
+  window.addEventListener('scroll',function(){
+    let navIdx=-1;
+    NAV_IDS.forEach((id,i)=>{
+      const el=document.getElementById(id);
+      if(el&&window.scrollY>=el.offsetTop-window.innerHeight/2) navIdx=i;
+    });
+    setActive(navIdx);
+  },{passive:true});
 })();
 
 (function(){
@@ -956,38 +1054,6 @@ function closeReader() {
 
 document.addEventListener('keydown', e => { if (e.key === 'Escape') closeReader(); });
 
-/* ── KEYBOARD SCROLL ── */
-(function(){
-  const SECTIONS = ['landing','panel1','panel2','panel3','panel4','misc'];
-  let scrolling = false;
-
-  document.addEventListener('keydown', function(e) {
-    if (e.key !== 'ArrowDown' && e.key !== 'ArrowUp') return;
-    // Don't intercept if reader is open or user is in a text input
-    if (document.getElementById('reader').classList.contains('reader-visible')) return;
-    if (['INPUT','TEXTAREA','SELECT'].includes(document.activeElement.tagName)) return;
-
-    e.preventDefault();
-    if (scrolling) return;
-
-    const els = SECTIONS.map(id => document.getElementById(id)).filter(Boolean);
-
-    let currentIdx = 0;
-    for (let i = 0; i < els.length; i++) {
-      if (els[i].getBoundingClientRect().top <= 10) currentIdx = i;
-    }
-
-    const targetIdx = e.key === 'ArrowDown'
-      ? Math.min(currentIdx + 1, els.length - 1)
-      : Math.max(currentIdx - 1, 0);
-
-    if (targetIdx === currentIdx) return;
-
-    scrolling = true;
-    els[targetIdx].scrollIntoView({ behavior: 'smooth', block: 'start' });
-    setTimeout(() => { scrolling = false; }, 800);
-  });
-})();
 
 /* ── PILL STRIP ── */
 (function(){
