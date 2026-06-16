@@ -841,9 +841,21 @@ function renderBlock(b, hId) {
 
 let _tocSpyCleanup = null;
 
-function openIssue(id) {
+function openIssue(id, triggerEl) {
   const issue = ISSUES[id];
   if (!issue) return;
+
+  // Determine whether the triggering card lives on a beige panel
+  let isLight = false;
+  if (triggerEl) {
+    const cl = triggerEl.classList;
+    if (cl.contains('card-light') || cl.contains('wip-card')) {
+      isLight = true;
+    } else if (cl.contains('strip-pill')) {
+      const href = triggerEl.getAttribute('href') || '';
+      isLight = href === '#panel1' || href === '#panel3';
+    }
+  }
   const reader = document.getElementById('reader');
   document.getElementById('reader-cover').src = issue.cover;
   document.getElementById('reader-issue-label').textContent = issue.issue != null ? 'Issue ' + issue.issue : 'Feature Guide';
@@ -927,6 +939,7 @@ function openIssue(id) {
     tocEl.classList.add('reader-toc-hidden');
   }
 
+  reader.classList.toggle('reader-light', isLight);
   reader.classList.remove('reader-hidden');
   reader.classList.add('reader-visible');
   reader.scrollTop = 0;
@@ -936,7 +949,7 @@ function openIssue(id) {
 function closeReader() {
   if (_tocSpyCleanup) { _tocSpyCleanup(); _tocSpyCleanup = null; }
   const reader = document.getElementById('reader');
-  reader.classList.remove('reader-visible');
+  reader.classList.remove('reader-visible', 'reader-light');
   reader.classList.add('reader-hidden');
   document.body.style.overflow = '';
 }
@@ -994,7 +1007,7 @@ document.addEventListener('keydown', e => { if (e.key === 'Escape') closeReader(
       // if the card has a reader article, open it directly
       const issueId = this.dataset.issue;
       if (issueId) {
-        openIssue(issueId);
+        openIssue(issueId, this);
         return;
       }
 

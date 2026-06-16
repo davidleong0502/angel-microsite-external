@@ -742,6 +742,41 @@ a.wip-card{text-decoration:none;color:inherit}
 }
 .reader-angel-cta:hover{background:#0082a8;transform:translateY(-2px);box-shadow:0 10px 28px rgba(0,154,197,.35)}
 
+/* READER — beige / light variant (panel-1 & panel-3 cards) */
+#reader.reader-light{background:var(--sand);}
+#reader.reader-light .reader-header{background:rgba(247,240,226,.97);border-bottom-color:rgba(13,49,110,.1);}
+#reader.reader-light .reader-back{color:rgba(13,49,110,.55);}
+#reader.reader-light .reader-back:hover{color:var(--teal);}
+#reader.reader-light .reader-label{color:rgba(13,49,110,.3);}
+#reader.reader-light .reader-toc-title{color:rgba(13,49,110,.35);}
+#reader.reader-light .reader-toc-section-link{color:rgba(13,49,110,.65);}
+#reader.reader-light .reader-toc-section-link:hover{background:rgba(13,49,110,.06);color:var(--navy);}
+#reader.reader-light .reader-toc-item{color:rgba(13,49,110,.4);}
+#reader.reader-light .reader-toc-item:hover{background:rgba(13,49,110,.05);color:rgba(13,49,110,.7);}
+#reader.reader-light .reader-toc-items{border-left-color:rgba(13,49,110,.12);}
+#reader.reader-light .reader-title{color:var(--navy);}
+#reader.reader-light .reader-subtitle{color:rgba(13,49,110,.6);}
+#reader.reader-light .reader-byline{color:rgba(13,49,110,.35);border-bottom-color:rgba(13,49,110,.1);}
+#reader.reader-light .reader-dot{color:rgba(13,49,110,.2);}
+#reader.reader-light .reader-glance li{color:rgba(13,49,110,.7);}
+#reader.reader-light .reader-section-heading{color:var(--navy);}
+#reader.reader-light .reader-p{color:rgba(13,49,110,.75);}
+#reader.reader-light .reader-h{color:var(--navy);}
+#reader.reader-light .reader-list li{color:rgba(13,49,110,.65);}
+#reader.reader-light .reader-quote{color:rgba(13,49,110,.75);}
+#reader.reader-light .reader-callout-body,
+#reader.reader-light .reader-callout-list li{color:rgba(13,49,110,.7);}
+#reader.reader-light .reader-callout.note{background:rgba(242,179,0,.07);border-color:rgba(242,179,0,.2);}
+#reader.reader-light .reader-callout.report{background:rgba(13,49,110,.05);border-color:rgba(13,49,110,.12);}
+#reader.reader-light .reader-callout.report .reader-callout-title{color:rgba(13,49,110,.65);}
+#reader.reader-light .reader-prompt{background:rgba(13,49,110,.05);border-color:rgba(0,154,197,.25);}
+#reader.reader-light .reader-prompt-text{color:rgba(13,49,110,.65);}
+#reader.reader-light .reader-step-text{color:rgba(13,49,110,.65);}
+#reader.reader-light .reader-figure figcaption,
+#reader.reader-light .reader-gallery figcaption{color:rgba(13,49,110,.35);}
+#reader.reader-light .reader-signoff{border-top-color:rgba(13,49,110,.1);color:rgba(13,49,110,.45);}
+#reader.reader-light .reader-signoff-line{color:rgba(13,49,110,.6);}
+
 /* FOOTER */
 footer{
   background:#080d14;border-top:1px solid rgba(255,255,255,.04);

@@ -123,7 +123,7 @@
       <a href="#habits" class="btn-ghost-light">Let&rsquo;s begin &rarr;</a>
     </div>
     <div class="panel-cards rv d4">
-      <a class="card-light" id="card-chat" href="#" onclick="openIssue('issue-1');return false;">
+      <a class="card-light" id="card-chat" href="#" onclick="openIssue('issue-1',this);return false;">
         <img class="card-thumb" src="assets/Chat.png" alt="Chat with context">
         <div class="card-light-title">Chat with context</div>
         <p class="card-light-body">Ask, draft, and summarise &mdash; all grounded in your own files. Zero context means fast public-knowledge answers; a higher preset draws on your team&rsquo;s actual precedents.</p>
@@ -138,7 +138,7 @@
         <hr class="card-light-rule"/>
         <p class="card-light-eg"><span class="card-eg-label">E.G.</span> Press the Chat icon on any file or folder to work in exactly that context.</p>
       </div>
-      <a class="card-light" href="#" onclick="openIssue('feature-prompting');return false;">
+      <a class="card-light" href="#" onclick="openIssue('feature-prompting',this);return false;">
         <div class="card-thumb anim-prompt"><div class="prompt-line pl-a"></div><div class="prompt-line pl-b"></div><div class="prompt-line pl-c"></div><div class="prompt-cursor"></div></div>
         <div class="card-light-title">Prompting</div>
         <p class="card-light-body">Every effective prompt has four parts: Persona, Task, Context, and Format. Context is where your expertise comes in &mdash; a prompt without it is a guess.</p>
@@ -146,7 +146,7 @@
         <p class="card-light-eg"><span class="card-eg-label">E.G.</span> Specify the legal framework, the commercial facts, and what &ldquo;good&rdquo; looks like. The more specific, the more useful the output.</p>
         <span class="card-light-link">See More &rarr;</span>
       </a>
-      <a class="card-light" id="card-prompts" href="#" onclick="openIssue('feature-prompt-library');return false;">
+      <a class="card-light" id="card-prompts" href="#" onclick="openIssue('feature-prompt-library',this);return false;">
         <div class="card-thumb anim-library"><div class="lib-row"></div><div class="lib-row"></div><div class="lib-row"></div><div class="lib-row"></div></div>
         <div class="card-light-title">Prompt Library</div>
         <p class="card-light-body">Find, clone and adapt community-built prompts. Most are designed to be adapted, not used as-is &mdash; test against a benchmark, then refine.</p>
@@ -154,13 +154,13 @@
         <p class="card-light-eg"><span class="card-eg-label">E.G.</span> Not getting what you want? Run &ldquo;Improve My Prompt&rdquo; to sharpen it first.</p>
         <span class="card-light-link">See More &rarr;</span>
       </a>
-      <a class="card-light" id="card-quickinfo" href="#" onclick="openIssue('feature-guided-summary');return false;">
+      <a class="card-light" id="card-quickinfo" href="#" onclick="openIssue('feature-guided-summary',this);return false;">
         <div class="card-thumb anim-sonar-wrap"><div class="sonar"><div class="sonar-c"></div><div class="sonar-r"></div><div class="sonar-r"></div><div class="sonar-r"></div></div></div>
         <div class="card-light-title">Quick Info / Guided Summary</div>
         <p class="card-light-body">A fast, sourced read of any single document. Quick Info for a snapshot; Guided Summary when you want to steer the focus.</p>
         <span class="card-light-link">See More &rarr;</span>
       </a>
-      <a class="card-light" id="card-scribe" href="#" onclick="openIssue('feature-scribe');return false;">
+      <a class="card-light" id="card-scribe" href="#" onclick="openIssue('feature-scribe',this);return false;">
         <img class="card-thumb" src="assets/Scribe.png" alt="Scribe">
         <div class="card-light-title">Scribe</div>
         <p class="card-light-body">Record and transcribe meetings, with live translated subtitles. Edit the transcript live, then click any line to replay its audio.</p>
@@ -268,49 +268,49 @@
       <a href="#panel3" class="btn-ghost-dark">What&rsquo;s new &rarr;</a>
     </div>
     <div class="panel-cards rv d4">
-      <a class="card-dark" id="card-dispute" href="#" onclick="openIssue('feature-dispute');return false;">
+      <a class="card-dark" id="card-dispute" href="#" onclick="openIssue('feature-dispute',this);return false;">
         <img class="card-screenshot" src="assets/i2/12_image013.png" alt="Pleadings Tracker">
         <div class="card-dark-title">Dispute Resolution</div>
         <p class="card-dark-body">Case summaries, SOC analysis, Defence drafting, and pleadings tracking across the full document set.</p>
         <span class="card-dark-link">See More &rarr;</span>
       </a>
-      <a class="card-dark" id="card-sidebyside" href="#" onclick="openIssue('feature-sidebyside');return false;">
+      <a class="card-dark" id="card-sidebyside" href="#" onclick="openIssue('feature-sidebyside',this);return false;">
         <img class="card-screenshot" src="assets/SidebySide.png" alt="Side-by-Side analysis">
         <div class="card-dark-title">Side-by-Side &amp; Comparison</div>
         <p class="card-dark-body">Clause-by-clause review with full source-paragraph verification. Comparison handles tracked changes and amendments.</p>
         <span class="card-dark-link">See More &rarr;</span>
       </a>
-      <a class="card-dark" id="card-multistep" href="#" onclick="openIssue('feature-multistep');return false;">
+      <a class="card-dark" id="card-multistep" href="#" onclick="openIssue('feature-multistep',this);return false;">
         <img class="card-screenshot" src="assets/i3/07_image008.png" alt="Apps mode">
         <div class="card-dark-title">Multi-Step Prompt</div>
         <p class="card-dark-body">Break complex legal tasks into sequential steps, each building on the last.</p>
         <span class="card-dark-link">See More &rarr;</span>
       </a>
-      <a class="card-dark" id="card-timeline" href="#" onclick="openIssue('feature-timeline');return false;">
+      <a class="card-dark" id="card-timeline" href="#" onclick="openIssue('feature-timeline',this);return false;">
         <img class="card-screenshot" src="assets/i3/09_image010.png" alt="Timeline">
         <div class="card-dark-title">Timeline</div>
         <p class="card-dark-body">Combine chronologies across up to 100 documents into one source-verified timeline.</p>
         <span class="card-dark-link">See More &rarr;</span>
       </a>
-      <a class="card-dark" id="card-playbook" href="#" onclick="openIssue('feature-playbook');return false;">
+      <a class="card-dark" id="card-playbook" href="#" onclick="openIssue('feature-playbook',this);return false;">
         <img class="card-screenshot" src="assets/Playbook_VIMA.png" alt="Playbook">
         <div class="card-dark-title">Playbook</div>
         <p class="card-dark-body">Encode your team&rsquo;s house position once &mdash; A&amp;GEL returns a Word document in tracked changes.</p>
         <span class="card-dark-link">See More &rarr;</span>
       </a>
-      <a class="card-dark" id="card-deepresearch" href="#" onclick="openIssue('feature-deepresearch');return false;">
+      <a class="card-dark" id="card-deepresearch" href="#" onclick="openIssue('feature-deepresearch',this);return false;">
         <img class="card-screenshot" src="assets/References_Chat.png" alt="Deep Research">
         <div class="card-dark-title">Deep Research</div>
         <p class="card-dark-body">Run deep, cross-document analysis under a structured research prompt. Every finding links back to its source paragraph via clickable inline citations.</p>
         <span class="card-dark-link">See More &rarr;</span>
       </a>
-      <a class="card-dark" id="card-scopesummary" href="#" onclick="openIssue('feature-scopesummary');return false;">
+      <a class="card-dark" id="card-scopesummary" href="#" onclick="openIssue('feature-scopesummary',this);return false;">
         <div class="card-thumb anim-scan"><div class="scan-line"></div><div class="scan-line"></div><div class="scan-line"></div><div class="scan-bar"></div></div>
         <div class="card-dark-title">Scope Summary</div>
         <p class="card-dark-body">Generate a structured summary scoped to your defined focus areas. Every extracted point carries a clickable inline citation to verify against the source.</p>
         <span class="card-dark-link">See More &rarr;</span>
       </a>
-      <a class="card-dark" id="card-review" href="#" onclick="openIssue('feature-review');return false;">
+      <a class="card-dark" id="card-review" href="#" onclick="openIssue('feature-review',this);return false;">
         <img class="card-screenshot" src="assets/Review_SaaS.png" alt="Review mode">
         <div class="card-dark-title">Review</div>
         <p class="card-dark-body">Pose multiple questions across multiple documents at once &mdash; outputs appear in a table with inline citations. Use mini-chat to follow up without leaving the page.</p>
@@ -332,31 +332,31 @@
       <a href="#misc" class="btn-ghost-light">See newsletters &rarr;</a>
     </div>
     <div class="wip-cards rv d4">
-      <a class="wip-card" href="#" onclick="openIssue('feature-scribe');return false;">
+      <a class="wip-card" href="#" onclick="openIssue('feature-scribe',this);return false;">
         <img class="wip-screenshot" src="assets/Translation_Chinese.png" alt="Scribe Live Translation">
         <div class="wip-title">Scribe: Live Translation</div>
         <div class="wip-sub">Enable translation during recording &mdash; A&amp;GEL generates Chinese, Bahasa, Thai, Vietnamese and more underneath the original transcript in real time, with timestamps.</div>
         <span class="card-light-link">See More &rarr;</span>
       </a>
-      <a class="wip-card" href="#" onclick="openIssue('feature-multistep');return false;">
+      <a class="wip-card" href="#" onclick="openIssue('feature-multistep',this);return false;">
         <img class="wip-screenshot" src="assets/i3/07_image008.png" alt="Multi-Step Prompt">
         <div class="wip-title">Multi-Step Prompt</div>
         <div class="wip-sub">A new mode under Specialised Apps. Breaks complex tasks into sequential steps, each building on the last &mdash; suited to both multi-step workflows and single complex prompts.</div>
         <span class="card-light-link">See More &rarr;</span>
       </a>
-      <a class="wip-card" href="#" onclick="openIssue('feature-timeline');return false;">
+      <a class="wip-card" href="#" onclick="openIssue('feature-timeline',this);return false;">
         <img class="wip-screenshot" src="assets/i3/09_image010.png" alt="Timeline">
         <div class="wip-title">Timeline Revamp</div>
         <div class="wip-sub">Combines chronologies across up to 100 documents into a single timeline, with source-document references and highlighted extraction points. Smart Timeline adds custom field extraction.</div>
         <span class="card-light-link">See More &rarr;</span>
       </a>
-      <a class="wip-card" href="#" onclick="openIssue('feature-playbook');return false;">
+      <a class="wip-card" href="#" onclick="openIssue('feature-playbook',this);return false;">
         <img class="wip-screenshot" src="assets/i4/07_image008.jpg" alt="Playbook">
         <div class="wip-title">Playbook</div>
         <div class="wip-sub">Codify your team&rsquo;s house position into a standardised review. A&amp;GEL applies the playbook and returns a Word document in tracked changes, automatically.</div>
         <span class="card-light-link">See More &rarr;</span>
       </a>
-      <a class="wip-card" href="#" onclick="openIssue('feature-msg');return false;">
+      <a class="wip-card" href="#" onclick="openIssue('feature-msg',this);return false;">
         <div class="wip-anim">
           <div class="orbit"><div class="orbit-c"></div><div class="orbit-r"></div></div>
         </div>
@@ -364,7 +364,7 @@
         <div class="wip-sub">Upload .msg email files directly, with full reading of attachments included.</div>
         <span class="card-light-link">See More &rarr;</span>
       </a>
-      <a class="wip-card" href="#" onclick="openIssue('feature-inline-ref');return false;">
+      <a class="wip-card" href="#" onclick="openIssue('feature-inline-ref',this);return false;">
         <div class="wip-anim"><div class="cite-anim"><div class="cite-line cl-long"></div><div class="cite-pin"><div class="cite-dot"></div><div class="cite-ring"></div><div class="cite-ring"></div></div><div class="cite-line cl-med"></div></div></div>
         <div class="wip-title">Inline Referencing</div>
         <div class="wip-sub">Deep Research, Timeline, Scope Summary, and Review now carry clickable pin-cite citations &mdash; verify any output against its source without leaving the page.</div>
@@ -412,7 +412,7 @@
     </div>
     <div class="misc-right">
       <div class="nl-list">
-        <a class="nl-row rv d1" href="#" onclick="openIssue('feature-faq');return false;">
+        <a class="nl-row rv d1" href="#" onclick="openIssue('feature-faq',this);return false;">
           <span class="nl-pill nl-pill-faq">FAQ</span>
           <div>
             <div class="nl-title">Frequently Asked Questions</div>
