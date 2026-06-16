@@ -158,7 +158,9 @@ nav{
 .kt-words{font-size:.84rem;font-weight:300;line-height:1.6;margin:0;will-change:transform}
 .kt-words-bad{color:#8a9bb0}
 .kt-words-good{color:#009AC5;font-weight:500}
-.kt-word{display:inline-block;opacity:0;transform:translateY(15px);will-change:transform;transition:opacity 120ms ease-out,transform 120ms ease-out}
+.kt-word{display:inline-block;opacity:0;transform:translateY(15px);will-change:transform}
+.kt-word-fast{transition:opacity 60ms ease-out,transform 60ms ease-out}
+.kt-word-slow{transition:opacity 360ms ease-out,transform 360ms ease-out}
 .kt-word.kt-word-in{opacity:1;transform:translateY(0)}
 .habit-placeholder{
   display:flex;flex-direction:column;align-items:center;justify-content:center;

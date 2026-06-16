@@ -1047,22 +1047,23 @@ document.addEventListener('keydown', e => { if (e.key === 'Escape') closeReader(
 
   const EXIT_EASE = 'cubic-bezier(0.4,0,1,1)';
 
-  // Slam in units as inline-block spans; addBreaks puts a <br> between units instead of a space
-  async function slamIn(wordsEl, units, addBreaks, signal){
+  // wordClass: 'kt-word kt-word-fast' or 'kt-word kt-word-slow'
+  // delay: ms gap between each word; transitionMs: CSS transition duration for final word wait
+  async function slamIn(wordsEl, units, addBreaks, delay, wordClass, transitionMs, signal){
     for(let i = 0; i < units.length; i++){
       if(signal.cancelled) return false;
       if(i > 0) wordsEl.appendChild(
         addBreaks ? document.createElement('br') : document.createTextNode(' ')
       );
       const span = document.createElement('span');
-      span.className = 'kt-word';
+      span.className = wordClass;
       span.textContent = units[i];
       wordsEl.appendChild(span);
       span.offsetWidth; // force reflow so initial CSS state registers before transition fires
       span.classList.add('kt-word-in');
-      await sleep(80);
+      await sleep(delay);
     }
-    await sleep(120); // let last word finish its 120ms transition
+    await sleep(transitionMs); // let last word finish its transition
     return true;
   }
 
@@ -1109,22 +1110,27 @@ document.addEventListener('keydown', e => { if (e.key === 'Escape') closeReader(
       goodWords.innerHTML = '';
       goodWords.style.cssText = '';
 
-      // Step 1: left slams in, right stays hidden
-      const ok1 = await slamIn(badWords, badUnits, false, signal);
+      // Step 1: left slams in fast, right stays hidden
+      const ok1 = await slamIn(badWords, badUnits, false, 25, 'kt-word kt-word-fast', 60, signal);
       if(!ok1 || signal.cancelled) break;
 
-      // Step 2: pause, then reveal right column and slam it in
+      // Step 2: pause, then reveal right column and slam it in slowly
       await sleep(500);
       if(signal.cancelled) break;
 
       goodCol.style.transition = 'none';
       goodCol.style.opacity = '1';
 
-      const ok2 = await slamIn(goodWords, goodUnits, !!rawLines, signal);
+      const ok2 = await slamIn(goodWords, goodUnits, !!rawLines, 240, 'kt-word kt-word-slow', 360, signal);
       if(!ok2 || signal.cancelled) break;
 
+      // Pin container height after first full cycle so content below never jumps
+      if(!container.style.minHeight){
+        container.style.minHeight = container.getBoundingClientRect().height + 'px';
+      }
+
       // Step 3: both visible — hold for reading
-      await sleep(16000);
+      await sleep(3500);
       if(signal.cancelled) break;
 
       // Step 4: both exit simultaneously
