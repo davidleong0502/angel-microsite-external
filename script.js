@@ -1041,139 +1041,111 @@ document.addEventListener('keydown', e => { if (e.key === 'Escape') closeReader(
   check();
 })();
 
-/* ── TRACKED-CHANGES EXAMPLES ── */
+/* ── KINETIC TYPOGRAPHY EXAMPLES ── */
 (function(){
   function sleep(ms){ return new Promise(r=>setTimeout(r,ms)); }
 
-  async function revealWords(el, text, signal){
-    const words=text.split(' ');
-    for(let i=0;i<words.length;i++){
-      if(signal.cancelled) return;
-      if(i>0) el.appendChild(document.createTextNode(' '));
-      const span=document.createElement('span');
-      span.className='tw-word';
-      span.textContent=words[i];
-      el.appendChild(span);
-      span.offsetWidth; // force reflow so initial state registers before transition
-      span.classList.add('tw-word-in');
-      await sleep(90);
+  const EXIT_EASE = 'cubic-bezier(0.4,0,1,1)';
+
+  // Slam in word/line units one at a time; returns final upward drift (px) or null if cancelled
+  async function slamIn(block, units, isGood, signal){
+    let drift = 0;
+    for(let i = 0; i < units.length; i++){
+      if(signal.cancelled) return null;
+      const el = document.createElement('div');
+      el.className = 'kt-word' + (isGood ? ' kt-word-good' : '');
+      el.textContent = units[i];
+      block.appendChild(el);
+      // Shift block upward as it grows so it feels like it expands from centre
+      drift = Math.min(i * 3, 30);
+      block.style.transform = `translateY(-${drift}px)`;
+      el.offsetWidth; // force reflow so CSS initial state registers before transition
+      el.classList.add('kt-word-in');
+      await sleep(80);
     }
+    await sleep(120); // let last word finish its 120ms transition
+    return drift;
+  }
+
+  async function spinExit(block, drift){
+    block.style.transition = `transform 300ms ${EXIT_EASE},opacity 300ms ${EXIT_EASE}`;
+    block.offsetWidth; // force reflow so new transition applies before property change
+    block.style.transform = `translateY(-${drift}px) rotateZ(8deg) translateX(-40px)`;
+    block.style.opacity = '0';
+    await sleep(320);
   }
 
   async function run(container, signal){
-    const bad      = container.dataset.bad || '';
-    const good     = container.dataset.good || '';
+    const bad = container.dataset.bad || '';
+    const good = container.dataset.good || '';
     const rawLines = container.dataset.goodLines || '';
-    const goodLines= rawLines ? rawLines.split('|||') : null;
-
-    const lineEl = container.querySelector('.tw-line');
-    const extraEl= container.querySelector('.tw-extra-lines');
-
-    const cursorEl=container.querySelector('.tw-cursor');
-    if(cursorEl) cursorEl.hidden=true;
-
-    let goodLine=null;
+    const badWords = bad.split(' ').filter(Boolean);
+    const goodUnits = rawLines ? rawLines.split('|||') : good.split(' ').filter(Boolean);
 
     while(!signal.cancelled){
-      // Reset
-      if(goodLine){ goodLine.remove(); goodLine=null; }
-      lineEl.innerHTML='';
-      extraEl.innerHTML='';
+      container.innerHTML = '';
 
-      // 1. Build bad content directly in lineEl (no wrapper)
-      const badPrefixEl=document.createElement('strong');
-      badPrefixEl.className='tw-prefix';
-      badPrefixEl.textContent='This is ok:';
-      lineEl.appendChild(badPrefixEl);
-      lineEl.appendChild(document.createTextNode(' '));
+      // Phase 1 — bad prompt
+      const badLabel = document.createElement('div');
+      badLabel.className = 'kt-label';
+      badLabel.textContent = 'This is ok:';
+      container.appendChild(badLabel);
 
-      const badTextEl=document.createElement('span');
-      badTextEl.className='tw-text';
-      badTextEl.textContent=bad;
-      lineEl.appendChild(badTextEl);
+      const badBlock = document.createElement('div');
+      badBlock.className = 'kt-block';
+      container.appendChild(badBlock);
 
-      // Append strikeBar to lineEl (position:relative); position set after layout
-      const strikeBar=document.createElement('span');
-      strikeBar.className='tw-strike-bar';
-      lineEl.appendChild(strikeBar);
+      const d1 = await slamIn(badBlock, badWords, false, signal);
+      if(d1 === null || signal.cancelled) break;
 
-      // 2. Hold — browser lays out text during this wait
       await sleep(1500);
       if(signal.cancelled) break;
 
-      // 3. Measure text and position bar, then sweep
-      const lineRect   = lineEl.getBoundingClientRect();
-      const prefixRect = badPrefixEl.getBoundingClientRect();
-      const textRect   = badTextEl.getBoundingClientRect();
+      await spinExit(badBlock, d1);
+      container.innerHTML = '';
 
-      const barTop  = prefixRect.top - lineRect.top + prefixRect.height / 2 - 1;
-      const barLeft = prefixRect.left - lineRect.left;
-      const barWidth= textRect.right - prefixRect.left;
-
-      strikeBar.style.top  = barTop + 'px';
-      strikeBar.style.left = barLeft + 'px';
-      strikeBar.offsetWidth; // force reflow so transition fires from width:0
-      strikeBar.style.transition = 'width 600ms linear';
-      strikeBar.style.width = barWidth + 'px';
-      await sleep(600);
+      await sleep(200);
       if(signal.cancelled) break;
 
-      // 4. Short pause, then reveal good version below
-      await sleep(400);
-      if(signal.cancelled) break;
+      // Phase 2 — good prompt
+      const goodLabel = document.createElement('div');
+      goodLabel.className = 'kt-label';
+      goodLabel.textContent = 'But this is better:';
+      container.appendChild(goodLabel);
 
-      // 5. Insert good line after bad line
-      goodLine=document.createElement('p');
-      goodLine.className='tw-line';
-      const goodPrefixEl=document.createElement('strong');
-      goodPrefixEl.className='tw-prefix';
-      goodPrefixEl.textContent='But this is better:';
-      goodLine.appendChild(goodPrefixEl);
-      goodLine.appendChild(document.createTextNode(' '));
-      const goodTextEl=document.createElement('span');
-      goodTextEl.className='tw-text tw-good';
-      goodLine.appendChild(goodTextEl);
-      lineEl.insertAdjacentElement('afterend', goodLine);
+      const goodBlock = document.createElement('div');
+      goodBlock.className = 'kt-block';
+      container.appendChild(goodBlock);
 
-      // 6. Reveal good words with fade + upward drift
-      if(goodLines){
-        await revealWords(goodTextEl, goodLines[0], signal);
-        if(signal.cancelled) break;
-        await sleep(250);
-        for(let i=1;i<goodLines.length;i++){
-          if(signal.cancelled) break;
-          const extraLineEl=document.createElement('div');
-          extraLineEl.className='tw-extra-line';
-          extraEl.appendChild(extraLineEl);
-          await revealWords(extraLineEl, goodLines[i], signal);
-          await sleep(180);
-        }
-      } else {
-        await revealWords(goodTextEl, good, signal);
-      }
+      const d2 = await slamIn(goodBlock, goodUnits, true, signal);
+      if(d2 === null || signal.cancelled) break;
 
-      if(signal.cancelled) break;
       await sleep(4000);
+      if(signal.cancelled) break;
     }
 
-    // Cleanup on exit
-    if(goodLine){ goodLine.remove(); goodLine=null; }
-    lineEl.innerHTML='';
-    extraEl.innerHTML='';
+    container.innerHTML = '';
   }
-  const signals=new Map();
 
-  const io=new IntersectionObserver(entries=>{
-    entries.forEach(entry=>{
-      const el=entry.target;
-      if(!entry.isIntersecting) return;
-      // Cancel any in-flight loop and restart fresh
-      if(signals.has(el)) signals.get(el).cancelled=true;
-      const sig={cancelled:false};
-      signals.set(el,sig);
-      run(el,sig);
+  const signals = new Map();
+
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      const el = entry.target;
+      if(entry.isIntersecting){
+        if(signals.has(el)) signals.get(el).cancelled = true;
+        const sig = { cancelled: false };
+        signals.set(el, sig);
+        run(el, sig);
+      } else {
+        if(signals.has(el)){
+          signals.get(el).cancelled = true;
+          signals.delete(el);
+          el.innerHTML = '';
+        }
+      }
     });
-  },{threshold:0.4});
+  }, { threshold: 0.4 });
 
-  document.querySelectorAll('.habit-typewriter').forEach(el=>io.observe(el));
+  document.querySelectorAll('.habit-typewriter').forEach(el => io.observe(el));
 })();
