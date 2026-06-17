@@ -1131,4 +1131,32 @@ footer{
   /* MISC / NEWSLETTER */
   .nl-row{padding:14px 16px}
   .nl-pill{font-size:.65rem;padding:2px 8px}
+
+  /* HABITS — collapse 3-column grid to single column */
+  .habits-header{padding:40px 20px 28px}
+  .habits-grid{grid-template-columns:1fr}
+  .habit-tile{
+    padding:32px 20px 40px;
+    border-right:none;
+    border-bottom:1px solid rgba(13,49,110,.1);
+  }
+  .habit-tile:last-child{border-bottom:none}
+  .habits-continue{padding:20px}
+
+  /* HABITS — body text: minimum 16px, readable line-height */
+  .habits-page-intro{font-size:1rem;line-height:1.7}
+  .habit-intro{font-size:1rem;line-height:1.6}
+  .habit-body p{font-size:1rem;line-height:1.6}
+  .habit-body li{font-size:1rem;line-height:1.6}
+  .habit-body ol.habit-ol li{font-size:1rem}
+
+  /* KINETIC TYPEWRITER — stack left/right columns vertically */
+  .habit-typewriter{flex-direction:column;gap:1.2rem}
+
+  /* BASICS CARDS — 1 column, ensure 20px side padding */
+  .basics-cards-wrap .panel-cards{grid-template-columns:1fr}
+  .basics-cards-wrap .panel-inner{padding:0 20px}
+
+  /* PANEL-3 WIP CARDS — collapse 3-column grid */
+  .panel-3 .wip-cards{grid-template-columns:1fr}
 }
