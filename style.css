@@ -67,7 +67,7 @@ nav{
   justify-content:unset;min-height:unset;
 }
 .habits-header{
-  padding:56px 60px 44px;
+  padding:56px 36px 44px;
   border-bottom:1px solid rgba(13,49,110,.1);
   display:flex;flex-direction:column;gap:12px;
 }
@@ -260,6 +260,7 @@ nav{
 .panel-welcome-intro{font-size:1.05rem;font-weight:300;color:var(--bodymid);line-height:1.75;margin-bottom:28px}
 .panel-welcome-h{font-family:"Cormorant Garamond",serif;font-size:1.35rem;font-weight:600;color:var(--navy);margin:28px 0 10px;letter-spacing:-.01em}
 .panel-welcome-p{font-size:.95rem;font-weight:300;color:var(--bodymid);line-height:1.8;margin-bottom:12px}
+.panel-welcome-p strong{font-weight:800}
 .panel-welcome-img{max-width:286px;height:auto;display:block;margin:18px auto}
 .panel-welcome-sig{font-size:.9rem;color:var(--bodymid);margin-top:24px;line-height:2}
 .panel-cta{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:56px}
