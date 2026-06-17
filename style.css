@@ -185,7 +185,7 @@ nav{
 .habit-placeholder-glyph{font-size:1.8rem;opacity:.18;margin-bottom:12px}
 .habit-placeholder p{font-size:.78rem;color:rgba(13,49,110,.25);line-height:1.6;margin:0}
 .basics-cards-wrap{background:var(--sand);padding:48px 0 0}
-.basics-cards-wrap .panel-inner{padding:0 4vw;max-width:none}
+.basics-cards-wrap .panel-inner{padding:0 36px;max-width:none}
 .cards-intro{font-size:1.05rem;font-weight:400;color:var(--navy);margin:0 0 28px;opacity:.75}
 .habits-continue{
   display:flex;align-items:center;justify-content:space-between;
@@ -275,7 +275,7 @@ nav{
 
 /* CARDS */
 .panel-cards{display:flex;gap:14px;flex-wrap:wrap}
-.basics-cards-wrap .panel-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.basics-cards-wrap .panel-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
 .basics-cards-wrap .card-light{min-width:0;max-width:none}
 .panel-1 .card-dark,.panel-1 .card-light{min-width:0;max-width:none}
 .panel-1 .card-featured{grid-column:1/-1;display:flex;flex-direction:row;align-items:center;gap:24px;justify-content:space-between}
