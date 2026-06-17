@@ -87,11 +87,20 @@ nav{
 }
 .habits-grid{
   display:grid;grid-template-columns:repeat(3,1fr);
+  transition:grid-template-columns .38s cubic-bezier(.25,.46,.45,.94);
 }
 .habit-tile{
   padding:48px 36px 64px;
   border-right:1px solid rgba(13,49,110,.1);
   position:relative;overflow:hidden;
+  transition:opacity .3s ease,filter .3s ease;
+}
+@media(hover:hover) and (min-width:769px){
+  .habits-grid:has(.habit-tile-1:hover){grid-template-columns:1.2fr 0.9fr 0.9fr}
+  .habits-grid:has(.habit-tile-2:hover){grid-template-columns:0.9fr 1.2fr 0.9fr}
+  .habits-grid:has(.habit-tile-3:hover){grid-template-columns:0.9fr 0.9fr 1.2fr}
+  .habits-grid:has(.habit-tile:hover) .habit-tile{opacity:.6;filter:brightness(.93)}
+  .habits-grid .habit-tile:hover{opacity:1;filter:none}
 }
 .habit-tile:last-child{border-right:none}
 .habit-tile-1::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;
