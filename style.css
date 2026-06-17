@@ -1159,4 +1159,22 @@ footer{
 
   /* PANEL-3 WIP CARDS — collapse 3-column grid */
   .panel-3 .wip-cards{grid-template-columns:1fr}
+
+  /* PANEL-2 FEATURE CARDS — 1 column, full-width screenshots */
+  .panel-2 .panel-cards{grid-template-columns:1fr;gap:16px}
+  .panel-2 .card-dark{min-height:0;padding:20px}
+  .panel-2 .card-dark .card-screenshot{
+    width:calc(100% + 40px);
+    margin:-20px -20px 16px;
+    height:280px;
+  }
+  .card-dark-title{font-size:1.05rem}
+  .card-dark-body{font-size:1rem;line-height:1.6}
+  .card-dark-eg{font-size:.9rem;line-height:1.6}
+}
+
+/* TABLET — panel-2 feature cards: 2 columns */
+@media(min-width:769px) and (max-width:1024px){
+  .panel-2 .panel-cards{grid-template-columns:repeat(2,1fr);gap:20px}
+  .panel-2 .card-dark{min-height:0}
 }
