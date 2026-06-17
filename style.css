@@ -161,7 +161,7 @@ nav{
 .habit-example p:last-child{margin-bottom:0}
 .habit-example strong{color:rgba(13,49,110,.9);font-weight:500}
 /* Kinetic typography example blocks */
-.habit-typewriter{display:flex;gap:2rem;margin:10px 0 0;align-items:flex-start;background:rgba(255,255,255,0.38);border:1px solid rgba(13,49,110,0.07);border-radius:10px;padding:18px 20px}
+.habit-typewriter{display:flex;gap:2rem;margin:10px 0 0;align-items:flex-start;background:rgba(255,255,255,0.18);border:1px solid rgba(13,49,110,0.07);border-radius:10px;padding:18px 20px}
 .kt-col{flex:1;min-width:0}
 .kt-label{font-size:.84rem;font-weight:600;color:rgba(13,49,110,.8);margin-bottom:4px}
 .kt-words{font-size:.84rem;font-weight:300;line-height:1.6;margin:0;will-change:transform}
