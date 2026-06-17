@@ -99,8 +99,7 @@ nav{
   .habits-grid:has(.habit-tile-1:hover){grid-template-columns:1.2fr 0.9fr 0.9fr}
   .habits-grid:has(.habit-tile-2:hover){grid-template-columns:0.9fr 1.2fr 0.9fr}
   .habits-grid:has(.habit-tile-3:hover){grid-template-columns:0.9fr 0.9fr 1.2fr}
-  .habits-grid:has(.habit-tile:hover) .habit-tile{opacity:.6;filter:brightness(.93)}
-  .habits-grid .habit-tile:hover{opacity:1;filter:none}
+  .habits-grid:has(.habit-tile:hover) .habit-tile:not(:hover){opacity:.6;filter:brightness(.93)}
 }
 .habit-tile:last-child{border-right:none}
 .habit-tile-1::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;
