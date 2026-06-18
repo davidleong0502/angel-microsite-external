@@ -83,7 +83,7 @@ nav{
 }
 .habits-page-intro{
   max-width:680px;font-size:.92rem;font-weight:300;
-  color:rgba(13,49,110,.6);line-height:1.8;
+  color:rgba(13,49,110,.80);line-height:1.8;
 }
 .habits-grid{
   display:grid;grid-template-columns:repeat(3,1fr);
@@ -113,7 +113,7 @@ nav{
 .habit-tile-3{background:linear-gradient(160deg,rgba(168,159,149,.08) 0%,transparent 50%)}
 .habit-num{
   font-family:"JetBrains Mono",monospace;
-  font-size:.62rem;letter-spacing:.25em;text-transform:uppercase;
+  font-size:.79rem;letter-spacing:.25em;text-transform:uppercase;
   color:var(--teal);margin-bottom:18px;opacity:.8;
 }
 .habit-title{
@@ -123,7 +123,7 @@ nav{
 }
 .habit-intro{
   font-size:.86rem;font-weight:300;
-  color:rgba(13,49,110,.65);line-height:1.8;
+  color:rgba(13,49,110,.82);line-height:1.8;
   margin-bottom:28px;padding-bottom:28px;
   border-bottom:1px solid rgba(13,49,110,.1);
 }
@@ -135,19 +135,19 @@ nav{
 .habit-section-label.is-lg{font-size:.81rem;}
 .habit-body p{
   font-size:.84rem;font-weight:300;
-  color:rgba(13,49,110,.68);line-height:1.8;margin-bottom:14px;
+  color:rgba(13,49,110,.85);line-height:1.8;margin-bottom:14px;
 }
 .habit-body ul{list-style:none;padding:0;margin:0 0 20px}
 .habit-body li{
   font-size:.82rem;font-weight:300;
-  color:rgba(13,49,110,.62);line-height:1.75;
+  color:rgba(13,49,110,.80);line-height:1.75;
   padding:9px 0 9px 20px;position:relative;
   border-bottom:1px solid rgba(13,49,110,.07);
 }
 .habit-body li:last-child{border-bottom:none}
 .habit-body li::before{content:'—';position:absolute;left:0;color:var(--teal);opacity:.6}
 .habit-body ol.habit-ol{padding:0 0 0 18px;margin:0 0 20px;display:flex;flex-direction:column;gap:10px}
-.habit-body ol.habit-ol li{font-size:.84rem;font-weight:300;color:rgba(13,49,110,.62);line-height:1.8;padding:0;border-bottom:none}
+.habit-body ol.habit-ol li{font-size:.84rem;font-weight:300;color:rgba(13,49,110,.80);line-height:1.8;padding:0;border-bottom:none}
 .habit-body ol.habit-ol li::before{display:none}
 .habit-section-sublabel{font-size:.84rem;font-weight:600;color:rgba(13,49,110,.8);margin:4px 0 12px}
 .habit-svg-illus{width:100%;max-width:280px;display:block;margin:20px auto 24px}
