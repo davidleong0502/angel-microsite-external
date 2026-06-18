@@ -216,7 +216,7 @@ nav{
   bottom:-0.15em;right:-0.05em;
   z-index:1;
 }
-.panel-1 .panel-bg-word{color:rgba(13,49,110,.04)}
+.panel-1 .panel-bg-word{color:rgba(13,49,110,.04);white-space:normal;text-align:right;bottom:-12rem}
 .panel-2 .panel-bg-word{color:rgba(0,154,197,.04)}
 .panel-3 .panel-bg-word{color:rgba(13,49,110,.04)}
 .panel-4 .panel-bg-word{color:rgba(235,235,223,.025);right:-2%}
