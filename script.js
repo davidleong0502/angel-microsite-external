@@ -1045,6 +1045,8 @@ document.addEventListener('keydown', e => { if (e.key === 'Escape') closeReader(
 (function(){
   function sleep(ms){ return new Promise(r=>setTimeout(r,ms)); }
 
+  let io; // declared before run so run() can unobserve after completion
+
   // delay: ms gap between each word; transitionMs: per-word CSS transition duration
   async function slamIn(wordsEl, units, addBreaks, delay, transitionMs, signal){
     const t = `opacity ${transitionMs}ms ease-out, transform ${transitionMs}ms ease-out`;
@@ -1153,6 +1155,10 @@ document.addEventListener('keydown', e => { if (e.key === 'Escape') closeReader(
       span.classList.add('kt-word-breathe');
     });
 
+    // Animation complete — stop observing so scroll-out never clears and re-triggers it
+    container.dataset.animDone = '1';
+    io.unobserve(container);
+
     // Cursor proximity glow — casts a soft halo on words near the pointer
     function glowHandler(e){
       if(signal.cancelled){ container.removeEventListener('mousemove', glowHandler); return; }
@@ -1177,15 +1183,17 @@ document.addEventListener('keydown', e => { if (e.key === 'Escape') closeReader(
 
   const signals = new Map();
 
-  const io = new IntersectionObserver(entries => {
+  io = new IntersectionObserver(entries => {
     entries.forEach(entry => {
       const el = entry.target;
       if(entry.isIntersecting){
+        if(el.dataset.animDone) return; // already played — leave it alone
         if(signals.has(el)) signals.get(el).cancelled = true;
         const sig = { cancelled: false };
         signals.set(el, sig);
         run(el, sig);
       } else {
+        if(el.dataset.animDone) return; // completed animation — don't clear it
         if(signals.has(el)){
           signals.get(el).cancelled = true;
           signals.delete(el);
@@ -1196,4 +1204,29 @@ document.addEventListener('keydown', e => { if (e.key === 'Escape') closeReader(
   }, { threshold: 0.4 });
 
   document.querySelectorAll('.habit-typewriter').forEach(el => io.observe(el));
+})();
+
+/* ── HABIT TILE CLICK-TO-LOCK ── */
+(function(){
+  const grid = document.querySelector('.habits-grid');
+  if(!grid) return;
+  const tiles = [...grid.querySelectorAll('.habit-tile')];
+  let locked = null;
+
+  tiles.forEach((tile, idx) => {
+    tile.addEventListener('click', () => {
+      if(locked === tile){
+        tile.classList.remove('tile-locked');
+        grid.style.gridTemplateColumns = '';
+        locked = null;
+      } else {
+        if(locked) locked.classList.remove('tile-locked');
+        tile.classList.add('tile-locked');
+        locked = tile;
+        // Set expanded column inline — overrides CSS :has() hover rules while locked
+        const cols = tiles.map((_, i) => i === idx ? '1.2fr' : '0.9fr').join(' ');
+        grid.style.gridTemplateColumns = cols;
+      }
+    });
+  });
 })();
