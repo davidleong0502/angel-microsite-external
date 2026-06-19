@@ -60,7 +60,13 @@
 
 (function(){
   const io=new IntersectionObserver(entries=>{
-    entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add("in")});
+    entries.forEach(e=>{
+      if(!e.isIntersecting) return;
+      const el=e.target;
+      el.classList.add("in");
+      // Release compositor layer once transition finishes — no point keeping will-change active
+      el.addEventListener('transitionend',()=>{ el.style.willChange='auto'; },{once:true});
+    });
   },{threshold:0.1});
   document.querySelectorAll(".rv").forEach(el=>io.observe(el));
 })();
@@ -92,8 +98,8 @@
   }));
 
   function tick(){
-    cv.width=cv.offsetWidth;
-    cv.height=cv.offsetHeight;
+    // Skip work entirely when canvas is hidden (display:none → offsetParent is null)
+    if(!cv.offsetParent){ requestAnimationFrame(tick); return; }
     cx.clearRect(0,0,cv.width,cv.height);
     nodes.forEach(n=>{
       n.x+=n.vx; n.y+=n.vy; n.phase+=.016;
@@ -172,7 +178,6 @@
 
   function tick(){
     if(!running) return;
-    cv.width=cv.offsetWidth;cv.height=cv.offsetHeight;
     cx.clearRect(0,0,cv.width,cv.height);
 
     nodes.forEach(n=>{

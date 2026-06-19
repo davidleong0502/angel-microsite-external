@@ -185,7 +185,7 @@ nav{
 }
 .habit-placeholder-glyph{font-size:1.8rem;opacity:.18;margin-bottom:12px}
 .habit-placeholder p{font-size:.78rem;color:rgba(13,49,110,.25);line-height:1.6;margin:0}
-.basics-cards-wrap{background:var(--sand);padding:48px 0 0}
+.basics-cards-wrap{background:var(--sand);padding:48px 0 0;scroll-snap-align:start}
 .basics-cards-wrap .panel-inner{padding:0 36px;max-width:none}
 .cards-intro{font-size:1.05rem;font-weight:400;color:var(--navy);margin:0 0 28px;opacity:.75}
 .habits-continue{
@@ -1029,6 +1029,7 @@ footer{
   padding:0 48px;
   overflow-x:auto;
   -webkit-overflow-scrolling:touch;
+  touch-action:pan-x;
   scrollbar-width:none;
 }
 .landing-strip::-webkit-scrollbar{display:none}
