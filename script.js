@@ -1045,8 +1045,6 @@ document.addEventListener('keydown', e => { if (e.key === 'Escape') closeReader(
 (function(){
   function sleep(ms){ return new Promise(r=>setTimeout(r,ms)); }
 
-  let io; // declared before run so run() can unobserve after completion
-
   // delay: ms gap between each word; transitionMs: per-word CSS transition duration
   async function slamIn(wordsEl, units, addBreaks, delay, transitionMs, signal){
     const t = `opacity ${transitionMs}ms ease-out, transform ${transitionMs}ms ease-out`;
@@ -1155,10 +1153,6 @@ document.addEventListener('keydown', e => { if (e.key === 'Escape') closeReader(
       span.classList.add('kt-word-breathe');
     });
 
-    // Animation complete — stop observing so scroll-out never clears and re-triggers it
-    container.dataset.animDone = '1';
-    io.unobserve(container);
-
     // Cursor proximity glow — casts a soft halo on words near the pointer
     function glowHandler(e){
       if(signal.cancelled){ container.removeEventListener('mousemove', glowHandler); return; }
@@ -1183,17 +1177,15 @@ document.addEventListener('keydown', e => { if (e.key === 'Escape') closeReader(
 
   const signals = new Map();
 
-  io = new IntersectionObserver(entries => {
+  const io = new IntersectionObserver(entries => {
     entries.forEach(entry => {
       const el = entry.target;
       if(entry.isIntersecting){
-        if(el.dataset.animDone) return; // already played — leave it alone
         if(signals.has(el)) signals.get(el).cancelled = true;
         const sig = { cancelled: false };
         signals.set(el, sig);
         run(el, sig);
       } else {
-        if(el.dataset.animDone) return; // completed animation — don't clear it
         if(signals.has(el)){
           signals.get(el).cancelled = true;
           signals.delete(el);
