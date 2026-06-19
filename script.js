@@ -1215,8 +1215,14 @@ document.addEventListener('keydown', e => { if (e.key === 'Escape') closeReader(
 
   function unlock(){
     if(locked) locked.classList.remove('tile-locked');
-    grid.style.gridTemplateColumns = '';
     locked = null;
+    // Animate back to equal columns, then release inline style so CSS hover rules resume
+    grid.style.gridTemplateColumns = '1fr 1fr 1fr';
+    grid.addEventListener('transitionend', function onEnd(e){
+      if(e.propertyName !== 'grid-template-columns') return;
+      grid.removeEventListener('transitionend', onEnd);
+      grid.style.gridTemplateColumns = '';
+    });
   }
 
   tiles.forEach((tile, idx) => {
