@@ -65,6 +65,7 @@ nav{
   background:var(--sand);
   display:block;padding:0;
   justify-content:unset;min-height:unset;
+  scroll-snap-align:none;
 }
 .habits-header{
   padding:56px 36px 44px;

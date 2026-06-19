@@ -28,7 +28,7 @@
 
 /* ── KEYBOARD SCROLL ── */
 (function(){
-  const SECTIONS = ['landing','habits','panel1','panel2','panel3','panel4','misc'];
+  const SECTIONS = ['landing','panel1','habits','panel2','panel3','panel4','misc'];
   let scrolling = false;
 
   document.addEventListener('keydown', function(e) {
