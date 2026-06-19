@@ -1213,20 +1213,26 @@ document.addEventListener('keydown', e => { if (e.key === 'Escape') closeReader(
   const tiles = [...grid.querySelectorAll('.habit-tile')];
   let locked = null;
 
+  function unlock(){
+    if(locked) locked.classList.remove('tile-locked');
+    grid.style.gridTemplateColumns = '';
+    locked = null;
+  }
+
   tiles.forEach((tile, idx) => {
-    tile.addEventListener('click', () => {
+    tile.addEventListener('click', (e) => {
+      e.stopPropagation(); // prevent document listener from firing on same click
       if(locked === tile){
-        tile.classList.remove('tile-locked');
-        grid.style.gridTemplateColumns = '';
-        locked = null;
+        unlock();
       } else {
         if(locked) locked.classList.remove('tile-locked');
         tile.classList.add('tile-locked');
         locked = tile;
-        // Set expanded column inline — overrides CSS :has() hover rules while locked
         const cols = tiles.map((_, i) => i === idx ? '1.2fr' : '0.9fr').join(' ');
         grid.style.gridTemplateColumns = cols;
       }
     });
   });
+
+  document.addEventListener('click', () => { if(locked) unlock(); });
 })();
