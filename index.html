@@ -105,7 +105,7 @@
       <span class="wt-text">Welcome to A&amp;GEL!</span>
     </div>
     <div class="panel-welcome rv d2">
-      <p class="panel-welcome-intro">We&rsquo;re thrilled to have you here. As you begin exploring A&amp;GEL, we want to share a few thoughts to get you started on a good footing.</p>
+      <p class="panel-welcome-intro">We&rsquo;re thrilled to have you here. As you begin exploring A&amp;GEL, we want to share a few thoughts to get you started on good footing.</p>
       <h3 class="panel-welcome-h">Learning New Tools Takes Time &ndash; And That&rsquo;s Okay</h3>
       <p class="panel-welcome-p">We know that getting comfortable with new technology can feel challenging at first. Please remember: we&rsquo;re here to support you every step of the way. Don&rsquo;t hesitate to reach out if you have questions or if you are ever stuck or would like us to walk you through something.</p>
       <img class="panel-welcome-img" src="assets/Frame%202719.svg" alt="">
@@ -147,7 +147,7 @@
         <div class="habit-section-label is-lg">Three Takeaways</div>
         <ol class="habit-ol">
           <li><strong>Giving A&amp;GEL specific documents before you prompt &ndash;</strong> If you drag and drop a file onto chat or select a file and chat with it, this is like loading A&amp;GEL&rsquo;s short-term memory only with the contents of that document. Many of you who attended our workshops would have heard us describing the file as the &lsquo;K-drama episode you just watched last night&rsquo; (<em>it is all you want to talk about today</em>). This makes A&amp;GEL have tunnel vision and can be channeled for accurate outputs.</li>
-          <li>Working with A&amp;GEL is not unlike working with a colleague &ndash; just as you would give a team member some information to help them along the way, it is the same with A&amp;GEL.</li>
+          <li><strong>Working with A&amp;GEL is not unlike working with a colleague</strong> &ndash; just as you would give a team member some information to help them along the way, it is the same with A&amp;GEL.</li>
           <li><strong>What about the query or instruction in my prompt itself? Does that count as &lsquo;giving something to A&amp;GEL?&rsquo;</strong> Yes. To AI tools like A&amp;GEL, the prompt is ingested/processed just as a series of words, so this means the entire prompt is just &lsquo;context&rsquo; for the AI tool or A&amp;GEL. If you are asking a question in your prompt, ask better questions and you will get better answers.</li>
         </ol>
         <div class="habit-section-label">Examples</div>
@@ -174,12 +174,31 @@
         <div class="habit-section-label">Examples</div>
         <div class="habit-typewriter"
           data-bad='&lsquo;a large, elaborate, multi-part prompt all at once, e.g. like &ldquo;prepare a report that captures all my concerns from document 1 and document 2 and then summarise the report to create an executive summary and combine both the full report and executive summary into one document&rdquo;&rsquo;'
-          data-good-lines='chop up the prompt &ndash; break it down a little and using Multi-Step in Apps|||1. summarise the concerns in document 1 and 2, one document at a time|||2. draft a report combining both summaries|||3. create an executive summary from the report|||4. Append the executive summary to the start of the report'
+          data-good-lines='chop up the prompt &ndash; break it down a little and using Multi-Step in Apps|||Step 1: Extraction|||Step 2: Draft the Full Report|||Step 3: Executive Summary &amp; Final Compilation'
           data-bad-delay="28" data-bad-trans="42"
           data-good-delay="276" data-good-trans="414">
         </div>
         <div class="habit-section-sublabel">Use A&amp;GEL to reshape, format, or extrapolate from existing text</div>
         <p>Rather than asking A&amp;GEL to draft complex legal documents from scratch without any reference materials, do provide reference materials and (i) use A&amp;GEL&rsquo;s language abilities to take your drafts and change their tone, structure, or formatting, or mash multiple drafts together; or (ii) extrapolate intention, direction, implications, or other second-order characteristics (e.g. to create a Review checklist of findings across several paragraphs or documents).</p>
+        <div class="habit-section-sublabel">Step-by-step breakdown</div>
+        <p><strong>Step 1: Extraction</strong></p>
+        <ul>
+          <li><strong>Input Context:</strong> [Insert text of Document 1 and Document 2]</li>
+          <li><strong>Prompt 1:</strong> &ldquo;Read the provided text. Extract a comprehensive, bulleted list of all the concerns, issues, or risks mentioned across both documents.&rdquo;</li>
+          <li><em>Output 1: (Generates a clean list of concerns)</em></li>
+        </ul>
+        <p><strong>Step 2: Drafting the Full Report</strong></p>
+        <ul>
+          <li><strong>Input Context:</strong> [Output 1]</li>
+          <li><strong>Prompt 2:</strong> &ldquo;Using the provided list of concerns, write a detailed, formal report. Group similar concerns under relevant headings. Do not include an introduction or executive summary at this stage.&rdquo;</li>
+          <li><em>Output 2: (Generates the full, structured report)</em></li>
+        </ul>
+        <p><strong>Step 3: Executive Summary &amp; Final Compilation</strong></p>
+        <ul>
+          <li><strong>Input Context:</strong> [Output 2]</li>
+          <li><strong>Prompt 3:</strong> &ldquo;Read the provided report. First, write a concise, one-paragraph executive summary of it. Then, output the executive summary, add a visual divider, and output the exact full report below it to create a single, combined document.&rdquo;</li>
+          <li><em>Final Output: (Generates the final, combined document)</em></li>
+        </ul>
         <div class="habit-section-label">Coming Soon</div>
         <ul>
           <li>1.2 reproduce <em>[to write]</em></li>
@@ -196,7 +215,7 @@
       <div class="habit-body">
         <p>By exploring features beyond simple chat&mdash;such as uploading documents, using specific Apps or Specialised Features, or chaining features together through steps&mdash;you gain granular control over the output.</p>
         <p><strong>Experimentation is key</strong>. Please experiment and explore the other features freely and try things out. Many of the features under the Specialised Modes are tuned for more accuracy and thoroughness. Discover which features work best for your workflow, and don&rsquo;t be afraid to make mistakes. Skill-building is like climbing a staircase; start with the basics, and as you grow more confident, you will naturally move to more advanced techniques.</p>
-        <p>By mastering context, respecting the AI&rsquo;s role as a processor, and breaking down complex tasks, you will transform A&amp;GEL from a novelty into an indispensable part of your daily practice.</p>
+        <p>By mastering context, respecting the AI&rsquo;s role as a text processor (and your own, as the expert), and breaking down complex tasks, you will transform A&amp;GEL from a novelty into an indispensable part of your daily practice.</p>
       </div>
     </div>
 
