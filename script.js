@@ -33,6 +33,17 @@
   }, { passive: true });
 })();
 
+/* ── DYNAMIC SNAP — disable after hero panels to prevent post-hero flicker ── */
+(function(){
+  const lastHero = document.getElementById('panel4');
+  if (!lastHero) return;
+  function updateSnap() {
+    const pastHero = lastHero.getBoundingClientRect().bottom <= 0;
+    document.documentElement.style.scrollSnapType = pastHero ? 'none' : '';
+  }
+  window.addEventListener('scroll', updateSnap, { passive: true });
+})();
+
 /* ── KEYBOARD SCROLL ── */
 (function(){
   const SECTIONS = ['landing','panel1','habits','panel2','panel3','panel4','misc'];

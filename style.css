@@ -193,7 +193,7 @@ nav{
 }
 .habit-placeholder-glyph{font-size:1.8rem;opacity:.18;margin-bottom:12px}
 .habit-placeholder p{font-size:.78rem;color:rgba(13,49,110,.25);line-height:1.6;margin:0}
-.basics-cards-wrap{background:var(--sand);padding:48px 0 0;scroll-snap-align:start}
+.basics-cards-wrap{background:var(--sand);padding:48px 0 0}
 .basics-cards-wrap .panel-inner{padding:0 36px;max-width:none}
 .cards-intro{font-size:1.05rem;font-weight:400;color:var(--navy);margin:0 0 28px;opacity:.75}
 .habits-continue{
@@ -524,7 +524,6 @@ a.wip-card{text-decoration:none;color:inherit}
   background:var(--ink);
   padding:80px 10vw;
   border-top:1px solid rgba(255,255,255,.06);
-  scroll-snap-align:start;
 }
 .misc-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
 .misc-left{position:relative}
