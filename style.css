@@ -318,14 +318,12 @@ nav{
   background:rgba(255,255,255,.04);
   border:1px solid rgba(255,255,255,.08);
   border-radius:10px;padding:22px 24px;
-  transition:background .3s cubic-bezier(.25,.46,.45,.94),border-color .3s cubic-bezier(.25,.46,.45,.94),transform .3s cubic-bezier(.25,.46,.45,.94);
+  transition:background .3s cubic-bezier(.25,.46,.45,.94),border-color .3s cubic-bezier(.25,.46,.45,.94);
   cursor:pointer;text-decoration:none;display:block;
-  transform:translateZ(0);
 }
 .card-dark:hover{
   background:rgba(0,154,197,.08);
   border-color:rgba(0,154,197,.3);
-  transform:translateY(-4px);
 }
 .card-dark-icon{display:none}
 .card-light-icon{display:none}
@@ -364,17 +362,16 @@ nav{
   background:white;
   border:1px solid rgba(168,159,149,.2);
   border-radius:10px;padding:22px 24px;
-  transition:box-shadow .3s cubic-bezier(.25,.46,.45,.94),transform .3s cubic-bezier(.25,.46,.45,.94),border-color .3s cubic-bezier(.25,.46,.45,.94);
+  transition:box-shadow .3s cubic-bezier(.25,.46,.45,.94),border-color .3s cubic-bezier(.25,.46,.45,.94);
   position:relative;overflow:hidden;cursor:pointer;
   text-decoration:none;color:inherit;
-  transform:translateZ(0);
 }
 .card-light::before{
   content:"";position:absolute;top:0;left:0;right:0;height:2px;
   background:linear-gradient(90deg,var(--teal),var(--navy));
   transform:scaleX(0);transform-origin:left;transition:transform .35s cubic-bezier(.25,.46,.45,.94);
 }
-.card-light:hover{transform:translateY(-4px);box-shadow:0 12px 36px rgba(13,49,110,.1);border-color:rgba(0,154,197,.2)}
+.card-light:hover{box-shadow:0 12px 36px rgba(13,49,110,.12);border-color:rgba(0,154,197,.3)}
 .card-light:hover::before{transform:scaleX(1)}
 
 .card-light-title{
