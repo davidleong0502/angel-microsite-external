@@ -16,14 +16,21 @@
     });
   });
 
+  // Cache panel tops once; refresh only on resize — avoids forced reflow on every scroll tick
+  const panelEls = panels.map(id=>document.getElementById(id));
+  let panelTops = [];
+  function cacheTops(){
+    panelTops = panelEls.map(el=>el ? el.getBoundingClientRect().top + window.scrollY : 0);
+  }
+  cacheTops();
+  window.addEventListener("resize", cacheTops);
+
   window.addEventListener("scroll",()=>{
+    const mid = window.scrollY + window.innerHeight/2;
     let cur=0;
-    panels.forEach((id,i)=>{
-      const el=document.getElementById(id);
-      if(el&&scrollY>=el.offsetTop-window.innerHeight/2) cur=i;
-    });
+    panelTops.forEach((top,i)=>{ if(mid>=top) cur=i; });
     setActive(cur);
-  });
+  }, { passive: true });
 })();
 
 /* ── KEYBOARD SCROLL ── */
@@ -97,9 +104,14 @@
     phase:Math.random()*Math.PI*2
   }));
 
+  let graphVisible = true;
+  new IntersectionObserver(entries=>{
+    graphVisible = entries[0].isIntersecting;
+    if(graphVisible) tick();
+  }, {threshold:0}).observe(cv);
+
   function tick(){
-    // Skip work entirely when canvas is hidden (display:none → offsetParent is null)
-    if(!cv.offsetParent){ requestAnimationFrame(tick); return; }
+    if(!graphVisible) return;
     cx.clearRect(0,0,cv.width,cv.height);
     nodes.forEach(n=>{
       n.x+=n.vx; n.y+=n.vy; n.phase+=.016;
@@ -170,14 +182,19 @@
   });
 
   let running=true;
+  let landingVisible=true;
   let mx=-999,my=-999;
   cv.addEventListener("mousemove",e=>{
     const r=cv.getBoundingClientRect();
     mx=e.clientX-r.left; my=e.clientY-r.top;
   });
+  new IntersectionObserver(entries=>{
+    landingVisible = entries[0].isIntersecting;
+    if(landingVisible && running) tick();
+  }, {threshold:0}).observe(cv);
 
   function tick(){
-    if(!running) return;
+    if(!running || !landingVisible) return;
     cx.clearRect(0,0,cv.width,cv.height);
 
     nodes.forEach(n=>{
