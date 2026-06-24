@@ -484,10 +484,12 @@ const ISSUES = {
       { kicker: '02 — Uploading', heading: 'What and how to upload', blocks: [
         { p: '<strong>What can you upload?</strong> Any Word documents, PDFs or emails. Other file formats are in progress.' },
         { p: '<strong>How?</strong> Upload files by dragging and dropping individual files or entire folders onto the Files surface, or by clicking the upload button.' },
+        { figure: { src: 'assets/vault1.png', caption: 'Drag and drop files or folders directly onto the Files surface.', wide: true } },
         { callout: { kind: 'tip', title: 'Garbage In, Garbage Out', body: 'Think of A&GEL not as a magic oracle, but as a tireless co-worker who has read everything you\'ve uploaded. Hand that co-worker a messy desk piled with unrelated files and their work will likely be confused. Hand them a single, relevant precedent and their work will sharpen. This is the core truth of using A&GEL: <strong>Context is everything.</strong>' } },
       ]},
       { kicker: '03 — Structure', heading: 'Have some folder structure', blocks: [
         { p: 'Your folder structure isn\'t just for tidiness — it\'s metadata that guides the AI. Organising files into logical sub-folders, like separating "Seller" from "Customer" precedents, helps A&GEL retrieve the right perspective.' },
+        { figure: { src: 'assets/vault2.png', caption: 'Drilling into a sub-folder — separating "Licensee" from "Licensor" precedents keeps context clean.', wide: true } },
         { p: '<strong>Avoid the "Upload Everything" trap.</strong> It\'s tempting to dump your entire library into one folder and let the AI figure it out. Don\'t. A&GEL uses Retrieval-Augmented Generation (RAG), meaning it pulls answers from your uploaded files. GenAI doesn\'t "understand" facts — it predicts probabilities. When you feed it irrelevant noise, you dilute the signal. The result: less accurate, less precise, less reliable outputs. Always manually select the specific documents or folders relevant to your prompt.' },
       ]},
       { kicker: '04 — Fine-Tuning', heading: 'Fine-tune the signal', blocks: [
