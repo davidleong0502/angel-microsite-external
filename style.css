@@ -182,8 +182,8 @@ nav{
 .kt-word-slow{transition:opacity 360ms ease-out,transform 360ms ease-out}
 .kt-word.kt-word-in{opacity:1;transform:translateY(0)}
 @keyframes kt-breathe{
-  0%,100%{opacity:1;transform:translateY(0)}
-  50%{opacity:0.55;transform:translateY(-2px)}
+  0%,100%{opacity:1}
+  50%{opacity:0.55}
 }
 .kt-word-breathe{animation:kt-breathe 2.6s ease-in-out infinite}
 .habit-placeholder{
