@@ -1215,23 +1215,34 @@ document.addEventListener('keydown', e => { if (e.key === 'Escape') closeReader(
       span.classList.add('kt-word-breathe');
     });
 
-    // Cursor proximity glow — casts a soft halo on words near the pointer
+    // Cursor proximity glow — batches all reads before all writes to avoid layout thrash
+    let glowPending = false;
     function glowHandler(e){
       if(signal.cancelled){ container.removeEventListener('mousemove', glowHandler); return; }
-      const rect = container.getBoundingClientRect();
-      const mx = e.clientX - rect.left;
-      const my = e.clientY - rect.top;
-      badSpans.forEach(span => {
-        const r = span.getBoundingClientRect();
-        const d = Math.hypot(mx - (r.left + r.width/2 - rect.left), my - (r.top + r.height/2 - rect.top));
-        const t = Math.max(0, 1 - d / 140);
-        span.style.textShadow = t > 0.06 ? `0 0 ${Math.round(t*10)}px rgba(138,155,176,${(t*0.75).toFixed(2)})` : '';
-      });
-      goodSpans.forEach(span => {
-        const r = span.getBoundingClientRect();
-        const d = Math.hypot(mx - (r.left + r.width/2 - rect.left), my - (r.top + r.height/2 - rect.top));
-        const t = Math.max(0, 1 - d / 140);
-        span.style.textShadow = t > 0.06 ? `0 0 ${Math.round(t*14)}px rgba(0,154,197,${(t*0.65).toFixed(2)})` : '';
+      if(glowPending) return;
+      glowPending = true;
+      requestAnimationFrame(() => {
+        glowPending = false;
+        if(signal.cancelled) return;
+        // All reads first
+        const rect = container.getBoundingClientRect();
+        const mx = e.clientX - rect.left;
+        const my = e.clientY - rect.top;
+        const badRects  = badSpans.map(s => s.getBoundingClientRect());
+        const goodRects = goodSpans.map(s => s.getBoundingClientRect());
+        // All writes after
+        badSpans.forEach((span, i) => {
+          const r = badRects[i];
+          const d = Math.hypot(mx - (r.left + r.width/2 - rect.left), my - (r.top + r.height/2 - rect.top));
+          const t = Math.max(0, 1 - d / 140);
+          span.style.textShadow = t > 0.06 ? `0 0 ${Math.round(t*10)}px rgba(138,155,176,${(t*0.75).toFixed(2)})` : '';
+        });
+        goodSpans.forEach((span, i) => {
+          const r = goodRects[i];
+          const d = Math.hypot(mx - (r.left + r.width/2 - rect.left), my - (r.top + r.height/2 - rect.top));
+          const t = Math.max(0, 1 - d / 140);
+          span.style.textShadow = t > 0.06 ? `0 0 ${Math.round(t*14)}px rgba(0,154,197,${(t*0.65).toFixed(2)})` : '';
+        });
       });
     }
     container.addEventListener('mousemove', glowHandler);
