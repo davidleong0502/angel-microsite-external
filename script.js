@@ -499,7 +499,7 @@ const ISSUES = {
       ]},
     ],
     signoff: { line: 'Curate your Vault. Control your context.', name: 'A&GEL Development Team' },
-    cta: { label: 'Back to Basics →', href: '#panel1' },
+    cta: { label: 'Back to Basics →', href: '#habits' },
   },
   'issue-3': {
     issue: 3, title: 'New Timeline & Multi-Step Prompt Apps',
