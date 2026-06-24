@@ -499,6 +499,7 @@ const ISSUES = {
       ]},
     ],
     signoff: { line: 'Curate your Vault. Control your context.', name: 'A&GEL Development Team' },
+    cta: { label: 'Back to Basics →', href: '#panel1' },
   },
   'issue-3': {
     issue: 3, title: 'New Timeline & Multi-Step Prompt Apps',
@@ -962,9 +963,11 @@ function openIssue(id, triggerEl) {
     </div>`;
   }).join('');
 
+  const ctaHtml = issue.cta
+    ? `<a href="${issue.cta.href}" class="reader-angel-cta" onclick="closeReader()">${issue.cta.label}</a>`
+    : `<a href="https://app.angellaw.ai" class="reader-angel-cta" target="_blank">Open A&amp;GEL &rarr;</a>`;
   document.getElementById('reader-signoff').innerHTML =
-    `<div class="reader-signoff-line">${issue.signoff.line}</div><div>${issue.signoff.name}</div>
-     <a href="https://app.angellaw.ai" class="reader-angel-cta" target="_blank">Open A&amp;GEL &rarr;</a>`;
+    `<div class="reader-signoff-line">${issue.signoff.line}</div><div>${issue.signoff.name}</div>${ctaHtml}`;
 
   // Build TOC
   if (_tocSpyCleanup) { _tocSpyCleanup(); _tocSpyCleanup = null; }
