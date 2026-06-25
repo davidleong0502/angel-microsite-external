@@ -176,10 +176,10 @@ nav{
 .kt-col{flex:1;min-width:0}
 .kt-label{font-size:.84rem;font-weight:600;color:rgba(13,49,110,.8);margin-bottom:4px}
 .kt-words{font-size:.84rem;font-weight:300;line-height:1.6;margin:0}
-.kt-words-bad{color:#8a9bb0;font-size:0.85em;line-height:1.3}
-.kt-words-good{color:#009AC5;font-weight:500;line-height:1.35}
+.kt-words-bad{color:#a3b0c0;font-size:0.85em;line-height:1.3}
+.kt-words-good{color:#33acd1;font-weight:500;line-height:1.35}
 .kt-word{display:inline-block;opacity:0;transform:translateY(15px)}
-.kt-words-good .kt-word{color:#009AC5}
+.kt-words-good .kt-word{color:#33acd1}
 .kt-word-fast{transition:opacity 60ms ease-out,transform 60ms ease-out}
 .kt-word-slow{transition:opacity 360ms ease-out,transform 360ms ease-out}
 .kt-word.kt-word-in{opacity:1;transform:translateY(0)}
