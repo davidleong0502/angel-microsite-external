@@ -98,6 +98,10 @@ nav{
   .habits-grid:has(.habit-tile-1:hover){grid-template-columns:1.1fr 0.95fr 0.95fr}
   .habits-grid:has(.habit-tile-2:hover){grid-template-columns:0.95fr 1.1fr 0.95fr}
   .habits-grid:has(.habit-tile-3:hover){grid-template-columns:0.95fr 0.95fr 1.1fr}
+  /* Lock content to the narrowest track width (0.95/3 of 100vw, minus 72px padding)
+     so the column-resize animation only grows side padding — text never rewraps.
+     No per-frame line-breaking = the hover flicker is eliminated. */
+  .habit-tile > *{width:calc(31vw - 72px);max-width:100%}
 }
 .habit-tile:last-child{border-right:none}
 .habit-tile-1::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;
