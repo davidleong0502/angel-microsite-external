@@ -12,7 +12,7 @@
 
   dots.forEach(d=>{
     d.addEventListener("click",()=>{
-      document.getElementById(panels[parseInt(d.dataset.panel)]).scrollIntoView({behavior:"smooth"});
+      document.getElementById(panels[parseInt(d.dataset.panel)]).scrollIntoView({behavior:"instant"});
     });
   });
 
@@ -60,7 +60,7 @@
     if (targetIdx === currentIdx) return;
 
     scrolling = true;
-    els[targetIdx].scrollIntoView({ behavior: 'smooth', block: 'start' });
+    els[targetIdx].scrollIntoView({ behavior: 'instant', block: 'start' });
     setTimeout(() => { scrolling = false; }, 800);
   });
 })();
@@ -76,6 +76,19 @@
     });
   },{threshold:0.1});
   document.querySelectorAll(".rv").forEach(el=>io.observe(el));
+})();
+
+/* ── OFF-SCREEN ANIMATION PAUSE ── */
+(function(){
+  function pauseWhenHidden(el, cls){
+    if(!el) return;
+    el.classList.add(cls);
+    new IntersectionObserver(function(entries){
+      entries[0].isIntersecting ? el.classList.remove(cls) : el.classList.add(cls);
+    },{threshold:0}).observe(el);
+  }
+  pauseWhenHidden(document.querySelector('.basics-cards-wrap'), 'anim-off');
+  pauseWhenHidden(document.getElementById('landing'), 'anim-off');
 })();
 
 /* ── KNOWLEDGE GRAPH ── */
@@ -1010,7 +1023,7 @@ function openIssue(id, triggerEl) {
       const btn = e.target.closest('[data-target]');
       if (!btn) return;
       const target = document.getElementById(btn.dataset.target);
-      if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      if (target) target.scrollIntoView({ behavior: 'instant', block: 'start' });
     };
 
     // Scroll spy
@@ -1077,7 +1090,7 @@ document.addEventListener('keydown', e => { if (e.key === 'Escape') closeReader(
       const card = document.getElementById(cardId);
       if (!card) return;
 
-      card.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      card.scrollIntoView({ behavior: 'instant', block: 'center' });
 
       setTimeout(() => {
         card.classList.remove('card-highlighted');
