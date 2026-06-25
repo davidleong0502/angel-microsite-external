@@ -91,6 +91,17 @@
   pauseWhenHidden(document.getElementById('landing'), 'anim-off');
 })();
 
+/* ── PAUSE DECORATIVE ANIMATIONS DURING ACTIVE SCROLL ── */
+(function(){
+  const root=document.documentElement;
+  let t=0;
+  window.addEventListener('scroll',()=>{
+    if(!t) root.classList.add('scrolling');
+    clearTimeout(t);
+    t=setTimeout(()=>{ root.classList.remove('scrolling'); t=0; },140);
+  },{passive:true});
+})();
+
 /* ── KNOWLEDGE GRAPH ── */
 (function(){
   const cv=document.getElementById("graph-canvas");

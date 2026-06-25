@@ -26,8 +26,7 @@ nav{
   position:fixed;top:0;left:0;right:0;z-index:500;
   height:56px;display:flex;align-items:center;justify-content:flex-end;
   padding:0 48px;
-  background:rgba(208,198,186,0.97);
-  backdrop-filter:blur(20px);
+  background:rgba(208,198,186,0.99);
   border-bottom:1px solid rgba(0,0,0,0.08);
   transition:border-color .4s,opacity .4s;
 }
@@ -841,6 +840,24 @@ footer{
 .rv{opacity:0;transform:translateY(22px);transition:opacity .75s cubic-bezier(0.22,1,0.36,1),transform .75s cubic-bezier(0.22,1,0.36,1)}
 .rv.in{opacity:1;transform:translateY(0)}
 .d1{transition-delay:.1s}.d2{transition-delay:.22s}.d3{transition-delay:.37s}.d4{transition-delay:.54s}
+
+/* ACTIVE-SCROLL ANIMATION PAUSE — JS toggles html.scrolling while the user scrolls.
+   Stops decorative animations from repainting during scroll, which causes flicker. */
+html.scrolling .orbit-r,
+html.scrolling .sonar-r,
+html.scrolling .cite-ring,
+html.scrolling .prompt-line,
+html.scrolling .prompt-cursor,
+html.scrolling .lib-row::after,
+html.scrolling .scan-bar,
+html.scrolling .bar,
+html.scrolling .wip-dot,
+html.scrolling .tile-1::before,
+html.scrolling .tile-2::before,
+html.scrolling .tile-3-bg1,
+html.scrolling .tile-3-bg2,
+html.scrolling .tile-3-bg3,
+html.scrolling .tile-3-bg4{animation-play-state:paused}
 
 /* OFF-SCREEN ANIMATION PAUSE — JS toggles .anim-off when section is not intersecting */
 .basics-cards-wrap.anim-off .orbit-r,
