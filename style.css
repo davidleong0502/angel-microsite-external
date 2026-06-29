@@ -83,6 +83,15 @@ nav{
   max-width:680px;font-size:.92rem;font-weight:300;
   color:rgba(13,49,110,.80);line-height:1.8;
 }
+.habits-lock-hint{
+  font-family:"JetBrains Mono",monospace;
+  font-size:.62rem;letter-spacing:.12em;text-transform:uppercase;
+  color:rgba(13,49,110,.45);
+  text-align:center;
+  margin:0 auto -8px;padding:0 16px;
+  position:relative;z-index:1;
+  pointer-events:none;
+}
 .habits-grid{
   display:grid;grid-template-columns:repeat(3,1fr);
   transition:grid-template-columns .28s ease-out;
