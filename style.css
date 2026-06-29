@@ -88,8 +88,11 @@ nav{
   font-size:.62rem;letter-spacing:.12em;text-transform:uppercase;
   color:rgba(13,49,110,.45);
   text-align:center;
-  margin:0 auto -8px;padding:0 16px;
-  position:relative;z-index:1;
+  width:fit-content;max-width:90%;
+  margin:0 auto;padding:0 16px;
+  background:var(--sand);
+  transform:translateY(50%);
+  position:relative;z-index:2;
   pointer-events:none;
 }
 .habits-grid{
