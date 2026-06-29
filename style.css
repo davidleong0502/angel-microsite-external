@@ -89,7 +89,6 @@ nav{
 }
 .habit-tile{
   padding:48px 36px 64px;
-  border-right:1px solid rgba(13,49,110,.1);
   position:relative;overflow:hidden;
   cursor:pointer;
   contain:layout paint;
@@ -108,7 +107,6 @@ nav{
      so the text grows without re-wrapping — no flicker. */
   .habit-tile:hover{transform:scale(1.04);z-index:2}
 }
-.habit-tile:last-child{border-right:none}
 .habit-tile-1::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;
   background:linear-gradient(90deg,var(--teal),transparent)}
 .habit-tile-2::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;
