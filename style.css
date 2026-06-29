@@ -1200,6 +1200,7 @@ html.scrolling .tile-3-bg4{animation-play-state:paused}
 
   /* HABITS — collapse 3-column grid to single column */
   .habits-header{padding:40px 20px 28px}
+  .habits-lock-hint{width:auto;margin-left:0;padding:0 20px 12px;text-align:center}
   .habits-grid{grid-template-columns:1fr}
   .habit-tile{
     padding:32px 20px 40px;
