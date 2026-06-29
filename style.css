@@ -93,6 +93,8 @@ nav{
   position:relative;overflow:hidden;
   cursor:pointer;
   contain:layout paint;
+  transform-origin:top center;
+  transition:transform .28s ease-out;
 }
 @media(hover:hover) and (min-width:769px){
   .habits-grid:has(.habit-tile-1:hover){grid-template-columns:1.1fr 0.95fr 0.95fr}
@@ -102,6 +104,9 @@ nav{
      so the column-resize animation only grows side padding — text never rewraps.
      No per-frame line-breaking = the hover flicker is eliminated. */
   .habit-tile > *{width:calc(31vw - 72px);max-width:100%}
+  /* Scale the whole tile (text included) on hover. Transforms don't reflow,
+     so the text grows without re-wrapping — no flicker. */
+  .habit-tile:hover{transform:scale(1.04);z-index:2}
 }
 .habit-tile:last-child{border-right:none}
 .habit-tile-1::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;
