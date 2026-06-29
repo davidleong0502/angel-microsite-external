@@ -122,8 +122,6 @@ nav{
   background:linear-gradient(90deg,var(--teal),transparent)}
 .habit-tile-2::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;
   background:linear-gradient(90deg,var(--navy),transparent)}
-.habit-tile-3::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;
-  background:linear-gradient(90deg,rgba(13,49,110,.3),transparent)}
 .habit-tile-1{background:linear-gradient(160deg,rgba(0,154,197,.05) 0%,transparent 50%)}
 .habit-tile-2{background:linear-gradient(160deg,rgba(13,49,110,.05) 0%,transparent 50%)}
 .habit-tile-3{background:linear-gradient(160deg,rgba(168,159,149,.08) 0%,transparent 50%)}
