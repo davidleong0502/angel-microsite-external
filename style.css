@@ -107,15 +107,12 @@ nav{
   .habits-grid:has(.habit-tile-1:hover){grid-template-columns:1.1fr 0.95fr 0.95fr}
   .habits-grid:has(.habit-tile-2:hover){grid-template-columns:0.95fr 1.1fr 0.95fr}
   .habits-grid:has(.habit-tile-3:hover){grid-template-columns:0.95fr 0.95fr 1.1fr}
-  /* Lock content to the narrowest track width (0.95/3 of 100vw, minus 72px
-     padding) so the text NEVER rewraps — no reflow means no height change,
-     so hovering can't shift the page height or shake the scroll. */
-  .habit-tile > *{width:calc(31vw - 72px);max-width:100%;
-    transition:transform .28s ease-out}
-  /* Hovered tile: the column animates wider (extra space becomes padding),
-     and the text slides into that space via a transform. Transforms are
-     composited, not laid out, so the words glide without any reflow/shake. */
-  .habit-tile:hover > *{transform:translateX(1.8vw)}
+  /* Resting/neighbour tiles: content locked to the narrow track width. */
+  .habit-tile > *{width:calc(31vw - 72px);max-width:100%}
+  /* Hovered tile: content snaps to the WIDE track width — the text genuinely
+     reflows into longer lines (real extra reading width). The grid height is
+     pinned in JS, so this reflow can't change the page height or shake scroll. */
+  .habit-tile:hover > *{width:calc(36vw - 72px)}
 }
 .habit-tile-1::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;
   background:linear-gradient(90deg,var(--teal),transparent)}
