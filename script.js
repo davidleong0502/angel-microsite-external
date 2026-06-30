@@ -480,6 +480,7 @@ const ISSUES = {
       ]},
     ],
     signoff: { line: 'You know your context best — put it in the prompt.', name: 'A&GEL Development Team' },
+    altCta: { label: 'Prompt Library &rarr;', issue: 'feature-prompt-library' },
   },
   'feature-guided-summary': {
     issue: null, title: 'Quick Info & Guided Summary',
@@ -1007,8 +1008,12 @@ function openIssue(id, triggerEl) {
   const ctaHtml = issue.cta
     ? `<a href="${issue.cta.href}" class="reader-angel-cta" onclick="closeReader()">${issue.cta.label}</a>`
     : `<a href="https://app.angellaw.ai" class="reader-angel-cta" target="_blank">Open A&amp;GEL &rarr;</a>`;
+  // Optional extra button (same styling) that opens another reader page in place.
+  const altCtaHtml = issue.altCta
+    ? `<a href="#" class="reader-angel-cta" onclick="openIssue('${issue.altCta.issue}');return false;">${issue.altCta.label}</a>`
+    : '';
   document.getElementById('reader-signoff').innerHTML =
-    `<div class="reader-signoff-line">${issue.signoff.line}</div><div>${issue.signoff.name}</div>${ctaHtml}`;
+    `<div class="reader-signoff-line">${issue.signoff.line}</div><div>${issue.signoff.name}</div>${altCtaHtml}${ctaHtml}`;
 
   // Build TOC
   if (_tocSpyCleanup) { _tocSpyCleanup(); _tocSpyCleanup = null; }
