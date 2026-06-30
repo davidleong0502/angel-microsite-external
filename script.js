@@ -480,7 +480,7 @@ const ISSUES = {
       ]},
     ],
     signoff: { line: 'You know your context best — put it in the prompt.', name: 'A&GEL Development Team' },
-    altCta: { label: 'Prompt Library &rarr;', issue: 'feature-prompt-library' },
+    altCta: { label: 'More about Prompt Library &rarr;', issue: 'feature-prompt-library' },
   },
   'feature-guided-summary': {
     issue: null, title: 'Quick Info & Guided Summary',
