@@ -972,6 +972,10 @@ function openIssue(id, triggerEl) {
     } else if (triggerEl.closest('.habit-tile')) {
       isLight = true;
     }
+  } else {
+    // No trigger element (e.g. altCta navigation) — inherit current reader theme
+    const existingReader = document.getElementById('reader');
+    if (existingReader && existingReader.classList.contains('reader-light')) isLight = true;
   }
   const reader = document.getElementById('reader');
   document.getElementById('reader-cover').src = issue.cover;
