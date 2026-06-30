@@ -216,7 +216,7 @@ nav{
 }
 .habits-continue-btn:hover{background:var(--teal);color:#fff;border-color:var(--teal)}
 
-.panel-2{background:linear-gradient(135deg,var(--ink) 0%,#1a2f42 100%);padding-top:56px;padding-bottom:80px}
+.panel-2{background:linear-gradient(135deg,var(--ink) 0%,#1a2f42 100%);padding-top:56px;padding-bottom:80px;overflow:hidden}
 .panel-3{background:var(--sand);padding-top:56px;padding-bottom:80px}
 .panel-4{background:var(--ink);min-height:90vh;border-top:1px solid rgba(255,255,255,.06);padding-top:56px}
 
@@ -232,6 +232,7 @@ nav{
   z-index:1;
 }
 .panel-1 .panel-bg-word{color:rgba(13,49,110,.04);white-space:normal;text-align:right;bottom:-12rem}
+.panel-2 .panel-bg-word{color:rgba(0,154,197,.04)}
 .panel-3 .panel-bg-word{color:rgba(13,49,110,.04)}
 .panel-4 .panel-bg-word{color:rgba(235,235,223,.025);right:-2%}
 
