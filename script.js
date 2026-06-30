@@ -732,6 +732,83 @@ const ISSUES = {
     signoff: { line: 'Your positions. Applied automatically.', name: 'A&GEL Development Team' },
   },
 
+  'feature-deepresearch': {
+    issue: null, title: 'Deep Research',
+    subtitle: 'Cross-document analysis under a structured research prompt — every finding links back to its source paragraph.',
+    date: '', readMins: 4, cover: 'assets/covers/issue-4.png',
+    glance: [
+      'Runs a structured research prompt across your entire selected document set.',
+      'Every finding carries a <strong>clickable inline citation</strong> — open the source with the passage highlighted.',
+      'Found under <strong>Specialised Apps</strong>.',
+      'Pair with curated Vault uploads of primary sources for maximum precision.',
+    ],
+    sections: [
+      { kicker: '01 — What it does', heading: 'Cross-document analysis under a structured prompt', blocks: [
+        { p: 'Deep Research runs a structured research prompt across your selected documents and returns a detailed, sourced analysis. It is designed for tasks that require synthesising information across multiple documents — case law analysis, market research, regulatory mapping — rather than interrogating a single file.' },
+        { figure: { src: 'assets/References_Chat.png', caption: 'Deep Research output — each finding links back to its source document via clickable inline citations.', wide: true } },
+      ]},
+      { kicker: '02 — Inline Citations', heading: 'Verify every finding against its source', blocks: [
+        { p: 'Every finding in a Deep Research output carries a <strong>numbered inline citation</strong>. Click any citation to open the source document with the originating passage highlighted — all without leaving the page.' },
+        { figure: { src: 'assets/i5/01_image002.png', caption: 'Clickable inline citations in a Deep Research output — click any reference to jump to the source.', wide: true } },
+        { callout: { kind: 'tip', title: 'Use selective context', body: 'Restrict your context to the documents most relevant to your research question. Broad context dilutes the signal — Deep Research performs best on curated, targeted uploads.' } },
+      ]},
+      { kicker: '03 — When to use it', heading: 'Best suited to synthesis tasks', blocks: [
+        { p: 'Use Deep Research when you need to synthesise across sources — comparing positions across multiple affidavits, summarising case law on a specific issue, or mapping regulatory requirements across jurisdictions. For a single document, consider Guided Summary or Scope Summary instead.' },
+      ]},
+    ],
+    signoff: { line: 'Every finding. Source verified.', name: 'A&GEL Development Team' },
+  },
+
+  'feature-scopesummary': {
+    issue: null, title: 'Scope Summary',
+    subtitle: 'A structured summary scoped to your defined focus areas — every extracted point carries a clickable inline citation.',
+    date: '', readMins: 3, cover: 'assets/covers/issue-4.png',
+    glance: [
+      'Generates a summary focused on your defined scope — not the whole document.',
+      'Every extracted point carries a <strong>clickable inline citation</strong> to verify against the source.',
+      'Found under <strong>Specialised Apps</strong>.',
+      'Tighter scope definitions produce more targeted, actionable extractions.',
+    ],
+    sections: [
+      { kicker: '01 — What it does', heading: 'Focused extraction within a defined scope', blocks: [
+        { p: 'Scope Summary lets you define the areas you want A&GEL to focus on — obligations, risk allocation, termination rights, IP provisions — and generates a structured summary restricted to those scope areas. The output is more targeted than a full-document summary and directly mapped to your review priorities.' },
+        { callout: { kind: 'tip', title: 'Define your scope clearly', body: 'The tighter the scope, the more precise the output. Broad scopes produce outputs similar to a full-document summary. Targeted scopes — e.g. "data protection and security obligations" — produce concise, actionable extractions.' } },
+      ]},
+      { kicker: '02 — Inline Citations', heading: 'Every point, source verified', blocks: [
+        { p: 'Each extracted point in a Scope Summary carries a <strong>clickable inline citation</strong> — click it to open the source document with the originating clause or paragraph highlighted. No tab-switching; all verification happens on a single page.' },
+        { figure: { src: 'assets/i5/01_image002.png', caption: 'Scope Summary output with inline citations — click any reference to jump to the source.', wide: true } },
+      ]},
+    ],
+    signoff: { line: 'Scoped. Sourced. Verified.', name: 'A&GEL Development Team' },
+  },
+
+  'feature-review': {
+    issue: null, title: 'Review',
+    subtitle: 'Pose multiple questions across multiple documents at once — outputs appear in a table with inline citations.',
+    date: '', readMins: 4, cover: 'assets/covers/issue-4.png',
+    glance: [
+      'Run a <strong>question list across multiple documents simultaneously</strong> — outputs in one table.',
+      'Click any cell to expand the <strong>Explanation panel</strong> with inline citations to source clauses.',
+      'Use <strong>mini-chat</strong> to follow up without leaving the review page.',
+      'Found under <strong>Specialised Apps</strong>.',
+    ],
+    sections: [
+      { kicker: '01 — What it does', heading: 'Multi-document, multi-question review in one table', blocks: [
+        { p: 'Review runs a question list across multiple documents simultaneously, returning results in a table — one row per question, one column per document. The format is well suited to contract comparison, due diligence across a document set, or mapping positions across pleadings.' },
+        { figure: { src: 'assets/Review_SaaS.png', caption: 'AI SaaS Benchmarking Review — 20 files reviewed against a defined question set in a single table.', wide: true } },
+      ]},
+      { kicker: '02 — Explanation Panel', heading: 'Source-verified explanations for every finding', blocks: [
+        { p: 'Click any cell to expand the <strong>Explanation panel</strong>. Each finding is broken down with structured inline references — click any reference to open the source clause directly.' },
+        { figure: { src: 'assets/i5/02_image004.jpg', caption: 'The Explanation panel in Review — each finding linked to its source clause.', wide: false } },
+        { callout: { kind: 'tip', title: 'Build your question list once, reuse it', body: 'A well-structured question list becomes a reusable template for that document type. Save it and apply it to the next set of contracts in the same category.' } },
+      ]},
+      { kicker: '03 — Mini-Chat', heading: 'Follow up without leaving the page', blocks: [
+        { p: 'The <strong>mini-chat window</strong> lets you ask follow-up questions about the documents and Review outputs simultaneously — without navigating away. The window is moveable and resizable, so it stays clear of your workspace.' },
+      ]},
+    ],
+    signoff: { line: 'Every document. Every question. One table.', name: 'A&GEL Development Team' },
+  },
+
   'feature-msg': {
     issue: null, title: '.msg Email Upload',
     subtitle: 'Upload entire email files into A&GEL — including attachments — and work with them like any other document.',
