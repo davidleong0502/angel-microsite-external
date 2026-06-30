@@ -1331,26 +1331,3 @@ document.addEventListener('keydown', e => { if (e.key === 'Escape') closeReader(
 
   document.addEventListener('click', () => { if(locked) unlock(); });
 })();
-
-/* ── PIN HABITS GRID HEIGHT ──
-   Hovering a panel widens its column, so its text reflows into longer lines and
-   the panel gets shorter. Left unchecked, that shrinks the page height under the
-   cursor and triggers a hover/scroll feedback loop (bad vibration). Pinning the
-   grid to its natural (tallest) height means a panel reflowing shorter can never
-   change the page height — so the reflow is smooth and the scroll stays still. */
-(function(){
-  const grid = document.querySelector('.habits-grid');
-  if(!grid) return;
-  let raf;
-  function pin(){
-    cancelAnimationFrame(raf);
-    raf = requestAnimationFrame(() => {
-      grid.style.minHeight = '';                       // release to measure natural height
-      grid.style.minHeight = grid.offsetHeight + 'px'; // lock it in
-    });
-  }
-  pin();
-  window.addEventListener('load', pin);
-  window.addEventListener('resize', pin);
-  if(document.fonts && document.fonts.ready) document.fonts.ready.then(pin);
-})();

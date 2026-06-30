@@ -102,17 +102,18 @@ nav{
   position:relative;overflow:hidden;
   cursor:pointer;
   contain:layout paint;
+  transform-origin:top center;
+  transition:transform .3s ease-out, box-shadow .3s ease-out, opacity .3s ease-out;
 }
 @media(hover:hover) and (min-width:769px){
-  .habits-grid:has(.habit-tile-1:hover){grid-template-columns:1.1fr 0.95fr 0.95fr}
-  .habits-grid:has(.habit-tile-2:hover){grid-template-columns:0.95fr 1.1fr 0.95fr}
-  .habits-grid:has(.habit-tile-3:hover){grid-template-columns:0.95fr 0.95fr 1.1fr}
-  /* Resting/neighbour tiles: content locked to the narrow track width. */
-  .habit-tile > *{width:calc(31vw - 72px);max-width:100%}
-  /* Hovered tile: content snaps to the WIDE track width — the text genuinely
-     reflows into longer lines (real extra reading width). The grid height is
-     pinned in JS, so this reflow can't change the page height or shake scroll. */
-  .habit-tile:hover > *{width:calc(36vw - 72px)}
+  /* Hover = a "focus" effect, done entirely with transform/opacity so the page
+     layout never changes (no reflow → no height shift → no scroll shake, and no
+     dead whitespace). The hovered panel lifts and scales up a touch — bigger,
+     more legible text — while the other two dim back to push it forward.
+     The genuine line-widening for reading lives in click-to-lock below. */
+  .habit-tile:hover{transform:scale(1.035);z-index:2;
+    box-shadow:0 26px 70px rgba(13,49,110,.16)}
+  .habits-grid:has(.habit-tile:hover) .habit-tile:not(:hover){opacity:.5}
 }
 .habit-tile-1::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;
   background:linear-gradient(90deg,var(--teal),transparent)}
