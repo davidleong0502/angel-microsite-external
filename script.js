@@ -1341,20 +1341,34 @@ document.addEventListener('keydown', e => { if (e.key === 'Escape') closeReader(
   document.addEventListener('click', () => { if(locked) unlock(); });
 })();
 
-// Lock grid row height on hover to prevent layout shift during column expansion
+// Lock grid row height on hover to prevent layout shift during column expansion.
+// stableHeight is captured via ResizeObserver (fires after stable layout, not
+// mid-reflow) so it always holds the pre-hover height — avoiding the race where
+// calling offsetHeight inside mouseenter forces a reflow and reads the wrong value.
 (function(){
   var grid = document.querySelector('.habits-grid');
   if(!grid) return;
   var tiles = grid.querySelectorAll('.habit-tile');
+  var stableHeight = 0;
+  var isHovered = false;
   var unlockTimer;
+
+  function captureHeight(){ if(!isHovered) stableHeight = grid.offsetHeight; }
+  captureHeight();
+  if(window.ResizeObserver) new ResizeObserver(captureHeight).observe(grid);
+
   tiles.forEach(function(tile){
     tile.addEventListener('mouseenter', function(){
+      isHovered = true;
       clearTimeout(unlockTimer);
-      if(!grid.style.gridTemplateRows)
-        grid.style.gridTemplateRows = grid.offsetHeight + 'px';
+      if(stableHeight) grid.style.gridTemplateRows = stableHeight + 'px';
     });
     tile.addEventListener('mouseleave', function(){
-      unlockTimer = setTimeout(function(){ grid.style.gridTemplateRows = ''; }, 350);
+      isHovered = false;
+      unlockTimer = setTimeout(function(){
+        grid.style.gridTemplateRows = '';
+        captureHeight();
+      }, 380);
     });
   });
 })();

@@ -98,7 +98,7 @@ nav{
   transition:grid-template-columns .28s ease-out;
 }
 .habit-tile{
-  padding:48px 36px 64px;
+  padding:48px 36px 200px;
   position:relative;overflow:hidden;
   cursor:pointer;
   contain:layout paint;
