@@ -1340,3 +1340,21 @@ document.addEventListener('keydown', e => { if (e.key === 'Escape') closeReader(
 
   document.addEventListener('click', () => { if(locked) unlock(); });
 })();
+
+// Lock grid row height on hover to prevent layout shift during column expansion
+(function(){
+  var grid = document.querySelector('.habits-grid');
+  if(!grid) return;
+  var tiles = grid.querySelectorAll('.habit-tile');
+  var unlockTimer;
+  tiles.forEach(function(tile){
+    tile.addEventListener('mouseenter', function(){
+      clearTimeout(unlockTimer);
+      if(!grid.style.gridTemplateRows)
+        grid.style.gridTemplateRows = grid.offsetHeight + 'px';
+    });
+    tile.addEventListener('mouseleave', function(){
+      unlockTimer = setTimeout(function(){ grid.style.gridTemplateRows = ''; }, 350);
+    });
+  });
+})();

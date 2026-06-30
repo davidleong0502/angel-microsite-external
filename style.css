@@ -102,17 +102,13 @@ nav{
   position:relative;overflow:hidden;
   cursor:pointer;
   contain:layout paint;
-  transform-origin:top center;
-  transition:transform .3s ease-out, box-shadow .3s ease-out, opacity .3s ease-out;
+  transition:box-shadow .3s ease-out, opacity .3s ease-out;
 }
 @media(hover:hover) and (min-width:769px){
-  /* Hover = a "focus" effect, done entirely with transform/opacity so the page
-     layout never changes (no reflow → no height shift → no scroll shake, and no
-     dead whitespace). The hovered panel lifts and scales up a touch — bigger,
-     more legible text — while the other two dim back to push it forward.
-     The genuine line-widening for reading lives in click-to-lock below. */
-  .habit-tile:hover{transform:scale(1.035);z-index:2;
-    box-shadow:0 26px 70px rgba(13,49,110,.16)}
+  .habits-grid:has(.habit-tile-1:hover){grid-template-columns:1.2fr 0.9fr 0.9fr}
+  .habits-grid:has(.habit-tile-2:hover){grid-template-columns:0.9fr 1.2fr 0.9fr}
+  .habits-grid:has(.habit-tile-3:hover){grid-template-columns:0.9fr 0.9fr 1.2fr}
+  .habit-tile:hover{box-shadow:0 26px 70px rgba(13,49,110,.16)}
   .habits-grid:has(.habit-tile:hover) .habit-tile:not(:hover){opacity:.5}
 }
 .habit-tile-1::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;
